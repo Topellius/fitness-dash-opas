@@ -1,93 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- https://topellius.github.io/fitness-dash-opas/en.html -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitness, nutrition and exercise | English page</title>
+  <title>DASH diet • Clear, precise and flexible guide</title>
+  <meta name="description" content="A precise but flexible DASH diet guide in clear language. One page showing what to eat, how much to eat and when the day has been successful." />
   <style>
-    body{
-      margin:0;
-      font-family:Inter, system-ui, sans-serif;
-      background:linear-gradient(180deg,#f8fafc 0%,#eef6ff 100%);
-      color:#0f172a;
-      line-height:1.6;
+    :root {
+      --bg: #f5f8f2;
+      --bg-soft: #ffffff;
+      --ink: #183022;
+      --muted: #516557;
+      --brand: #3d7a4a;
+      --brand-2: #7db46c;
+      --accent: #dff2d8;
+      --gold: #f0d98a;
+      --border: #d8e5d3;
+      --shadow: 0 18px 40px rgba(18, 48, 34, 0.1);
+      --radius: 24px;
+      --max: 1180px;
     }
-    .wrap{
-      width:min(100% - 2rem, 1000px);
-      margin-inline:auto;
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(245,248,242,0.92), rgba(245,248,242,0.96)),
+        url('images/dash-background.jpg') center center / cover fixed no-repeat;
+      line-height: 1.65;
     }
-    .langbar{
-      background:#020617;
-      color:#cbd5e1;
-      padding:.9rem 0;
+
+    img { max-width: 100%; display: block; }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
     }
-    .langbar .wrap{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:1rem;
-      flex-wrap:wrap;
+
+    .langbar {
+      background: #173124;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .lang-links{
-      display:flex;
-      gap:.7rem;
-      flex-wrap:wrap;
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .lang-links a{
-      color:#93c5fd;
-      text-decoration:none;
-      font-weight:700;
-      padding:.35rem .65rem;
-      border:1px solid rgba(147,197,253,.28);
-      border-radius:999px;
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .lang-links a.active{
-      color:#fff;
-      background:rgba(14,165,233,.18);
-      border-color:rgba(147,197,253,.48);
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
     }
-    header{
-      background:linear-gradient(135deg, rgba(15,23,42,.96), rgba(17,24,39,.92));
-      color:#fff;
-      padding:72px 0 52px;
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
     }
-    h1{
-      font-size:clamp(2rem,4vw,3.6rem);
-      line-height:1.05;
-      margin:.2rem 0 1rem;
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
     }
-    .tag{
-      display:inline-block;
-      background:rgba(255,255,255,.12);
-      color:#dbeafe;
-      border:1px solid rgba(255,255,255,.18);
-      padding:.5rem .9rem;
-      border-radius:999px;
-      margin-bottom:1rem;
+
+    .future-list {
+      margin: 0;
+      padding-left: 1.2rem;
     }
-    .card{
-      background:#fff;
-      border:1px solid #e2e8f0;
-      border-radius:22px;
-      padding:1.35rem;
-      box-shadow:0 18px 40px rgba(2,6,23,.12);
-      margin:1rem 0;
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
     }
-    .btn{
-      display:inline-block;
-      margin-top:1rem;
-      text-decoration:none;
-      padding:.9rem 1.15rem;
-      border-radius:14px;
-      font-weight:700;
-      background:linear-gradient(135deg,#16a34a,#22c55e);
-      color:#fff;
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
     }
-    .msj{
-      background:#0f172a;
-      color:#fff;
-      padding:48px 0;
-      margin-top:2rem;
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(24,48,34,0.92), rgba(61,122,74,0.9)),
+        url('images/dash-hero.jpg') center center / cover no-repeat;
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(240,217,138,0.22), transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 60px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: rgba(255,255,255,0.92);
+      margin: 0 0 24px;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.09);
+    }
+
+    main {
+      padding: 40px 0 80px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full { grid-column: 1 / -1; }
+
+    h2 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 24px 0 10px;
+    }
+
+    p, li { color: var(--muted); }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      border: 1px solid #cde5c2;
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .meal {
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fcf6);
+      border: 1px solid var(--border);
+    }
+
+    .meal strong {
+      color: var(--ink);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .success-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .score-box {
+      background: linear-gradient(180deg, #fef9e8, #fffdf6);
+      border: 1px solid #eadcaa;
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .market-item {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .image-slot {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #eef5ea;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 24px;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8e8;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .footer-cta {
+      background:
+        linear-gradient(135deg, rgba(61,122,74,0.98), rgba(24,48,34,0.98)),
+        url('images/dash-footer.jpg') center center / cover no-repeat;
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    footer {
+      background: #173124;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .meal-grid,
+      .success-box,
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 38px 0 52px;
+      }
     }
   </style>
 </head>
@@ -104,45 +426,423 @@
   </div>
 
   <header>
-    <div class="wrap">
-      <div class="tag">Fitness • Nutrition • Exercise</div>
-      <h1>English version of the fitness and DASH guide</h1>
-      <p>
-        This page is a lighter English entry point to the same project. The main Finnish page contains the full long guide,
-        and this English page supports international visitors, future portfolio use and multilingual growth.
-      </p>
-      <a class="btn" href="index.html">Open the full Finnish guide</a>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">🥗 DASH diet • clear guide • ready to publish</div>
+        <h1>DASH diet explained clearly</h1>
+        <p>A clear, precise but flexible guide for a person who does not want to guess anything. This page gives the full daily structure, portion sizes, success markers, common mistakes and an easy shopping list in one strong looking page.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#day-model">🍽️ Go to the day model</a>
+          <a class="btn secondary" href="#success">✅ View success markers</a>
+        </div>
+        <p class="author-note">Author: Topi Järvinen • published on GitHub Pages • multilingual version in progress</p>
+      </div>
+      <aside class="hero-card">
+        <h2>💚 What you get on this page</h2>
+        <ul class="hero-list">
+          <li>📘 A precise but flexible DASH day without guesswork</li>
+          <li>📏 Clear portion sizes in plain language</li>
+          <li>🛒 A simple shopping list for 3 or 4 days</li>
+          <li>⭐ A way to check if the day was actually successful</li>
+        </ul>
+      </aside>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="card">
-      <h2>What this site focuses on</h2>
-      <p>This project focuses on fitness, practical nutrition, movement, healthy routines and future educational content.</p>
-      <ul>
-        <li>DASH-based eating structure</li>
-        <li>practical meal planning</li>
-        <li>exercise and recovery basics</li>
-        <li>future multilingual content</li>
-      </ul>
-    </section>
+    <div class="intro-banner">
+      <p>Below is a <strong>clear, precise but flexible DASH day model</strong>. It is built so that it can be used in real life without guessing. DASH is an eating pattern created especially to support blood pressure and heart health. The core idea is: <strong>more vegetables, fruit, whole grains, beans, nuts and low fat proteins; less salt, sugar and hard fat.</strong></p>
+    </div>
 
-    <section class="card">
-      <h2>About the creator</h2>
-      <p>Created by <strong>Topi Järvinen</strong> and published on GitHub Pages as part of a growing personal portfolio and content platform.</p>
-    </section>
+    <div class="grid">
+      <section class="card">
+        <h2>🎯 Built for an ordinary adult</h2>
+        <p>This is not a disease-specific medical plan. If you have kidney disease, serious heart disease, diabetes medication, blood thinners or a prescribed special diet, the structure must be adjusted to that.</p>
+        <div class="pill-row">
+          <span class="pill">More vegetables</span>
+          <span class="pill">Less salt</span>
+          <span class="pill">More whole grains</span>
+          <span class="pill">Less sugar</span>
+        </div>
+      </section>
 
-    <section class="card">
-      <h2>Future work</h2>
-      <p>More guides, training pages, nutrition content and structured multilingual pages will be added later.</p>
-    </section>
+      <section class="card">
+        <h2>🥬 1. DASH in very simple terms</h2>
+        <p>The day is successful when these are met approximately:</p>
+        <ul class="clean">
+          <li>vegetables <strong>4–5 servings</strong></li>
+          <li>fruit or berries <strong>4–5 servings</strong></li>
+          <li>grain foods <strong>6–8 servings</strong>, mostly whole grain</li>
+          <li>dairy <strong>2–3 servings</strong>, preferably low fat</li>
+          <li>meat, chicken, fish or another protein source <strong>at most about 2 servings per day</strong></li>
+          <li>nuts, seeds or beans regularly</li>
+          <li>sweets, sugary drinks and salty convenience foods as low as possible</li>
+          <li>salt preferably so that sodium stays around <strong>2300 mg per day</strong> or lower, and for many people <strong>1500 mg per day</strong> is even better.</li>
+        </ul>
+        <p>In the NHLBI DASH guide, at about 2000 kcal the target is usually <strong>6–8 grain servings, 4–5 vegetable servings, 4–5 fruit servings, 2–3 dairy servings, no more than 6 one ounce protein servings, 4–5 nut bean seed servings per week and fats in moderation</strong>.</p>
+      </section>
+
+      <section class="card full">
+        <div class="image-slot">
+          <div>
+            <h2>🖼️ Image slot or background image here</h2>
+            <p>You can add your own image here, for example from <strong>images/dash-plate.jpg</strong>. This section fits a finished plate image, a grocery bag or a healthy table image.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>📐 2. What one serving means in practice</h2>
+        <p>This is the part that stops the guesswork.</p>
+        <h3>Vegetables, 1 serving</h3>
+        <ul class="clean">
+          <li>1 dl cooked vegetables</li>
+          <li>2 dl salad or leafy greens</li>
+          <li>1 medium tomato or about half a cucumber fits roughly into this class</li>
+        </ul>
+        <h3>Fruit and berries, 1 serving</h3>
+        <ul class="clean">
+          <li>1 medium apple, banana, orange or pear</li>
+          <li>1 dl berries</li>
+          <li>1 dl chopped fruit</li>
+        </ul>
+        <h3>Grains or carbohydrates, 1 serving</h3>
+        <ul class="clean">
+          <li>1 slice whole grain bread</li>
+          <li>1 dl cooked oatmeal, rice or pasta</li>
+          <li>about ½–1 dl cooked potatoes in pieces is not an official grain serving, but in practical meals potatoes can work in the same carbohydrate role</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>📎 More practical serving notes</h2>
+        <h3>Dairy, 1 serving</h3>
+        <ul class="clean">
+          <li>2 dl milk or buttermilk</li>
+          <li>200 g plain yogurt</li>
+          <li>about 2 slices low fat cheese</li>
+        </ul>
+        <h3>Protein, 1 serving</h3>
+        <p>about 30 g cooked meat, chicken or fish</p>
+        <p>In practice this is a very small unit, so in everyday life think more like this:</p>
+        <ul class="clean">
+          <li>one normal protein portion at a meal = <strong>100–150 g chicken, fish or lean meat</strong></li>
+          <li>or <strong>2 eggs</strong></li>
+          <li>or <strong>2–3 dl beans or lentils</strong></li>
+        </ul>
+        <h3>Nuts or seeds</h3>
+        <p>1 small handful = about <strong>25–30 g</strong></p>
+        <h3>Fat</h3>
+        <p>1 serving = about <strong>1 tsp oil or soft spread</strong>. DASH favors soft fats and reduces hard fats.</p>
+      </section>
+
+      <section class="card full">
+        <h2>🍽️ 3. The easiest way to build one meal</h2>
+        <p>Remember this rule:</p>
+        <div class="callout">Half the plate vegetables, one palm of protein, one fist of carbohydrates and a little soft fat.</div>
+        <p>In practice:</p>
+        <ul class="clean">
+          <li><strong>half the plate</strong>: salad, tomato, cucumber, carrot, frozen vegetables, cabbage, bell pepper</li>
+          <li><strong>one palm</strong>: chicken, fish, cottage cheese, yogurt, tofu, beans, lentils</li>
+          <li><strong>one fist</strong>: potatoes, whole grain rice, whole grain pasta, oats, rye bread</li>
+          <li><strong>fat</strong>: 1 tsp to 1 tbsp olive oil, seeds or nuts</li>
+        </ul>
+        <p>With this structure DASH works without math.</p>
+      </section>
+
+      <section class="card full" id="day-model">
+        <h2>📘 4. Exact DASH daily plan, very clear version</h2>
+        <p>Here is a ready-made day. This can be repeated.</p>
+        <div class="meal-grid">
+          <article class="meal">
+            <strong>Breakfast</strong>
+            <p>Eat:</p>
+            <ul class="clean">
+              <li>oats <strong>1 dl dry</strong></li>
+              <li>milk or unsweetened soy drink <strong>2 dl</strong></li>
+              <li>berries <strong>1–2 dl</strong></li>
+              <li>1 banana or 1 apple</li>
+              <li>nuts or seeds <strong>1 tbsp</strong></li>
+              <li>if wanted 1 boiled egg</li>
+            </ul>
+            <p>In practice this means:</p>
+            <ul class="clean">
+              <li>make oatmeal</li>
+              <li>put berries on top</li>
+              <li>eat fruit on the side</li>
+              <li>add a little seeds or nuts</li>
+            </ul>
+            <p>Why this is DASH:</p>
+            <ul class="clean">
+              <li>whole grain</li>
+              <li>fruit and berries</li>
+              <li>a little soft fat</li>
+              <li>moderate protein</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Lunch</strong>
+            <p>Eat:</p>
+            <ul class="clean">
+              <li>chicken or fish <strong>120–150 g</strong></li>
+              <li>cooked rice, barley or whole grain pasta <strong>1–1.5 dl</strong></li>
+              <li>vegetables <strong>at least 2–3 dl</strong></li>
+              <li>1 tsp to 1 tbsp olive oil or a light dressing</li>
+              <li>1 slice whole grain bread if wanted</li>
+            </ul>
+            <p>Example:</p>
+            <ul class="clean">
+              <li>130 g chicken strips</li>
+              <li>1 dl cooked whole grain rice</li>
+              <li>salad, cucumber, tomato and pepper together 3 dl</li>
+              <li>a little oil on top</li>
+            </ul>
+            <p>If you do not eat meat:</p>
+            <ul class="clean">
+              <li>beans or lentils <strong>2–3 dl</strong></li>
+              <li>otherwise the same structure</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Snack</strong>
+            <p>Choose one:</p>
+            <p><strong>Option A</strong></p>
+            <ul class="clean">
+              <li>plain yogurt <strong>200 g</strong></li>
+              <li>berries <strong>1 dl</strong></li>
+            </ul>
+            <p><strong>Option B</strong></p>
+            <ul class="clean">
+              <li>1 fruit</li>
+              <li>1 small handful of nuts</li>
+            </ul>
+            <p><strong>Option C</strong></p>
+            <ul class="clean">
+              <li>2 slices whole grain bread</li>
+              <li>with turkey slices, hummus or cottage cheese</li>
+              <li>cucumber or tomato</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Dinner</strong>
+            <p>Eat:</p>
+            <ul class="clean">
+              <li>fish, chicken, beans or tofu <strong>120–150 g</strong></li>
+              <li>potatoes <strong>2–4 medium</strong> or cooked whole grain pasta or rice <strong>1–1.5 dl</strong></li>
+              <li>vegetables <strong>2–3 dl</strong></li>
+              <li>1 tsp to 1 tbsp soft fat</li>
+            </ul>
+            <p>Example:</p>
+            <ul class="clean">
+              <li>140 g baked salmon</li>
+              <li>3 potatoes</li>
+              <li>3 dl steamed broccoli and carrots</li>
+              <li>salad on the side</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>🌙 Evening meal</h2>
+        <p>Eat:</p>
+        <ul class="clean">
+          <li>2 slices whole grain bread</li>
+          <li>with low fat cheese, turkey, hummus or cottage cheese</li>
+          <li>vegetables on top</li>
+          <li>plus 1 fruit or 2 dl milk or yogurt if needed</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>🧠 5. If you want an even simpler rule</h2>
+        <p>Every main meal must have these 3 things:</p>
+        <ol class="clean">
+          <li><strong>Plenty of vegetables</strong></li>
+          <li><strong>Moderate protein</strong></li>
+          <li><strong>Whole grains or potatoes in a sensible amount</strong></li>
+        </ol>
+        <p>If one of these is missing, the meal is weaker.</p>
+      </section>
+
+      <section class="card" id="success">
+        <h2>✅ 6. The day is successful when these are met</h2>
+        <p>This is your checklist.</p>
+        <p><strong>The DASH day succeeded if:</strong></p>
+        <ul class="clean">
+          <li>you ate at least <strong>5 handfuls of vegetables</strong> during the day</li>
+          <li>you ate at least <strong>2–4 servings of fruit or berries</strong></li>
+          <li>every main meal had protein</li>
+          <li>your carbohydrates came mainly from oats, potatoes, rice, whole grains or fruit, not candy or soda</li>
+          <li>you did not drink sugary drinks</li>
+          <li>you did not use convenience junk food as the main meal structure</li>
+          <li>your fats came mainly from oil, nuts, seeds or soft spreads</li>
+          <li>salt did not get excessive</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <div class="success-box">
+          <div class="score-box">
+            <h2>⭐ Very simple scoring</h2>
+            <ul class="clean">
+              <li>1 point if breakfast is in order</li>
+              <li>1 point if lunch is in order</li>
+              <li>1 point if snack is in order</li>
+              <li>1 point if dinner is in order</li>
+              <li>1 point if evening meal is in order</li>
+              <li>1 point if there was no soda, juice or energy drink</li>
+              <li>1 point if you got at least 5 handfuls of vegetables</li>
+              <li>1 point if you ate at least 1–2 fruit or berry servings</li>
+            </ul>
+          </div>
+          <div class="score-box">
+            <h2>🏁 Interpretation</h2>
+            <p><strong>6–8 points = a good DASH day.</strong></p>
+            <p><strong>4–5 points = close enough, fix it tomorrow.</strong></p>
+            <p><strong>0–3 points = not DASH yet.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>🛒 7. What to eat more of and what to reduce</h2>
+        <h3>Add more of these</h3>
+        <ul class="clean">
+          <li>oats</li>
+          <li>rye bread and other whole grains</li>
+          <li>potatoes</li>
+          <li>rice and pasta, preferably whole grain</li>
+          <li>beans, lentils, peas</li>
+          <li>fish</li>
+          <li>chicken</li>
+          <li>plain yogurt</li>
+          <li>milk or an alternative</li>
+          <li>berries</li>
+          <li>apples, bananas, oranges</li>
+          <li>all ordinary vegetables</li>
+          <li>nuts and seeds in small amounts</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>🚫 Reduce these</h2>
+        <ul class="clean">
+          <li>sausages</li>
+          <li>bacon</li>
+          <li>pizza, kebab and burgers as constant everyday meals</li>
+          <li>chips</li>
+          <li>high salt convenience foods</li>
+          <li>soda, energy drinks and large amounts of juice</li>
+          <li>pastries, candy and sweet buns as a daily habit</li>
+          <li>heavy use of butter and cream</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>🧂 8. Salt: this changes a lot</h2>
+        <p>In DASH one big issue is salt. According to NHLBI, even <strong>2300 mg sodium per day</strong> is an important limit, and <strong>1500 mg</strong> can lower blood pressure even more.</p>
+        <p>In plain language:</p>
+        <ul class="clean">
+          <li>do not salt food automatically</li>
+          <li>avoid “ready sauce + ready soup + cold cuts + cheese + bread” all day combinations</li>
+          <li>read the package and choose lower salt options more often</li>
+          <li>season with lemon, pepper, garlic, paprika and herbs</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>🔄 9. Flexible version: swaps without breaking DASH</h2>
+        <p>You can swap foods like this:</p>
+        <h3>Breakfast:</h3>
+        <ul class="clean">
+          <li>oatmeal ↔ whole grain bread + yogurt</li>
+          <li>berries ↔ apple ↔ banana</li>
+        </ul>
+        <h3>Lunch / dinner:</h3>
+        <ul class="clean">
+          <li>chicken ↔ fish ↔ tofu ↔ beans</li>
+          <li>rice ↔ potatoes ↔ pasta ↔ barley</li>
+          <li>salad ↔ frozen vegetables ↔ wok vegetables</li>
+        </ul>
+        <h3>Snack:</h3>
+        <ul class="clean">
+          <li>yogurt ↔ quark ↔ fruit + nuts ↔ bread + protein topping</li>
+        </ul>
+        <p>The key idea is: <strong>change the food, but do not break the structure.</strong></p>
+      </section>
+
+      <section class="card">
+        <h2>⚠️ 10. Common mistakes that make this fail</h2>
+        <ul class="clean">
+          <li>“I ate healthy”, but vegetables were still too low</li>
+          <li>too little protein, which leads to hunger and evening overeating</li>
+          <li>carbs coming from buns, cookies and soda</li>
+          <li>eating too little during the day and exploding at night</li>
+          <li>buying “fitness products” while basic food is missing</li>
+          <li>salt stays high because of convenience food</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>🛍️ 11. The easiest shopping list for 3–4 days</h2>
+        <p>Buy these:</p>
+        <div class="market-grid">
+          <div class="market-item">oats</div>
+          <div class="market-item">rye bread or another whole grain bread</div>
+          <div class="market-item">rice, potatoes or whole grain pasta</div>
+          <div class="market-item">plain yogurt</div>
+          <div class="market-item">milk or an alternative</div>
+          <div class="market-item">eggs</div>
+          <div class="market-item">chicken or fish</div>
+          <div class="market-item">beans or lentils</div>
+          <div class="market-item">apples, bananas</div>
+          <div class="market-item">frozen berries</div>
+          <div class="market-item">tomato, cucumber, pepper, lettuce, carrot, broccoli</div>
+          <div class="market-item">olive oil</div>
+          <div class="market-item">nuts or seeds</div>
+        </div>
+        <p>With these you can build DASH without trickery.</p>
+      </section>
+
+      <section class="card full">
+        <h2>💡 12. One sentence to remember</h2>
+        <div class="callout">If your plate has plenty of vegetables, enough protein, a sensible carbohydrate and a little soft fat, you are usually on the DASH path.</div>
+      </section>
+
+      <section class="card full">
+        <h2>📚 13. Future work and next releases</h2>
+        <p>This page is part of a growing personal publishing structure. The goal is to expand the site with many new works related to wellbeing, movement and nutrition.</p>
+        <ul class="future-list">
+          <li>clear nutrition guides for different goals</li>
+          <li>exercise and daily life subpages</li>
+          <li>practical wellbeing content in multiple languages</li>
+          <li>new publishable portfolio and learning pages</li>
+          <li>a broader personal brand and content platform</li>
+        </ul>
+      </section>
+    </div>
   </main>
 
-  <section class="msj">
+  <section class="footer-cta">
     <div class="wrap">
-      <h2>MSJ / MultiStoreOnline</h2>
-      <p>In development and coming soon. Future address: www.msj.eu</p>
+      <h2>🥗 DASH is not sophistication. It is a clear system.</h2>
+      <p>When the plate contains plenty of vegetables, enough protein, a sensible carbohydrate and a little soft fat, the direction is right. This page is built so it can be published directly on GitHub Pages and later expanded with your own images.</p>
+      <div class="msj-box">
+        <strong>MULTISALEJOURNEY</strong>
+        <p>In development and coming soon.</p>
+      </div>
     </div>
   </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • DASH diet guide • GitHub Pages</p>
+      <p><a href="#top">Back to top</a></p>
+    </div>
+  </footer>
 </body>
 </html>

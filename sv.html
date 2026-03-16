@@ -1,93 +1,415 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+    <!-- https://topellius.github.io/fitness-dash-opas/sv.html -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitness, kost och motion | Svensk sida</title>
+  <title>DASH kost • Tydlig, exakt och flexibel guide</title>
+  <meta name="description" content="En exakt men flexibel DASH-guide på klar svenska. En sida som visar vad du ska äta, hur mycket du ska äta och när dagen har lyckats." />
   <style>
-    body{
-      margin:0;
-      font-family:Inter, system-ui, sans-serif;
-      background:linear-gradient(180deg,#f8fafc 0%,#eef6ff 100%);
-      color:#0f172a;
-      line-height:1.6;
+    :root {
+      --bg: #f5f8f2;
+      --bg-soft: #ffffff;
+      --ink: #183022;
+      --muted: #516557;
+      --brand: #3d7a4a;
+      --brand-2: #7db46c;
+      --accent: #dff2d8;
+      --gold: #f0d98a;
+      --border: #d8e5d3;
+      --shadow: 0 18px 40px rgba(18, 48, 34, 0.1);
+      --radius: 24px;
+      --max: 1180px;
     }
-    .wrap{
-      width:min(100% - 2rem, 1000px);
-      margin-inline:auto;
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(245,248,242,0.92), rgba(245,248,242,0.96)),
+        url('images/dash-background.jpg') center center / cover fixed no-repeat;
+      line-height: 1.65;
     }
-    .langbar{
-      background:#020617;
-      color:#cbd5e1;
-      padding:.9rem 0;
+
+    img { max-width: 100%; display: block; }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
     }
-    .langbar .wrap{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:1rem;
-      flex-wrap:wrap;
+
+    .langbar {
+      background: #173124;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .lang-links{
-      display:flex;
-      gap:.7rem;
-      flex-wrap:wrap;
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .lang-links a{
-      color:#93c5fd;
-      text-decoration:none;
-      font-weight:700;
-      padding:.35rem .65rem;
-      border:1px solid rgba(147,197,253,.28);
-      border-radius:999px;
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .lang-links a.active{
-      color:#fff;
-      background:rgba(14,165,233,.18);
-      border-color:rgba(147,197,253,.48);
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
     }
-    header{
-      background:linear-gradient(135deg, rgba(15,23,42,.96), rgba(17,24,39,.92));
-      color:#fff;
-      padding:72px 0 52px;
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
     }
-    h1{
-      font-size:clamp(2rem,4vw,3.6rem);
-      line-height:1.05;
-      margin:.2rem 0 1rem;
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
     }
-    .tag{
-      display:inline-block;
-      background:rgba(255,255,255,.12);
-      color:#dbeafe;
-      border:1px solid rgba(255,255,255,.18);
-      padding:.5rem .9rem;
-      border-radius:999px;
-      margin-bottom:1rem;
+
+    .future-list {
+      margin: 0;
+      padding-left: 1.2rem;
     }
-    .card{
-      background:#fff;
-      border:1px solid #e2e8f0;
-      border-radius:22px;
-      padding:1.35rem;
-      box-shadow:0 18px 40px rgba(2,6,23,.12);
-      margin:1rem 0;
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
     }
-    .btn{
-      display:inline-block;
-      margin-top:1rem;
-      text-decoration:none;
-      padding:.9rem 1.15rem;
-      border-radius:14px;
-      font-weight:700;
-      background:linear-gradient(135deg,#16a34a,#22c55e);
-      color:#fff;
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
     }
-    .msj{
-      background:#0f172a;
-      color:#fff;
-      padding:48px 0;
-      margin-top:2rem;
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(24,48,34,0.92), rgba(61,122,74,0.9)),
+        url('images/dash-hero.jpg') center center / cover no-repeat;
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(240,217,138,0.22), transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 60px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: rgba(255,255,255,0.92);
+      margin: 0 0 24px;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.09);
+    }
+
+    main {
+      padding: 40px 0 80px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full { grid-column: 1 / -1; }
+
+    h2 {
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 24px 0 10px;
+    }
+
+    p, li { color: var(--muted); }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      border: 1px solid #cde5c2;
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .meal {
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fcf6);
+      border: 1px solid var(--border);
+    }
+
+    .meal strong {
+      color: var(--ink);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .success-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .score-box {
+      background: linear-gradient(180deg, #fef9e8, #fffdf6);
+      border: 1px solid #eadcaa;
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .market-item {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .image-slot {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #eef5ea;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 24px;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8e8;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .footer-cta {
+      background:
+        linear-gradient(135deg, rgba(61,122,74,0.98), rgba(24,48,34,0.98)),
+        url('images/dash-footer.jpg') center center / cover no-repeat;
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    footer {
+      background: #173124;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .meal-grid,
+      .success-box,
+      .market-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 38px 0 52px;
+      }
     }
   </style>
 </head>
@@ -104,45 +426,423 @@
   </div>
 
   <header>
-    <div class="wrap">
-      <div class="tag">Fitness • Kost • Motion</div>
-      <h1>Svensk version av fitness- och DASH-guiden</h1>
-      <p>
-        Den här sidan är en lättare svenskspråkig ingång till samma projekt. Den finska huvudsidan innehåller den fulla guiden,
-        och den här sidan stöder framtida flerspråkigt innehåll och portfolioanvändning.
-      </p>
-      <a class="btn" href="index.html">Öppna den fulla finska guiden</a>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">🥗 DASH kost • tydlig guide • redo för publicering</div>
+        <h1>DASH kost helt tydligt</h1>
+        <p>En tydlig, exakt men flexibel guide för den som inte vill gissa. Här finns hela dagsstrukturen, portionsstorlekar, mått för en lyckad dag, vanliga misstag och en enkel inköpslista på en och samma starka sida.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#dagsmodell">🍽️ Gå till dagsmodellen</a>
+          <a class="btn secondary" href="#lyckad-dag">✅ Se måtten för en lyckad dag</a>
+        </div>
+        <p class="author-note">Skapad av Topi Järvinen • publicerad på GitHub Pages • flerspråkig version på väg</p>
+      </div>
+      <aside class="hero-card">
+        <h2>💚 Vad du får på den här sidan</h2>
+        <ul class="hero-list">
+          <li>📘 En exakt men flexibel DASH-dag utan gissningar</li>
+          <li>📏 Tydliga portionsstorlekar på vanlig svenska</li>
+          <li>🛒 En enkel inköpslista för 3 eller 4 dagar</li>
+          <li>⭐ Ett sätt att kontrollera om dagen verkligen lyckades</li>
+        </ul>
+      </aside>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="card">
-      <h2>Vad sidan fokuserar på</h2>
-      <p>Projektet fokuserar på fitness, praktisk kost, rörelse, hälsosamma rutiner och framtida utbildande innehåll.</p>
-      <ul>
-        <li>DASH-baserad koststruktur</li>
-        <li>praktisk måltidsplanering</li>
-        <li>grunder i motion och återhämtning</li>
-        <li>framtida flerspråkigt innehåll</li>
-      </ul>
-    </section>
+    <div class="intro-banner">
+      <p>Nedan finns en <strong>tydlig, exakt men flexibel DASH-dagsmodell</strong>. Den är gjord för att kunna användas i verkligheten utan gissningar. DASH är en kostmodell som har skapats särskilt för att stödja blodtryck och hjärthälsa. Kärnan är: <strong>mer grönsaker, frukt, fullkorn, bönor, nötter och magra proteiner; mindre salt, socker och hårt fett.</strong></p>
+    </div>
 
-    <section class="card">
-      <h2>Om skaparen</h2>
-      <p>Skapad av <strong>Topi Järvinen</strong> och publicerad på GitHub Pages som en del av en växande personlig portfolio och innehållsplattform.</p>
-    </section>
+    <div class="grid">
+      <section class="card">
+        <h2>🎯 Gjord för en vanlig vuxen</h2>
+        <p>Detta är inte en sjukdomsspecifik vårdplan. Om du har njursjukdom, allvarlig hjärtsjukdom, diabetesmedicin, blodförtunnande eller en ordinerad specialdiet måste strukturen anpassas till det.</p>
+        <div class="pill-row">
+          <span class="pill">Mer grönsaker</span>
+          <span class="pill">Mindre salt</span>
+          <span class="pill">Mer fullkorn</span>
+          <span class="pill">Mindre socker</span>
+        </div>
+      </section>
 
-    <section class="card">
-      <h2>Kommande arbete</h2>
-      <p>Fler guider, träningssidor, kostinnehåll och tydliga flerspråkiga sidor kommer senare.</p>
-    </section>
+      <section class="card">
+        <h2>🥬 1. DASH mycket enkelt</h2>
+        <p>Dagen är lyckad när detta uppfylls ungefär:</p>
+        <ul class="clean">
+          <li>grönsaker <strong>4–5 portioner</strong></li>
+          <li>frukt eller bär <strong>4–5 portioner</strong></li>
+          <li>spannmål <strong>6–8 portioner</strong>, mest fullkorn</li>
+          <li>mejeriprodukter <strong>2–3 portioner</strong>, helst magra</li>
+          <li>kött, kyckling, fisk eller annan proteinkälla <strong>högst cirka 2 portioner per dag</strong></li>
+          <li>nötter, frön eller bönor regelbundet</li>
+          <li>godis, sockerdrycker och salta färdigrätter så lågt som möjligt</li>
+          <li>salt helst så att natrium ligger kring <strong>2300 mg per dag</strong> eller lägre, och för många är <strong>1500 mg per dag</strong> ännu bättre.</li>
+        </ul>
+        <p>I NHLBI:s DASH-guide är målet vid cirka 2000 kcal oftast <strong>6–8 spannmålsportioner, 4–5 grönsaksportioner, 4–5 fruktportioner, 2–3 mejeriproduktportioner, högst 6 one ounce proteinportioner, 4–5 nöt bön frö-portioner per vecka och fett i måttlig mängd</strong>.</p>
+      </section>
+
+      <section class="card full">
+        <div class="image-slot">
+          <div>
+            <h2>🖼️ Bildplats eller bakgrundsbild här</h2>
+            <p>Du kan lägga till en egen bild här, till exempel från <strong>images/dash-plate.jpg</strong>. Den här delen passar en färdig tallriksbild, en matkasse eller en hälsosam dukning.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>📐 2. Vad en portion betyder i praktiken</h2>
+        <p>Det här är delen som stoppar gissningarna.</p>
+        <h3>Grönsaker, 1 portion</h3>
+        <ul class="clean">
+          <li>1 dl tillagade grönsaker</li>
+          <li>2 dl sallad eller bladgrönt</li>
+          <li>1 medelstor tomat eller ungefär en halv gurka passar ungefär i den här klassen</li>
+        </ul>
+        <h3>Frukt och bär, 1 portion</h3>
+        <ul class="clean">
+          <li>1 medelstort äpple, banan, apelsin eller päron</li>
+          <li>1 dl bär</li>
+          <li>1 dl fruktbitar</li>
+        </ul>
+        <h3>Spannmål eller kolhydrater, 1 portion</h3>
+        <ul class="clean">
+          <li>1 skiva fullkornsbröd</li>
+          <li>1 dl tillagad gröt, ris eller pasta</li>
+          <li>ungefär ½–1 dl kokt potatis i bitar är inte en officiell spannmålsportion, men i praktiska måltider kan potatis ha samma kolhydratroll</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>📎 Fler praktiska portionsnoteringar</h2>
+        <h3>Mejeriprodukter, 1 portion</h3>
+        <ul class="clean">
+          <li>2 dl mjölk eller kärnmjölk</li>
+          <li>200 g naturell yoghurt</li>
+          <li>cirka 2 skivor mager ost</li>
+        </ul>
+        <h3>Protein, 1 portion</h3>
+        <p>cirka 30 g tillagat kött, kyckling eller fisk</p>
+        <p>I praktiken är detta en mycket liten enhet, så i vardagen kan du tänka mer så här:</p>
+        <ul class="clean">
+          <li>en normal proteinportion vid en måltid = <strong>100–150 g kyckling, fisk eller magert kött</strong></li>
+          <li>eller <strong>2 ägg</strong></li>
+          <li>eller <strong>2–3 dl bönor eller linser</strong></li>
+        </ul>
+        <h3>Nötter eller frön</h3>
+        <p>1 liten handfull = ungefär <strong>25–30 g</strong></p>
+        <h3>Fett</h3>
+        <p>1 portion = ungefär <strong>1 tsk olja eller mjukt påläggsfett</strong>. DASH föredrar mjuka fetter och minskar hårda fetter.</p>
+      </section>
+
+      <section class="card full">
+        <h2>🍽️ 3. Det enklaste sättet att bygga en måltid</h2>
+        <p>Kom ihåg denna regel:</p>
+        <div class="callout">Halva tallriken grönsaker, en handflata protein, en knytnäve kolhydrater och lite mjukt fett.</div>
+        <p>I praktiken:</p>
+        <ul class="clean">
+          <li><strong>halva tallriken</strong>: sallad, tomat, gurka, morot, frysta grönsaker, kål, paprika</li>
+          <li><strong>en handflata</strong>: kyckling, fisk, keso, yoghurt, tofu, bönor, linser</li>
+          <li><strong>en knytnäve</strong>: potatis, fullkornsris, fullkornspasta, havre, rågbröd</li>
+          <li><strong>fett</strong>: 1 tsk till 1 msk olivolja, frön eller nötter</li>
+        </ul>
+        <p>Med den här strukturen fungerar DASH utan matematik.</p>
+      </section>
+
+      <section class="card full" id="dagsmodell">
+        <h2>📘 4. Exakt DASH-dag, mycket tydlig version</h2>
+        <p>Här är en färdig dag. Den kan upprepas.</p>
+        <div class="meal-grid">
+          <article class="meal">
+            <strong>Frukost</strong>
+            <p>Ät:</p>
+            <ul class="clean">
+              <li>havregryn <strong>1 dl torra</strong></li>
+              <li>mjölk eller osötad sojadryck <strong>2 dl</strong></li>
+              <li>bär <strong>1–2 dl</strong></li>
+              <li>1 banan eller 1 äpple</li>
+              <li>nötter eller frön <strong>1 msk</strong></li>
+              <li>om du vill 1 kokt ägg</li>
+            </ul>
+            <p>I praktiken betyder detta:</p>
+            <ul class="clean">
+              <li>gör gröt</li>
+              <li>lägg bär på toppen</li>
+              <li>ät frukt vid sidan</li>
+              <li>lägg till lite frön eller nötter</li>
+            </ul>
+            <p>Varför detta är DASH:</p>
+            <ul class="clean">
+              <li>fullkorn</li>
+              <li>frukt och bär</li>
+              <li>lite mjukt fett</li>
+              <li>måttligt protein</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Lunch</strong>
+            <p>Ät:</p>
+            <ul class="clean">
+              <li>kyckling eller fisk <strong>120–150 g</strong></li>
+              <li>kokt ris, korn eller fullkornspasta <strong>1–1,5 dl</strong></li>
+              <li>grönsaker <strong>minst 2–3 dl</strong></li>
+              <li>1 tsk till 1 msk olivolja eller en lätt dressing</li>
+              <li>1 skiva fullkornsbröd om du vill</li>
+            </ul>
+            <p>Exempel:</p>
+            <ul class="clean">
+              <li>130 g kycklingstrimlor</li>
+              <li>1 dl kokt fullkornsris</li>
+              <li>sallad, gurka, tomat och paprika tillsammans 3 dl</li>
+              <li>lite olja ovanpå</li>
+            </ul>
+            <p>Om du inte äter kött:</p>
+            <ul class="clean">
+              <li>bönor eller linser <strong>2–3 dl</strong></li>
+              <li>annars samma struktur</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Mellanmål</strong>
+            <p>Välj ett:</p>
+            <p><strong>Alternativ A</strong></p>
+            <ul class="clean">
+              <li>naturell yoghurt <strong>200 g</strong></li>
+              <li>bär <strong>1 dl</strong></li>
+            </ul>
+            <p><strong>Alternativ B</strong></p>
+            <ul class="clean">
+              <li>1 frukt</li>
+              <li>1 liten handfull nötter</li>
+            </ul>
+            <p><strong>Alternativ C</strong></p>
+            <ul class="clean">
+              <li>2 skivor fullkornsbröd</li>
+              <li>med kalkonpålägg, hummus eller keso</li>
+              <li>gurka eller tomat</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Middag</strong>
+            <p>Ät:</p>
+            <ul class="clean">
+              <li>fisk, kyckling, bönor eller tofu <strong>120–150 g</strong></li>
+              <li>potatis <strong>2–4 medelstora</strong> eller kokt fullkornspasta eller ris <strong>1–1,5 dl</strong></li>
+              <li>grönsaker <strong>2–3 dl</strong></li>
+              <li>1 tsk till 1 msk mjukt fett</li>
+            </ul>
+            <p>Exempel:</p>
+            <ul class="clean">
+              <li>140 g ugnslax</li>
+              <li>3 potatisar</li>
+              <li>3 dl ångad broccoli och morötter</li>
+              <li>sallad vid sidan</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>🌙 Kvällsmål</h2>
+        <p>Ät:</p>
+        <ul class="clean">
+          <li>2 skivor fullkornsbröd</li>
+          <li>med mager ost, kalkon, hummus eller keso</li>
+          <li>grönsaker ovanpå</li>
+          <li>dessutom 1 frukt eller 2 dl mjölk eller yoghurt vid behov</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>🧠 5. Om du vill ha en ännu enklare regel</h2>
+        <p>Varje huvudmåltid måste ha dessa 3 saker:</p>
+        <ol class="clean">
+          <li><strong>Mycket grönsaker</strong></li>
+          <li><strong>Måttligt protein</strong></li>
+          <li><strong>Fullkorn eller potatis i rimlig mängd</strong></li>
+        </ol>
+        <p>Om någon av dessa saknas är måltiden svagare.</p>
+      </section>
+
+      <section class="card" id="lyckad-dag">
+        <h2>✅ 6. Dagen är lyckad när detta uppfylls</h2>
+        <p>Detta är din checklista.</p>
+        <p><strong>DASH-dagen lyckades om:</strong></p>
+        <ul class="clean">
+          <li>du åt minst <strong>5 handfulla grönsaker</strong> under dagen</li>
+          <li>du åt minst <strong>2–4 portioner frukt eller bär</strong></li>
+          <li>varje huvudmåltid hade protein</li>
+          <li>dina kolhydrater kom främst från havre, potatis, ris, fullkorn eller frukt, inte från godis eller läsk</li>
+          <li>du drack inga sockerdrycker</li>
+          <li>du använde inte skräpmat eller färdigmat som huvudmåltidsstruktur</li>
+          <li>dina fetter kom främst från olja, nötter, frön eller mjuka pålägg</li>
+          <li>saltet blev inte överdrivet</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <div class="success-box">
+          <div class="score-box">
+            <h2>⭐ Mycket enkel poängsättning</h2>
+            <ul class="clean">
+              <li>1 poäng om frukosten är i ordning</li>
+              <li>1 poäng om lunchen är i ordning</li>
+              <li>1 poäng om mellanmålet är i ordning</li>
+              <li>1 poäng om middagen är i ordning</li>
+              <li>1 poäng om kvällsmålet är i ordning</li>
+              <li>1 poäng om det inte fanns läsk, juice eller energidryck</li>
+              <li>1 poäng om du fick minst 5 handfulla grönsaker</li>
+              <li>1 poäng om du åt minst 1–2 portioner frukt eller bär</li>
+            </ul>
+          </div>
+          <div class="score-box">
+            <h2>🏁 Tolkning</h2>
+            <p><strong>6–8 poäng = en bra DASH-dag.</strong></p>
+            <p><strong>4–5 poäng = ganska nära, rätta till det i morgon.</strong></p>
+            <p><strong>0–3 poäng = ännu inte DASH.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>🛒 7. Vad du ska äta mer av och vad du ska minska</h2>
+        <h3>Lägg till mer av dessa</h3>
+        <ul class="clean">
+          <li>havre</li>
+          <li>rågbröd och annat fullkorn</li>
+          <li>potatis</li>
+          <li>ris och pasta, helst fullkorn</li>
+          <li>bönor, linser, ärter</li>
+          <li>fisk</li>
+          <li>kyckling</li>
+          <li>naturell yoghurt</li>
+          <li>mjölk eller ett alternativ</li>
+          <li>bär</li>
+          <li>äpplen, bananer, apelsiner</li>
+          <li>alla vanliga grönsaker</li>
+          <li>nötter och frön i små mängder</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>🚫 Minska dessa</h2>
+        <ul class="clean">
+          <li>korv</li>
+          <li>bacon</li>
+          <li>pizza, kebab och hamburgare som ständig vardagsmat</li>
+          <li>chips</li>
+          <li>färdigrätter med mycket salt</li>
+          <li>läsk, energidrycker och stora mängder juice</li>
+          <li>bakverk, godis och bullar som daglig vana</li>
+          <li>stor användning av smör och grädde</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>🧂 8. Salt: detta påverkar mycket</h2>
+        <p>I DASH är salt en stor fråga. Enligt NHLBI är redan <strong>2300 mg natrium per dag</strong> en viktig gräns, och <strong>1500 mg</strong> kan sänka blodtrycket ännu mer.</p>
+        <p>På klarspråk:</p>
+        <ul class="clean">
+          <li>salta inte maten automatiskt</li>
+          <li>undvik “färdig sås + färdig soppa + pålägg + ost + bröd” under hela dagen</li>
+          <li>läs förpackningen och välj oftare alternativ med mindre salt</li>
+          <li>smaksätt med citron, peppar, vitlök, paprika och örter</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>🔄 9. Flexibel version: byten utan att DASH går sönder</h2>
+        <p>Du kan byta livsmedel så här:</p>
+        <h3>Frukost:</h3>
+        <ul class="clean">
+          <li>gröt ↔ fullkornsbröd + yoghurt</li>
+          <li>bär ↔ äpple ↔ banan</li>
+        </ul>
+        <h3>Lunch / middag:</h3>
+        <ul class="clean">
+          <li>kyckling ↔ fisk ↔ tofu ↔ bönor</li>
+          <li>ris ↔ potatis ↔ pasta ↔ korn</li>
+          <li>sallad ↔ frysta grönsaker ↔ wokgrönsaker</li>
+        </ul>
+        <h3>Mellanmål:</h3>
+        <ul class="clean">
+          <li>yoghurt ↔ kvarg ↔ frukt + nötter ↔ bröd + proteintopping</li>
+        </ul>
+        <p>Den viktigaste idén är: <strong>byt mat, men bryt inte strukturen.</strong></p>
+      </section>
+
+      <section class="card">
+        <h2>⚠️ 10. Vanliga misstag som förstör detta</h2>
+        <ul class="clean">
+          <li>“Jag åt hälsosamt”, men grönsakerna var fortfarande för få</li>
+          <li>för lite protein, vilket leder till hunger och kvällsätande</li>
+          <li>kolhydraterna kommer från bullar, kakor och läsk</li>
+          <li>man äter för lite på dagen och spricker på kvällen</li>
+          <li>man köper “fitnessprodukter”, men riktig mat saknas</li>
+          <li>saltet ligger kvar högt på grund av färdigmat</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>🛍️ 11. Den enklaste inköpslistan för 3–4 dagar</h2>
+        <p>Köp dessa:</p>
+        <div class="market-grid">
+          <div class="market-item">havregryn</div>
+          <div class="market-item">rågbröd eller annat fullkornsbröd</div>
+          <div class="market-item">ris, potatis eller fullkornspasta</div>
+          <div class="market-item">naturell yoghurt</div>
+          <div class="market-item">mjölk eller ett alternativ</div>
+          <div class="market-item">ägg</div>
+          <div class="market-item">kyckling eller fisk</div>
+          <div class="market-item">bönor eller linser</div>
+          <div class="market-item">äpplen, bananer</div>
+          <div class="market-item">frysta bär</div>
+          <div class="market-item">tomat, gurka, paprika, sallad, morot, broccoli</div>
+          <div class="market-item">olivolja</div>
+          <div class="market-item">nötter eller frön</div>
+        </div>
+        <p>Med dessa bygger du DASH utan krångel.</p>
+      </section>
+
+      <section class="card full">
+        <h2>💡 12. En mening att minnas</h2>
+        <div class="callout">Om tallriken innehåller mycket grönsaker, lagom med protein, en rimlig kolhydrat och lite mjukt fett är du oftast på DASH-spåret.</div>
+      </section>
+
+      <section class="card full">
+        <h2>📚 13. Framtida arbeten och nästa publiceringar</h2>
+        <p>Den här sidan är en del av en växande personlig publiceringsstruktur. Målet är att bygga ut sidan med många nya verk kring välmående, rörelse och näring.</p>
+        <ul class="future-list">
+          <li>tydliga kostguider för olika mål</li>
+          <li>undersidor om motion och vardag</li>
+          <li>praktiskt välmåendematerial på flera språk</li>
+          <li>nya publicerbara portfolio- och lärsidor</li>
+          <li>ett bredare personligt varumärke och en innehållsplattform</li>
+        </ul>
+      </section>
+    </div>
   </main>
 
-  <section class="msj">
+  <section class="footer-cta">
     <div class="wrap">
-      <h2>MSJ / MultiStoreOnline</h2>
-      <p>Under utveckling och kommer snart. Framtida adress: www.msj.eu</p>
+      <h2>🥗 DASH är inte fint krångel. Det är ett tydligt system.</h2>
+      <p>När tallriken innehåller mycket grönsaker, lagom med protein, en rimlig kolhydrat och lite mjukt fett är riktningen rätt. Den här sidan är byggd så att den kan publiceras direkt på GitHub Pages och senare utökas med egna bilder.</p>
+      <div class="msj-box">
+        <strong>MULTISALEJOURNEY</strong>
+        <p>Under utveckling och kommer snart.</p>
+      </div>
     </div>
   </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • DASH kostguide • GitHub Pages</p>
+      <p><a href="#top">Till toppen</a></p>
+    </div>
+  </footer>
 </body>
 </html>
