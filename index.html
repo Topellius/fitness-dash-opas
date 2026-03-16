@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness, ruokavalio ja liikunta | DASH-opas</title>
+  <meta name="description" content="Selkeä yhden sivun opas fitnessiin, DASH-ruokavalioon, liikuntaan ja arjen terveisiin valintoihin." />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg-soft:#111827;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --brand:#16a34a;
+      --brand-2:#0ea5e9;
+      --danger:#dc2626;
+      --warm:#f59e0b;
+      --shadow:0 18px 40px rgba(2, 6, 23, 0.14);
+      --radius:22px;
+      --wrap:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(14,165,233,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(22,163,74,.15), transparent 22%),
+        linear-gradient(180deg,#f8fafc 0%,#eef6ff 100%);
+      line-height:1.6;
+    }
+
+    .wrap{
+      width:min(100% - 2rem, var(--wrap));
+      margin-inline:auto;
+    }
+
+    header.hero{
+      background:
+        linear-gradient(135deg, rgba(15,23,42,.92), rgba(17,24,39,.88)),
+        linear-gradient(90deg, rgba(14,165,233,.25), rgba(22,163,74,.2));
+      color:#fff;
+      padding:88px 0 60px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -120px -120px auto;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(22,163,74,.34), transparent 65%);
+      pointer-events:none;
+    }
+
+    .tag{
+      display:inline-block;
+      background:rgba(255,255,255,.12);
+      color:#dbeafe;
+      border:1px solid rgba(255,255,255,.18);
+      padding:.5rem .9rem;
+      border-radius:999px;
+      font-size:.92rem;
+      margin-bottom:1rem;
+      backdrop-filter:blur(8px);
+    }
+
+    h1{
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.05;
+      margin:.2rem 0 1rem;
+      max-width:14ch;
+    }
+
+    .hero p{
+      max-width:760px;
+      font-size:1.08rem;
+      color:#dbeafe;
+      margin:0 0 1.2rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.9rem;
+      margin-top:1.4rem;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:.9rem 1.15rem;
+      border-radius:14px;
+      font-weight:700;
+      transition:.18s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--brand), #22c55e);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(22,163,74,.28);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr .9fr;
+      gap:1.2rem;
+      align-items:end;
+    }
+
+    .hero-box{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:24px;
+      padding:1.1rem 1.1rem 1rem;
+      backdrop-filter:blur(8px);
+    }
+
+    .hero-box h3{
+      margin:.1rem 0 .7rem;
+      font-size:1.05rem;
+    }
+
+    .hero-box ul{
+      margin:0;
+      padding-left:1.1rem;
+      color:#e2e8f0;
+    }
+
+    main{
+      padding:34px 0 56px;
+    }
+
+    .intro{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:-42px;
+      position:relative;
+      z-index:2;
+    }
+
+    .intro-card,
+    .card{
+      background:var(--card);
+      border:1px solid rgba(226,232,240,.95);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .intro-card{
+      padding:1.1rem;
+    }
+
+    .intro-card h3{
+      margin:.2rem 0 .55rem;
+      font-size:1.05rem;
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1rem;
+      margin-top:1.2rem;
+    }
+
+    .card{
+      padding:1.3rem;
+    }
+
+    .card.full{
+      grid-column:1 / -1;
+    }
+
+    h2{
+      margin:.1rem 0 .7rem;
+      font-size:1.35rem;
+      line-height:1.2;
+    }
+
+    h3{
+      margin:1rem 0 .35rem;
+      font-size:1rem;
+    }
+
+    p{
+      margin:.35rem 0 .75rem;
+      color:var(--muted);
+    }
+
+    ul.clean{
+      margin:.25rem 0 0;
+      padding-left:1.1rem;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:.8rem;
+      margin-top:.8rem;
+    }
+
+    .stat{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:.95rem;
+      background:#f8fafc;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.2rem;
+      color:var(--brand);
+      margin-bottom:.2rem;
+    }
+
+    .day-plan{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:.8rem;
+      margin-top:.8rem;
+    }
+
+    .day-box{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:1rem;
+      background:linear-gradient(180deg,#ffffff,#f8fafc);
+    }
+
+    .callout{
+      background:linear-gradient(135deg, rgba(22,163,74,.12), rgba(14,165,233,.12));
+      border:1px solid rgba(22,163,74,.18);
+      border-left:6px solid var(--brand);
+      padding:1rem 1.05rem;
+      border-radius:18px;
+      font-weight:700;
+      color:#0f172a;
+    }
+
+    .warning{
+      background:rgba(220,38,38,.06);
+      border:1px solid rgba(220,38,38,.14);
+      border-left:6px solid var(--danger);
+      padding:1rem;
+      border-radius:18px;
+    }
+
+    .market-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.8rem;
+      margin-top:.8rem;
+    }
+
+    .market-item{
+      border:1px solid var(--line);
+      background:#f8fafc;
+      border-radius:16px;
+      padding:.85rem .9rem;
+      font-weight:600;
+      color:#0f172a;
+    }
+
+    .footer-cta{
+      background:linear-gradient(135deg, #0f172a, #111827);
+      color:#fff;
+      padding:54px 0;
+    }
+
+    .footer-cta h2{
+      color:#fff;
+      margin:0 0 .8rem;
+      font-size:clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .footer-cta p{
+      color:#d1d5db;
+      max-width:780px;
+    }
+
+    footer{
+      background:#020617;
+      color:#cbd5e1;
+      padding:20px 0 30px;
+    }
+
+    .footer-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    footer a{
+      color:#93c5fd;
+      text-decoration:none;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .intro,
+      .section-grid,
+      .day-plan,
+      .market-grid,
+      .stats{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="tag">Fitness • DASH • Liikunta • Julkaisuvalmis GitHub Pagesiin</div>
+        <h1>Selkeä sivu fitnessiin, ruokavalioon ja fiksuun liikkumiseen</h1>
+        <p>
+          Tämä yhden sivun opas näyttää, miten syöt järkevämmin, liikut fiksummin ja rakennat arkeen
+          mallin, joka ei perustu höttöön vaan toimiviin perusasioihin. Painotus on DASH-ajattelussa,
+          selkeässä ruokarakenteessa ja käytännön tekemisessä.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#dash">Aloita DASH-opas</a>
+          <a class="btn btn-secondary" href="#kauppalista">Siirry kauppalistaan</a>
+        </div>
+      </div>
+
+      <aside class="hero-box">
+        <h3>⚡ Sivun ydinidea</h3>
+        <ul>
+          <li>syö enemmän oikeaa ruokaa</li>
+          <li>vähennä suolaa, sokeria ja ultra prosessoitua safkaa</li>
+          <li>liiku säännöllisesti, älä täydellisesti</li>
+          <li>rakenna systeemi, jota jaksat oikeasti tehdä</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="intro">
+        <article class="intro-card">
+          <h3>🥗 Ruoka</h3>
+          <p>DASH painottaa kasviksia, hedelmiä, täysjyvää, pehmeitä rasvoja, järkevää proteiinia ja matalampaa suolaa.</p>
+        </article>
+        <article class="intro-card">
+          <h3>🏃 Liikunta</h3>
+          <p>Hyvä perusmalli on kävely, peruskunto, lihaskunto ja riittävä palautuminen. Ei tarvitse tehdä kaikkea kerralla.</p>
+        </article>
+        <article class="intro-card">
+          <h3>📈 Arki</h3>
+          <p>Tulos syntyy toistosta. Yksi hyvä päivä ei ratkaise kaikkea, mutta hyvä rakenne ratkaisee paljon.</p>
+        </article>
+      </section>
+
+      <div class="section-grid">
+        <section class="card full" id="dash">
+          <h2>🥗 1. Mikä DASH oikeastaan on?</h2>
+          <p>
+            DASH on ruokamalli, jossa painotetaan kasviksia, hedelmiä, vähärasvaisia maitotuotteita,
+            täysjyviä, papuja, pähkinöitä ja järkevää proteiinia. Iso idea on vähentää liiallista suolaa,
+            kovaa rasvaa ja jatkuvaa roskaruokapainetta.
+          </p>
+          <div class="stats">
+            <div class="stat"><strong>1</strong> paljon kasviksia joka päivä</div>
+            <div class="stat"><strong>2</strong> proteiinia joka aterialle</div>
+            <div class="stat"><strong>3</strong> hiilarit oikeasta ruoasta</div>
+            <div class="stat"><strong>4</strong> suola ja sokeri alas</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>🍽️ 2. Lautasmalli ilman säätöä</h2>
+          <ul class="clean">
+            <li>puolet lautasesta kasviksia</li>
+            <li>neljännes proteiinia: kana, kala, tofu, pavut, kananmunat</li>
+            <li>neljännes hiilaria: peruna, riisi, täysjyväpasta, ohra</li>
+            <li>pieni määrä pehmeää rasvaa: oliiviöljy, pähkinät, siemenet</li>
+          </ul>
+          <p>Jos tämä rakenne pysyy, olet yleensä jo paljon paremmalla polulla kuin ennen.</p>
+        </section>
+
+        <section class="card">
+          <h2>💪 3. Fitness ei tarkoita kituuttamista</h2>
+          <p>Fitness-arkeen kuuluu riittävä proteiini, järkevä energiamäärä, kuidut, nesteytys ja palautuminen.</p>
+          <ul class="clean">
+            <li>älä elä pelkillä “fitness tuotteilla”</li>
+            <li>priorisoi perusruoka ennen lisäravinne-hypeä</li>
+            <li>syö päivällä riittävästi, jotta ilta ei räjähdä</li>
+          </ul>
+        </section>
+
+        <section class="card full">
+          <h2>🗓️ 4. Esimerkki yhdestä päivästä</h2>
+          <div class="day-plan">
+            <div class="day-box">
+              <h3>Aamupala</h3>
+              <p>Kaurapuuro, marjat, maustamaton jogurtti, banaani.</p>
+            </div>
+            <div class="day-box">
+              <h3>Lounas</h3>
+              <p>Kanaa, riisiä tai perunaa, iso salaatti, oliiviöljyä vähän päälle.</p>
+            </div>
+            <div class="day-box">
+              <h3>Välipala</h3>
+              <p>Rahka tai jogurtti, hedelmä, pieni kourallinen pähkinöitä.</p>
+            </div>
+            <div class="day-box">
+              <h3>Päivällinen</h3>
+              <p>Kalaa tai papuja, kasviksia runsaasti, täysjyvähiilaria sopivasti.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>🚫 5. Mitä vähennetään?</h2>
+          <ul class="clean">
+            <li>makkarat</li>
+            <li>pekoni</li>
+            <li>pitsa, kebab, hampurilaiset jatkuvana perusruokana</li>
+            <li>sipsit</li>
+            <li>einekset joissa paljon suolaa</li>
+            <li>limu, energiajuomat, mehut litratolkulla</li>
+            <li>leivonnaiset, karkit, pullat päivittäisenä tapana</li>
+            <li>voin ja kerman iso käyttö</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>🏃 6. Liikunta ilman ylisuorittamista</h2>
+          <ul class="clean">
+            <li>kävele joka päivä vähän enemmän kuin ennen</li>
+            <li>tee 2–4 lihaskuntotreeniä viikossa</li>
+            <li>pidä ainakin 1 helpompi päivä</li>
+            <li>nuku tarpeeksi, koska palautuminen on osa kehitystä</li>
+          </ul>
+          <p>Liikunta toimii parhaiten, kun se on säännöllistä eikä täydellisyyttä tavoittelevaa.</p>
+        </section>
+
+        <section class="card full">
+          <h2>🧂 7. Suola ratkaisee paljon</h2>
+          <p>
+            DASH-ajattelussa suola on iso vipu. Kun suolaa tulee vähemmän, verenpaineen hallinta helpottuu
+            monella ihmisellä. Tärkein pointti on vähentää jatkuvaa piilosuolaa.
+          </p>
+          <ul class="clean">
+            <li>älä suolaa ruokaa automaattisesti</li>
+            <li>vältä valmis kastike + valmis keitto + leikkele + juusto -yhdistelmiä päivittäin</li>
+            <li>katso pakkausta ja valitse useammin vähäsuolaisempi vaihtoehto</li>
+            <li>mausta sitruunalla, pippurilla, valkosipulilla, paprikalla ja yrteillä</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>🔄 8. Joustava vaihtolista</h2>
+          <h3>Aamupala</h3>
+          <ul class="clean">
+            <li>puuro ↔ täysjyväleipä + jogurtti</li>
+            <li>marjat ↔ omena ↔ banaani</li>
+          </ul>
+          <h3>Lounas / päivällinen</h3>
+          <ul class="clean">
+            <li>kana ↔ kala ↔ tofu ↔ pavut</li>
+            <li>riisi ↔ peruna ↔ pasta ↔ ohra</li>
+            <li>salaatti ↔ pakastekasvikset ↔ wok-vihannekset</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>⚠️ 9. Yleisimmät virheet</h2>
+          <ul class="clean">
+            <li>kasviksia tulee liian vähän</li>
+            <li>proteiinia liian vähän ja nälkä kasvaa illalla</li>
+            <li>hiilarit tulevat pullasta, kekseistä ja limusta</li>
+            <li>päivällä syödään liian vähän ja illalla homma leviää</li>
+            <li>ostetaan “fitness tuotteita”, mutta perusruoka puuttuu</li>
+            <li>suola pysyy korkealla einesafkan takia</li>
+          </ul>
+        </section>
+
+        <section class="card full" id="kauppalista">
+          <h2>🛍️ 10. Helpoin kauppalista 3–4 päiväksi</h2>
+          <div class="market-grid">
+            <div class="market-item">kaurahiutaleet</div>
+            <div class="market-item">ruisleipä tai muu täysjyväleipä</div>
+            <div class="market-item">riisi, peruna tai täysjyväpasta</div>
+            <div class="market-item">maustamaton jogurtti</div>
+            <div class="market-item">maito tai vastaava</div>
+            <div class="market-item">kananmunia</div>
+            <div class="market-item">kanaa tai kalaa</div>
+            <div class="market-item">papuja tai linssejä</div>
+            <div class="market-item">omenat, banaanit</div>
+            <div class="market-item">pakastemarjat</div>
+            <div class="market-item">tomaatti, kurkku, paprika, salaatti, porkkana, parsakaali</div>
+            <div class="market-item">oliiviöljy</div>
+            <div class="market-item">pähkinät tai siemenet</div>
+          </div>
+          <p>Näillä saat rakennettua toimivan rungon ilman turhaa kikkailua.</p>
+        </section>
+
+        <section class="card full">
+          <h2>💡 11. Yksi lause, joka pitää muistaa</h2>
+          <div class="callout">
+            Jos lautasella on paljon kasviksia, sopivasti proteiinia, järkevä hiilari ja vähän pehmeää rasvaa,
+            olet yleensä oikealla polulla.
+          </div>
+        </section>
+
+        <section class="card full">
+          <h2>🔥 12. Nopea toimintamalli viikolle</h2>
+          <div class="warning">
+            Tee yksi kauppareissu, valmistele 2–3 perusateriaa valmiiksi ja päätä etukäteen,
+            milloin liikut. Kun päätös tehdään ennen nälkää ja väsymystä, toteutus on paljon helpompi.
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Fitness ei ole taikatemppu. Se on rakenne.</h2>
+      <p>
+        Tämä sivu on tehty niin, että voit julkaista sen sellaisenaan GitHub Pagesissa.
+        Voit myöhemmin lisätä omat kuvat, taustat, logon, lisäsivut tai vaikka kokonaisen ravinto- ja treeniblogin.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Fitness / DASH / liikunta • Julkaisuvalmis yhden sivun GitHub Pages -sivu</p>
+      <p><a href="#top">Takaisin ylös ⬆️</a></p>
+    </div>
+  </footer>
+</body>
+</html>
