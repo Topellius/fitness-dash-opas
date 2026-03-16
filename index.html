@@ -314,6 +314,50 @@
       text-decoration:none;
     }
 
+    .photo-card figure,
+    .inline-photo figure,
+    .market-photo figure{
+      margin:0;
+    }
+
+    .photo-card img,
+    .inline-photo img,
+    .market-photo img{
+      width:100%;
+      display:block;
+      border-radius:18px;
+      object-fit:cover;
+      box-shadow:0 14px 30px rgba(2, 6, 23, 0.14);
+    }
+
+    .photo-card img{
+      max-height:420px;
+    }
+
+    .inline-photo{
+      margin-top:.2rem;
+    }
+
+    .inline-photo img{
+      max-height:360px;
+    }
+
+    .market-photo{
+      margin-top:1rem;
+    }
+
+    .market-photo img{
+      max-height:380px;
+    }
+
+    .photo-card figcaption,
+    .inline-photo figcaption,
+    .market-photo figcaption{
+      margin-top:.65rem;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
     @media (max-width: 980px){
       .hero-grid,
       .intro,
@@ -373,6 +417,13 @@
       </section>
 
       <div class="section-grid">
+
+      <section class="card full photo-card">
+        <figure>
+          <img src="images/dash-salad.jpg" alt="Värikäs salaatti, jossa on paljon kasviksia." loading="lazy">
+          <figcaption>Kasvispainotteinen lautasmalli sopii hyvin DASH-ajatteluun.</figcaption>
+        </figure>
+      </section>
         <section class="card full" id="dash">
           <h2>🥗 1. Mikä DASH oikeastaan on?</h2>
           <p>
@@ -429,6 +480,14 @@
               <p>Kalaa tai papuja, kasviksia runsaasti, täysjyvähiilaria sopivasti.</p>
             </div>
           </div>
+        </section>
+
+
+        <section class="card full inline-photo">
+          <figure>
+            <img src="images/dash-breakfast.jpg" alt="Kulhollinen kaurapuuroa, marjoja ja pähkinöitä." loading="lazy">
+            <figcaption>Aamupalan perusidea: täysjyvä, marjat ja toimiva perusrakenne.</figcaption>
+          </figure>
         </section>
 
         <section class="card">
@@ -514,6 +573,14 @@
             <div class="market-item">oliiviöljy</div>
             <div class="market-item">pähkinät tai siemenet</div>
           </div>
+
+          <div class="market-photo">
+            <figure>
+              <img src="images/dash-groceries.jpg" alt="Tuoreita vihanneksia ruokakaupan vihannesosastolla." loading="lazy">
+              <figcaption>Kauppalista toimii parhaiten, kun vihannesostot tehdään yhdellä selkeällä kierroksella.</figcaption>
+            </figure>
+          </div>
+
           <p>Näillä saat rakennettua toimivan rungon ilman turhaa kikkailua.</p>
         </section>
 
