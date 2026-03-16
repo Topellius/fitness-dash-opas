@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruoan vaikutus mieleen, energiaan ja jaksamiseen | Fitness hyvinvointi opas</title>
+  <meta name="description" content="Super selkeä opas siitä, miten ruoka vaikuttaa mieleen, energiaan, jaksamiseen, tulehdukseen, rasvatasapainoon ja terveempään ikääntymiseen." />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.7rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      border: 1px solid #cde7e1;
+    }
+
+    .two-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mode-box {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f7fbfc);
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .danger-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff2f4;
+      border-left: 6px solid var(--danger);
+      margin-top: 14px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .list-box {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .meal {
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--border);
+    }
+
+    .meal strong {
+      color: var(--ink);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .source-list a {
+      display: inline-block;
+      word-break: break-word;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .two-box,
+      .mini-grid,
+      .list-grid,
+      .meal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="ruoan-vaikutus-hyvinvointiin.html">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a class="active" href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">🧠 Ruoka • mieli • energia • jaksaminen • tulehdus • rasvat • vitamiinit</div>
+        <h1>Ruoan vaikutus hyvinvointiin täysin selkeästi</h1>
+        <p>
+          Tämä sivu kertoo, miten ruoka vaikuttaa mielialaan, energiaan, jaksamiseen, tulehdusten hillitsemiseen,
+          rasvatasapainoon, aivojen tarpeisiin ja terveempään ikääntymiseen. Mukana ovat myös aminohapot,
+          kananmunat, elektrolyytit, hiilihydraatit, proteiinit, kollageeni ja muut hyödylliset asiat,
+          joita moni ei edes tule ajatelleeksi.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#rasvat">Siirry rasvoihin ja vitamiineihin</a>
+          <a class="btn secondary" href="#paivamalli">Siirry päivän malliin</a>
+        </div>
+        <p class="author-note">Tämä sivu kertoo: miten ruoka voi tukea oloa, jaksamista ja terveempää ikääntymistä ilman ihmehöpinää</p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Mitä tällä sivulla saat</h2>
+        <ul class="hero-list">
+          <li>hyvät ja huonot rasvat selkeästi</li>
+          <li>miksi aivot tarvitsevat rasvoja</li>
+          <li>rasvaliukoiset A-, D-, E- ja K-vitamiinit</li>
+          <li>tulehdusta hillitsevän syömisen perusrunko</li>
+          <li>aminohapot, proteiinit, kollageeni ja kananmunat</li>
+          <li>hauska mutta hyödyllinen rohto- ja öljyosio</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+    <p>
+    Yksinkertainen mutta tärkeä ajatus on tämä: ruoka ei vaikuta vain painoon.
+    Se vaikuttaa myös siihen, millä tavalla keho toimii, miten mieli jaksaa,
+    miten tasaisena energia pysyy ja millaisessa kunnossa palautuminen, iho, uni ja yleinen vire ovat.
+    </p>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>1. Miten ruoka vaikuttaa mieleen, energiaan ja jaksamiseen</h2>
+        <ul class="clean">
+          <li>tasainen ruokarytmi auttaa usein pitämään energian ja keskittymisen vakaampana</li>
+          <li>riittävä proteiini ja kuitu vähentävät monella ylensyöntiä ja jatkuvaa napostelua</li>
+          <li>liian sokerinen ja ultra prosessoitu syöminen voi tehdä olosta heilahtelevan ja vetämättömän</li>
+          <li>ruokavalion tulehduspainotteisuus voi näkyä myös mielialassa ja olossa</li>
+        </ul>
+        <div class="callout">
+          Moni ei oikeasti tarvitse “ihmedieettiä”, vaan vähemmän verensokeriheiluntaa, enemmän oikeaa ruokaa ja paremman rasvalaadun.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2. Miten tulehdus liittyy oloon ja vanhenemiseen</h2>
+        <p>
+          Tulehdus ei tarkoita aina näkyvää sairautta. Kehossa voi olla myös matala-asteista,
+          pitkään jatkuvaa kuormitusta. Jos ruokavalio on jatkuvasti ultra prosessoitu, hyvin suolainen,
+          hyvin sokerinen ja rasvanlaadultaan heikko, se ei yleensä vie oloa parempaan suuntaan.
+        </p>
+        <ul class="clean">
+          <li>enemmän kasviksia, palkokasveja, pähkinöitä, kalaa ja oliiviöljyä = yleensä parempi suunta</li>
+          <li>enemmän transrasvaa, kovaa rasvaa, sokerijuomia ja valmisroskaruokaa = yleensä huonompi suunta</li>
+        </ul>
+      </section>
+
+      <section class="card full" id="rasvat">
+        <h2>3. Hyvät rasvat, huonot rasvat ja miksi rasva ei ole vihollinen</h2>
+        <div class="two-box">
+          <div class="mode-box">
+            <h3>Hyvät rasvat</h3>
+            <p>Hyvillä rasvoilla tarkoitetaan tässä ennen kaikkea pehmeitä, tyydyttymättömiä rasvoja.</p>
+            <ul class="clean">
+              <li>oliiviöljy</li>
+              <li>oliivit</li>
+              <li>avokado</li>
+              <li>pähkinät ja siemenet</li>
+              <li>rasvainen kala, kuten lohi, sardiini ja makrilli</li>
+              <li>rypsi- ja muut pehmeät kasviöljyt</li>
+            </ul>
+            <div class="good-box">
+              Kun pehmeitä rasvoja käytetään kovien rasvojen sijaan, sydän- ja verisuoniterveyden suunta on yleensä parempi.
+            </div>
+          </div>
+
+          <div class="mode-box">
+            <h3>Huonommat rasvat</h3>
+            <p>
+            Tällä sivulla huonommalla rasvan laadulla tarkoitetaan ennen kaikkea sellaisia rasvaprofiileja,
+            joissa korostuvat teolliset transrasvat ja jatkuvasti suuret määrät kovaa rasvaa,
+            mutta pehmeitä rasvoja on liian vähän.
+            </p>
+            <ul class="clean">
+              <li>osittain kovetetut rasvat ja transrasvat</li>
+              <li>uppopaistetut valmisruoat</li>
+              <li>monet halvat leivonnaiset ja snackit</li>
+              <li>paljon voita, rasvaisia prosessoituja lihoja ja kovaa rasvaa sisältävä perusruoka</li>
+            </ul>
+            <div class="danger-box">
+              Tärkeä pointti ei ole “syö nolla grammaa rasvaa”, vaan “vaihda rasvan laatua parempaan”.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>4. Miksi aivot tarvitsevat rasvaa</h2>
+        <p>
+          Aivot eivät tarvitse mitä tahansa rasvaa missä tahansa määrässä, mutta ne tarvitsevat rasvahappoja ja
+          normaalin solurakenteen kannalta riittävää rasvan saantia. Omega-3-rasvahapoista erityisesti DHA liittyy aivojen ja hermoston toimintaan.
+        </p>
+        <ul class="clean">
+          <li>rasvainen kala on suora tapa saada EPAa ja DHAta</li>
+          <li>chia, pellava ja saksanpähkinä tuovat ALAa, mutta keho ei muuta sitä kovin tehokkaasti DHAksi</li>
+          <li>liian rasvapelokas syöminen voi mennä helposti liian pitkälle</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>5. Rasvat vaikuttavat myös energian saantiin</h2>
+        <p>
+          Rasva antaa paljon energiaa pienessä tilassa. Siksi se voi olla hyvä apu ihmiselle,
+          joka ei jaksa syödä valtavia määriä ruokaa. Toisaalta juuri siksi rasvan laatu ja määrä kannattaa tiedostaa.
+        </p>
+        <ul class="clean">
+          <li>liian vähän rasvaa tekee monen ruokavaliosta kuivan, vaikean ja huonosti kylläisen</li>
+          <li>liikaa huonolaatuista rasvaa nostaa helposti energiamäärää ilman että ruokavalio paranee</li>
+          <li>hyvä perusajatus on: lisää pehmeää rasvaa hallitusti, älä kaada sitä summassa kaikkeen</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>6. Rasvaliukoiset vitamiinit A, D, E ja K</h2>
+        <p>
+          Näitä kutsutaan rasvaliukoisiksi siksi, että ne imeytyvät paremmin, kun ruokavaliossa on mukana rasvaa.
+          Siksi täysin rasvaton syöminen ei ole fiksu idea.
+        </p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>A-vitamiini</h3>
+            <p>Näkö, immuunipuolustus ja kudosten normaali toiminta.</p>
+            <p><strong>Mistä sitä saa:</strong> maksa, kala, maitotuotteet, kananmunat, sekä värikkäät kasvikset beetakaroteenin kautta.</p>
+          </div>
+          <div class="mini-card">
+            <h3>D-vitamiini</h3>
+            <p>Luut, immuunipuolustus ja yleinen perustoiminta.</p>
+            <p><strong>Mistä sitä saa:</strong> rasvainen kala, kananmunan keltuainen, täydennetyt maitotuotteet ja kasvipohjaiset vaihtoehdot.</p>
+          </div>
+          <div class="mini-card">
+            <h3>E-vitamiini</h3>
+            <p>Antioksidanttinen suoja soluille.</p>
+            <p><strong>Mistä sitä saa:</strong> kasviöljyt, pähkinät, siemenet.</p>
+          </div>
+          <div class="mini-card">
+            <h3>K-vitamiini</h3>
+            <p>Veren hyytyminen ja luuston normaali toiminta.</p>
+            <p><strong>Mistä sitä saa:</strong> vihreät lehtivihannekset, kasviöljyt, jotkin hedelmät, kananmunat ja osa fermentoiduista ruoista.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Tärkeä huomio</h3>
+            <p>Rasvaliukoiset vitamiinit eivät ole “mitä enemmän, sitä parempi” -juttu. Varsinkin A-vitamiinin kanssa summasokkona lisäravinnepelaaminen ei ole fiksua.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Käytännön vinkki</h3>
+            <p>Salaattiin pieni määrä öljyä tai pähkinöitä tekee usein sekä mausta että imeytymisestä fiksumman.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>7. “Nuorentavat” ruokavaliot, vai oikeammin terveempää ikääntymistä tukevat ruokavaliot</h2>
+        <p>
+          Mikään ruoka ei pysäytä aikaa. Parempi tapa puhua on tämä:
+          jotkin ruokavaliot tukevat terveempää ikääntymistä paremmin kuin toiset.
+        </p>
+        <ul class="clean">
+          <li>kasvispainotteinen, kuiturikas ja vähän prosessoitu ruokavalio on yleensä vahvoilla</li>
+          <li>oliiviöljy, oliivit, kala, pavut, pähkinät, marjat ja vihannekset ovat hyviä peruspilareita</li>
+          <li>kurkuma on kiinnostava mauste, mutta ei yksinään mikään taikasauva</li>
+        </ul>
+        <div class="callout">
+          Jos haluat “näyttää nuoremmalta” ja “jaksaa nuorekkaammin”, tehokkainta on yleensä koko ruokavalion laatu, ei yksi superfood.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>8. Oliivit, kurkuma ja muut kiinnostavat lisät</h2>
+        <ul class="clean">
+          <li><strong>Oliivit ja oliiviöljy:</strong> helppo tapa parantaa rasvan laatua</li>
+          <li><strong>Kurkuma:</strong> hyvä mauste ja kiinnostava lisä ruokaan, mutta ei korvaa muuta ruokavaliota</li>
+          <li><strong>Marjat:</strong> hyvä tapa lisätä kuitua ja polyfenoleja</li>
+          <li><strong>Fermentoidut ruoat:</strong> joillekin hyvä lisä arkeen, mutta eivät pakollinen pelastus</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>9. Hauska mutta hyödyllinen tietää: mustakuminaöljy ja muut vanhat rohdot</h2>
+        <p>
+          Mustakumina eli Nigella sativa on kasvi, jota on käytetty perinteisesti eri kulttuureissa jo pitkään.
+          Nykyinen tutkimus on kiinnostavaa, mutta vaihtelevaa. Tätä kannattaa ajatella mieluummin historiallisesti kiinnostavana
+          lisänä kuin varsinaisena lääkkeenä.
+        </p>
+        <ul class="clean">
+          <li>perinteinen käyttö ei tarkoita automaattisesti vahvaa nykyistä näyttöä</li>
+          <li>öljyt ja rohdot voivat olla kiinnostavia, mutta eivät korvaa lääkkeitä</li>
+          <li>lisäravinteiden laatu voi vaihdella paljon</li>
+        </ul>
+        <div class="danger-box">
+          Jos käytät lääkityksiä, olet raskaana, imetät tai sinulla on sairaus, älä rakenna terveyttäsi pelkkien öljyjen tai rohtojen varaan.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Hauska mutta hyödyllinen tietää: rypäleet ja vanhat uskomukset</h2>
+        <p>
+            Rypäleisiin on liitetty kautta historian paljon muutakin kuin pelkkä maku.
+            Monissa vanhoissa kulttuureissa ne yhdistettiin runsauteen, vaurauteen, hedelmällisyyteen
+            ja korkeaan asemaan. Antiikin Kreikassa rypäleet liittyivät Dionysokseen, joka yhdistettiin
+            viiniin, hedelmällisyyteen ja elinvoimaan.
+        </p>
+        <p>
+            Egyptiä koskevissa historiallisissa tulkinnoissa on myös esitetty, että rypäleillä ja viinillä
+            oli yhteyksiä yläluokkaan ja kuninkaalliseen elämäntapaan. Tästä on syntynyt myöhemmin
+            kaikenlaisia uskomuksia siitä, että rypäleet olisivat olleet “johtajien ravintoa”.
+        </p>
+        <div class="callout">
+            Hauska pointti on se, että joskus vanhat uskomukset eivät synny täysin tyhjästä:
+            makeat, mehukkaat ja arvokkaat hedelmät olivat ennen harvinaisempia, joten niihin liitettiin helposti
+            arvokkuutta, voimaa ja juhlavuutta.
+        </div>
+        </section>
+
+      <section class="card">
+        <h2>10. Mitä aminohapot ovat</h2>
+        <p>
+          Aminohapot ovat proteiinien rakennuspalikoita. Kun syöt proteiinia, keho hajottaa sitä aminohapoiksi ja käyttää niitä kasvuun,
+          kudosten korjaukseen ja moniin muihin tehtäviin.
+        </p>
+        <ul class="clean">
+          <li>eläinproteiinit sisältävät yleensä kaikki välttämättömät aminohapot valmiina</li>
+          <li>kasviproteiineista saa myös hyvän kokonaisuuden, kun ruokavalio on monipuolinen</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>11. Miksi kananmunat ovat niin suosittuja</h2>
+        <p>
+          Kananmunat ovat suosittuja, koska ne ovat käytännöllisiä, proteiiniltaan laadukkaita ja sisältävät myös koliinia.
+          Siksi ne istuvat monen arkeen helposti.
+        </p>
+        <ul class="clean">
+          <li>helppo valmistaa</li>
+          <li>hyvä proteiinipohja</li>
+          <li>toimii aamulla, välipalalla tai osana lämmintä ruokaa</li>
+        </ul>
+        <div class="callout">
+          Kananmuna ei ole mikään pakollinen superruoka, mutta se on käytännöllinen yhdistelmä laatua ja helppoutta.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>12. Proteiinit, hiilihydraatit ja elektrolyytit ilman turhaa sekoilua</h2>
+        <div class="list-grid">
+          <div class="list-box">
+            <h3>Proteiinit</h3>
+            <p>Korjaavat, rakentavat ja ylläpitävät kudoksia.</p>
+            <ul class="clean">
+              <li>liha, kala, kananmuna, maitotuotteet</li>
+              <li>pavut, linssit, tofu, tempe</li>
+            </ul>
+          </div>
+
+          <div class="list-box">
+            <h3>Hiilihydraatit</h3>
+            <p>Aivot ja lihakset käyttävät niitä mielellään energian lähteenä.</p>
+            <ul class="clean">
+              <li>kaura, peruna, riisi, täysjyväleipä</li>
+              <li>hedelmät, marjat, palkokasvit</li>
+            </ul>
+          </div>
+
+          <div class="list-box">
+            <h3>Elektrolyytit</h3>
+            <p>Mineraaleja, jotka auttavat nestetasapainossa sekä hermo- ja lihastoiminnassa.</p>
+            <ul class="clean">
+              <li>natrium</li>
+              <li>kalium</li>
+              <li>magnesium</li>
+              <li>kloridi</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="good-box">
+          Hikoileva, vähän syövä ja paljon treenaava ihminen ei aina tarvitse lisää “boostereita” vaan joskus ihan vain ruokaa, vettä ja elektrolyyttien perusasioiden korjaamista.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>13. Voiko proteiinia saada liikaa</h2>
+        <p>
+          Terveellä ihmisellä proteiini ei ole automaattisesti vaarallista vain siksi, että sitä syödään paljon.
+          Mutta jos proteiinia vedetään joka päivä överisti, se voi alkaa syrjäyttää muuta tärkeää ruokaa.
+        </p>
+        <ul class="clean">
+          <li>ruokavalio voi yksipuolistua</li>
+          <li>vatsa voi oireilla</li>
+          <li>nesteytys voi unohtua</li>
+          <li>munuaissairauksissa liian korkea proteiini voi olla ongelma</li>
+        </ul>
+        <div class="danger-box">
+          Parempi kysymys kuin “paljonko maksimi” on usein: “onko koko ruokavalio tasapainossa”.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>14. Kollageeni ilman hypeä</h2>
+        <p>
+          Kollageeni kiinnostaa, koska se liittyy ihoon, sidekudoksiin ja rakenteeseen. Keho rakentaa kollageenia aminohapoista,
+          ja myös C-vitamiini on tässä tärkeä.
+        </p>
+        <ul class="clean">
+          <li>proteiinipitoinen perusruoka antaa rakennuspalikoita</li>
+          <li>C-vitamiini auttaa kollageenin muodostuksessa</li>
+          <li>kollageenilisistä on kohtalaista näyttöä ihon kosteuden ja kimmoisuuden suhteen, mutta ne eivät ole taikapilleri</li>
+        </ul>
+        <div class="callout">
+          Kollageenin perusrunko tulee lopulta edelleen siitä, että syöt hyvin, et vain siitä että ostat yhden purkin.
+        </div>
+      </section>
+
+      <section class="card full" id="paivamalli">
+        <h2>15. Yhden päivän malli: ruoka, joka tukee mieltä, energiaa ja jaksamista</h2>
+        <div class="meal-grid">
+          <article class="meal">
+            <strong>Aamupala</strong>
+            <ul class="clean">
+              <li>kaurapuuroa</li>
+              <li>marjoja</li>
+              <li>jogurttia tai kananmunia</li>
+              <li>pieni määrä pähkinöitä tai siemeniä</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Lounas</strong>
+            <ul class="clean">
+              <li>kalaa, kanaa tai papuja</li>
+              <li>perunaa, riisiä tai muuta järkevää hiilaria</li>
+              <li>paljon kasviksia</li>
+              <li>oliiviöljyä tai muuta pehmeää rasvaa</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Välipala</strong>
+            <ul class="clean">
+              <li>hedelmä</li>
+              <li>rahkaa, jogurttia tai leipä + proteiinitäyte</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Päivällinen</strong>
+            <ul class="clean">
+              <li>proteiini</li>
+              <li>kasviksia runsaasti</li>
+              <li>järkevä hiilarilisä</li>
+              <li>pehmeä rasva mukana</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>16. Yksinkertainen ostoslista</h2>
+        <div class="mini-grid">
+          <div class="mini-card">oliiviöljy</div>
+          <div class="mini-card">oliivit</div>
+          <div class="mini-card">rasvainen kala</div>
+          <div class="mini-card">kaurahiutaleet</div>
+          <div class="mini-card">kananmunat</div>
+          <div class="mini-card">jogurtti tai rahka</div>
+          <div class="mini-card">pavut ja linssit</div>
+          <div class="mini-card">pähkinät ja siemenet</div>
+          <div class="mini-card">vihreät lehtivihannekset</div>
+          <div class="mini-card">parsakaali</div>
+          <div class="mini-card">paprika ja porkkana</div>
+          <div class="mini-card">marjat ja hedelmät</div>
+          <div class="mini-card">kurkuma mausteeksi</div>
+          <div class="mini-card">täysjyväviljat</div>
+          <div class="mini-card">peruna tai riisi</div>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>17. Tärkein muistettava lause</h2>
+        <div class="callout">
+        Terveempää, vireämpää ja nuorekkaamman oloista arkea tukeva ruokavalio rakentuu yleensä
+        monipuolisesta syömisestä: hyvästä rasvan laadusta, riittävästä proteiinista,
+        järkevistä hiilihydraateista, runsaista kasviksista, kuiduista ja ravintoaineita kunnioittavasta kokonaisuudesta.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>18. Lähteet ja hyödylliset taustalähteet</h2>
+        <p>
+          Tämä sivu on kirjoitettu selkokielelle, mutta seuraavat taustalähteet tukevat sisältöä:
+        </p>
+        <div class="source-list">
+          <a href="https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats/fats-in-foods" target="_blank" rel="noopener noreferrer">American Heart Association • Fats in Foods</a>
+          <a href="https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats/saturated-fats" target="_blank" rel="noopener noreferrer">American Heart Association • Saturated fats</a>
+          <a href="https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/" target="_blank" rel="noopener noreferrer">NIH ODS • Omega-3 fatty acids</a>
+          <a href="https://medlineplus.gov/fluidandelectrolytebalance.html" target="_blank" rel="noopener noreferrer">MedlinePlus • Fluid and electrolyte balance</a>
+          <a href="https://medlineplus.gov/ency/article/002222.htm" target="_blank" rel="noopener noreferrer">MedlinePlus • Amino acids</a>
+          <a href="https://nutritionsource.hsph.harvard.edu/choline/" target="_blank" rel="noopener noreferrer">Harvard Nutrition Source • Choline</a>
+          <a href="https://ods.od.nih.gov/factsheets/VitaminD-Consumer/" target="_blank" rel="noopener noreferrer">NIH ODS • Vitamin D</a>
+          <a href="https://ods.od.nih.gov/factsheets/VitaminK-Consumer/" target="_blank" rel="noopener noreferrer">NIH ODS • Vitamin K</a>
+          <a href="https://ods.od.nih.gov/factsheets/VitaminA-Consumer/" target="_blank" rel="noopener noreferrer">NIH ODS • Vitamin A</a>
+          <a href="https://ods.od.nih.gov/factsheets/VitaminE-Consumer/" target="_blank" rel="noopener noreferrer">NIH ODS • Vitamin E</a>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10180699/" target="_blank" rel="noopener noreferrer">NIH PMC • Oral collagen and skin hydration / elasticity review</a>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8613751/" target="_blank" rel="noopener noreferrer">NIH PMC • Healthy diet, depression and quality of life</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Ruoka ei ole vain polttoainetta. Se on myös viesti keholle.</h2>
+      <p>
+        Kun syöt niin, että rasvan laatu, kuitu, proteiini, vitamiinit ja kokonaisuuden laatu ovat kunnossa,
+        keho saa paremmat mahdollisuudet toimia terävästi, palautua paremmin ja vanheta rauhallisemmin.
+      </p>
+      <div class="msj-box">
+        <strong>MULTISALEJOURNEY</strong>
+        <p>Tekeillä ja tulossa pian.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Ruoan vaikutus hyvinvointiin • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>
