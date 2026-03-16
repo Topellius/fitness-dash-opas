@@ -499,6 +499,52 @@
       align-items: center;
     }
 
+    .image-panel figure {
+      margin: 0;
+    }
+
+    .image-panel img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      max-height: 460px;
+      box-shadow: var(--shadow);
+    }
+
+    .image-panel figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .image-panel figure {
+      margin: 0;
+    }
+
+    .image-panel img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      max-height: 520px;
+      box-shadow: var(--shadow);
+    }
+
+    .image-panel figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .credit {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      opacity: 0.95;
+    }
+
     @media (max-width: 980px) {
       .hero,
       .grid,
@@ -560,17 +606,7 @@
       <small>Tekijä: Topi Järvinen</small>
     </div>
   </div>
-
-  
-  <nav class="site-nav">
-    <div class="wrap">
-      <a href="index.html">Sivu 1 • DASH opas</a>
-      <a class="active" href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
-    </div>
-  </nav>
-
-
-  <header>
+<header>
     <div class="wrap hero">
       <div>
         <div class="eyebrow">🏋️ Fitness ruokavalio • Bulkkausi • Cutkausi • Kestävä peruskausi</div>
@@ -606,7 +642,17 @@
     </div>
 
     <div class="grid">
-      <section class="card full" id="bulk-cut">
+
+      <section class="card full image-panel">
+        <figure>
+          <img src="images/fitness-training.jpg" alt="Urheilijoita harjoittelemassa yhdessä." loading="lazy">
+          <figcaption>
+            Fitnessissä ei rakenneta vain ulkonäköä vaan myös tekemisen kuria, toistoa ja rakennetta.
+            <span class="credit">Kuva: Timmy96 / Wikimedia Commons / CC0</span>
+          </figcaption>
+        </figure>
+      </section>
+<section class="card full" id="bulk-cut">
         <h2>1. Mikä on Bulkkausi ja mikä on Cutkausi</h2>
         <div class="two-box">
           <div class="mode-box bulk">
@@ -813,6 +859,17 @@
         </div>
       </section>
 
+
+      <section class="card full image-panel">
+        <figure>
+          <img src="images/fitness-food-clean.jpg" alt="Terveellisiä ruokia aseteltuna pöydälle." loading="lazy">
+          <figcaption>
+            Bulkkausi ja Cutkausi onnistuvat paljon paremmin, kun perusruoka on oikeasti kunnossa.
+            <span class="credit">Kuva: National Cancer Institute / NIH / public domain</span>
+          </figcaption>
+        </figure>
+      </section>
+
       <section class="card full" id="ruokavaliot">
         <h2>8. Hillitty Bulkkausi ruokavalio</h2>
         <p>
@@ -865,8 +922,7 @@
           Bulkkaudella hyvä perusajatus on: vähän enemmän ruokaa, ei kaksinkertaista ruokaa.
         </div>
       </section>
-
-      <section class="card full">
+<section class="card full">
         <h2>9. Hillitty Cutkausi ruokavalio</h2>
         <p>
           Cutkaudella ei lähdetä romuttamaan itseä. Tavoite on syödä hieman vähemmän energiaa, mutta pitää proteiini ja perusrakenne kunnossa.
@@ -916,8 +972,7 @@
           Cutkauden yleisin virhe on tehdä siitä liian kova. Silloin mieliala laskee, voima putoaa ja koko projekti alkaa tuntua viholliselta.
         </div>
       </section>
-
-      <section class="card">
+<section class="card">
         <h2>10. Cutkauden ruokavalio 1: DASH-linja</h2>
         <p>
           DASH toimii Cutkaudella hyvin, jos haluat pitää ruokavalion sydänystävällisenä, kuitupainotteisena ja hallitumpana.
@@ -949,8 +1004,7 @@
           VHH-Cut sopii paremmin ihmiselle, joka viihtyy vähähiilihydraattisessa syömisessä eikä tarvitse kovaa hiilaripainetta treenistä suoriutumiseen.
         </div>
       </section>
-
-      <section class="card full">
+<section class="card full">
         <h2>12. Kestävä peruskausi Bulkkauden ja Cutkauden välissä</h2>
         <p>
           Tämä on ehkä tärkein mutta aliarvostetuin vaihe. Kaiken ei tarvitse olla aina Bulkkausi tai Cutkausi. Kestävä peruskausi tarkoittaa sitä, että:
@@ -1003,8 +1057,7 @@
           Fitness-keho voi näyttää kovalta ja viimeistellyltä, mutta pelkkä ulkonäkö ei kerro kaikkea jaksamisesta, hormoneista, mielialasta tai terveydestä. Siksi fitness kannattaa tehdä fiksusti, ei vain ulkonäkö edellä.
         </p>
       </section>
-
-      <section class="card">
+<section class="card">
         <h2>15. Kiva tietää: mitä “patsasmainen” oikeasti tarkoittaa</h2>
         <p>
           Kun ihmiset puhuvat fitnessissä siitä, että halutaan näyttää vähän kuin patsaalta, he tarkoittavat yleensä tätä:
