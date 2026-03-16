@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness, kost och motion | Svensk sida</title>
+  <style>
+    body{
+      margin:0;
+      font-family:Inter, system-ui, sans-serif;
+      background:linear-gradient(180deg,#f8fafc 0%,#eef6ff 100%);
+      color:#0f172a;
+      line-height:1.6;
+    }
+    .wrap{
+      width:min(100% - 2rem, 1000px);
+      margin-inline:auto;
+    }
+    .langbar{
+      background:#020617;
+      color:#cbd5e1;
+      padding:.9rem 0;
+    }
+    .langbar .wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+    .lang-links{
+      display:flex;
+      gap:.7rem;
+      flex-wrap:wrap;
+    }
+    .lang-links a{
+      color:#93c5fd;
+      text-decoration:none;
+      font-weight:700;
+      padding:.35rem .65rem;
+      border:1px solid rgba(147,197,253,.28);
+      border-radius:999px;
+    }
+    .lang-links a.active{
+      color:#fff;
+      background:rgba(14,165,233,.18);
+      border-color:rgba(147,197,253,.48);
+    }
+    header{
+      background:linear-gradient(135deg, rgba(15,23,42,.96), rgba(17,24,39,.92));
+      color:#fff;
+      padding:72px 0 52px;
+    }
+    h1{
+      font-size:clamp(2rem,4vw,3.6rem);
+      line-height:1.05;
+      margin:.2rem 0 1rem;
+    }
+    .tag{
+      display:inline-block;
+      background:rgba(255,255,255,.12);
+      color:#dbeafe;
+      border:1px solid rgba(255,255,255,.18);
+      padding:.5rem .9rem;
+      border-radius:999px;
+      margin-bottom:1rem;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:22px;
+      padding:1.35rem;
+      box-shadow:0 18px 40px rgba(2,6,23,.12);
+      margin:1rem 0;
+    }
+    .btn{
+      display:inline-block;
+      margin-top:1rem;
+      text-decoration:none;
+      padding:.9rem 1.15rem;
+      border-radius:14px;
+      font-weight:700;
+      background:linear-gradient(135deg,#16a34a,#22c55e);
+      color:#fff;
+    }
+    .msj{
+      background:#0f172a;
+      color:#fff;
+      padding:48px 0;
+      margin-top:2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a href="index.html">Suomi</a>
+        <a href="en.html">English</a>
+        <a class="active" href="sv.html">Svenska</a>
+      </div>
+      <small>Skapad av Topi Järvinen</small>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <div class="tag">Fitness • Kost • Motion</div>
+      <h1>Svensk version av fitness- och DASH-guiden</h1>
+      <p>
+        Den här sidan är en lättare svenskspråkig ingång till samma projekt. Den finska huvudsidan innehåller den fulla guiden,
+        och den här sidan stöder framtida flerspråkigt innehåll och portfolioanvändning.
+      </p>
+      <a class="btn" href="index.html">Öppna den fulla finska guiden</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>Vad sidan fokuserar på</h2>
+      <p>Projektet fokuserar på fitness, praktisk kost, rörelse, hälsosamma rutiner och framtida utbildande innehåll.</p>
+      <ul>
+        <li>DASH-baserad koststruktur</li>
+        <li>praktisk måltidsplanering</li>
+        <li>grunder i motion och återhämtning</li>
+        <li>framtida flerspråkigt innehåll</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Om skaparen</h2>
+      <p>Skapad av <strong>Topi Järvinen</strong> och publicerad på GitHub Pages som en del av en växande personlig portfolio och innehållsplattform.</p>
+    </section>
+
+    <section class="card">
+      <h2>Kommande arbete</h2>
+      <p>Fler guider, träningssidor, kostinnehåll och tydliga flerspråkiga sidor kommer senare.</p>
+    </section>
+  </main>
+
+  <section class="msj">
+    <div class="wrap">
+      <h2>MSJ / MultiStoreOnline</h2>
+      <p>Under utveckling och kommer snart. Framtida adress: www.msj.eu</p>
+    </div>
+  </section>
+</body>
+</html>
