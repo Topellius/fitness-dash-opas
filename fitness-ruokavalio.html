@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness ruokavalio | Bulkkausi, cutkausi ja kestävä peruskausi selkeästi</title>
+  <meta name="description" content="Super selkeä fitness ruokavalio opas. Bulkkausi, cutkausi ja kestävä peruskausi, niiden tarkoitus, haasteet, ruokavaliot ja käytännön ohjeet yhdellä sivulla." />
+  <style>
+    :root {
+      --bg: #f5f7fb70;
+      --bg-soft: #ffffff;
+      --ink: #132033;
+      --muted: #536173;
+      --brand: #2058c9;
+      --brand-2: #5d8df0;
+      --accent: #eaf1ff;
+      --accent-2: #eef7ee;
+      --danger: #a32132;
+      --warn: #f2b84b;
+      --success: #2c8f4a;
+      --border: #dbe4f0;
+      --shadow: 0 18px 42px rgba(19, 32, 51, 0.1);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(93,141,240,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(32,88,201,0.08), transparent 20%),
+        linear-gradient(180deg, #f6f9ff 0%, #edf3fb 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(19,32,51,0.95), rgba(32,88,201,0.92));
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(93,141,240,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 700;
+      border: 1px solid #cfe0ff;
+    }
+
+    .two-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mode-box {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f7faff);
+    }
+
+    .mode-box.bulk {
+      border-color: #cfe4d5;
+      background: linear-gradient(180deg, #ffffff, #f4fbf5);
+    }
+
+    .mode-box.cut {
+      border-color: #d6def0;
+      background: linear-gradient(180deg, #ffffff, #f5f8ff);
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf4ff;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .danger-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff2f4;
+      border-left: 6px solid var(--danger);
+      margin-top: 14px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid var(--success);
+      margin-top: 14px;
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .meal {
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--border);
+    }
+
+    .meal strong {
+      color: var(--ink);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .score-box {
+      background: linear-gradient(180deg, #fefbf2, #fffef8);
+      border: 1px solid #eadfb8;
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 14px 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+    }
+
+    .calc-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .calc-btn {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+    }
+
+    .reset-btn {
+      background: #eef3fb;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .result-card {
+      background: #f7faff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .result-card strong {
+      display: block;
+      color: var(--ink);
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .result-note {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: #f9fbff;
+      border: 1px solid var(--border);
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(32,88,201,0.98), rgba(19,32,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .meal-grid,
+      .two-box,
+      .score-grid,
+      .mini-grid,
+      .calc-grid,
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+    }
+  
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a href="index.html">DASH</a>
+        <a class="active" href="fitness-ruokavalio.html">Fitness ruokavalio</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a class="active" href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+    </div>
+  </nav>
+
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">🏋️ Fitness ruokavalio • Bulkkausi • Cutkausi • Kestävä peruskausi</div>
+        <h1>Fitness ruokavalio täysin selkeästi</h1>
+        <p>
+          Tämä sivu on tehty ihmiselle, joka haluaa ymmärtää oikeasti mikä on <strong>Bulkkausi</strong>, mikä on <strong>Cutkausi</strong>,
+          miksi niitä tehdään, miksi ne voivat tuntua henkisesti raskailta ja miten ne tehdään ilman typerää ääripääsekoilua.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#bulk-cut">Siirry Bulkkausi ja Cutkausi osioon</a>
+          <a class="btn secondary" href="#laskuri">Siirry arviointilaskuriin</a>
+        </div>
+        <p class="author-note">Tämä sivu kertoo: Fitness-kausista, ruokavalioista ja arviointityökalusta</p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Mitä tällä sivulla saat</h2>
+        <ul class="hero-list">
+          <li>mikä on Bulkkausi ja miksi sitä tehdään</li>
+          <li>mikä on Cutkausi ja miksi sitä tehdään</li>
+          <li>miten ärtyisyys, uupumus ja kehonkuvaoireilu voivat näkyä</li>
+          <li>selkeät ruokavaliomallit Bulkkaudelle, Cutkaudelle ja kestävälle välimallille</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Fitness on kulttuuri, jossa kehoa pyritään rakentamaan vähän kuin veistosta. Tarkoitus ei yleensä ole vain painaa vaa assa tiettyä lukua, vaan rakentaa kehoa niin, että lihas erottuu, mittasuhteet näyttävät hyviltä ja kokonaisuus näyttää hallitulta. Siksi <strong>Bulkkausi</strong> ja <strong>Cutkausi</strong> eivät ole taikatemppuja, vaan kaksi eri työvaihetta.
+      </p>
+    </div>
+
+    <div class="grid">
+      <section class="card full" id="bulk-cut">
+        <h2>1. Mikä on Bulkkausi ja mikä on Cutkausi</h2>
+        <div class="two-box">
+          <div class="mode-box bulk">
+            <h3>Bulkkausi eli lihasten rakennuskausi</h3>
+            <p>
+              Bulkkausi tarkoittaa sitä, että syöt hieman enemmän energiaa kuin kulutat, jotta treeni, palautuminen ja lihaskasvu saavat paremman ympäristön. Tämä ei tarkoita holtitonta mättöä. Hyvä Bulkkausi on hillitty, siisti ja seurattu.
+            </p>
+            <div class="good-box">
+              Bulkkaudella tavoite on kasvattaa lihasta mahdollisimman paljon ja rasvaa mahdollisimman vähän.
+            </div>
+            <div class="callout">
+              Yksinkertainen muistisääntö: <strong>lihasten kasvatukseen pitää syödä hieman enemmän kuin kuluttaa</strong>.
+            </div>
+          </div>
+
+          <div class="mode-box cut">
+            <h3>Cutkausi eli kiristelykausi</h3>
+            <p>
+              Cutkausi tarkoittaa sitä, että syöt hieman vähemmän energiaa kuin kulutat, jotta rasvaa lähtee ja lihaksen näkyvyys paranee. Cutkausi ei tarkoita nälkiintymistä. Hyvä Cutkausi on hallittu energiavaje, riittävä proteiini ja järkevä treeni.
+            </p>
+            <div class="good-box">
+              Cutkaudella tavoite on pudottaa rasvaa niin, että lihasmassa säilyy mahdollisimman hyvin.
+            </div>
+            <div class="callout">
+              Yksinkertainen muistisääntö: <strong>kun halutaan näyttää lihaksikkaalta patsaalta, pitää syödä vähemmän kuin kuluttaa</strong>.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2. Miksi Bulkkausi on tärkeä</h2>
+        <ul class="clean">
+          <li>lihaskasvu on yleensä helpompaa, kun energiaa on vähän enemmän</li>
+          <li>treeni kulkee paremmin, kun tankki ei ole jatkuvasti tyhjä</li>
+          <li>palautuminen, uni ja suorituskyky pysyvät usein parempina</li>
+          <li>jatkuva ylläpitokaloreilla pyöriminen ei aina anna parasta ympäristöä lihaksen rakentamiseen</li>
+        </ul>
+        <div class="callout">
+          Jos haluat näyttää myöhemmin “patsaalta”, sinun pitää ensin rakentaa sitä patsasta.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3. Miksi Cutkausi on tärkeä</h2>
+        <ul class="clean">
+          <li>lihas ei näy kunnolla, jos rasvaa on sen päällä paljon</li>
+          <li>Cutkausi näyttää mitä Bulkkaudella oikeasti rakennettiin</li>
+          <li>monelle Cutkausi toimii myös kehonhallinnan ja ruokarytmin testinä</li>
+          <li>Cutkausi opettaa erottamaan oikean nälän, tavan ja mieliteon toisistaan</li>
+        </ul>
+        <div class="callout">
+          Bulkkausi rakentaa kokoa. Cutkausi paljastaa muodon.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>4. Näiden kausien raskaat puolet, joista puhutaan liian vähän</h2>
+        <p>
+          Bulkkausi ja Cutkausi eivät ole vain ruokaa. Ne voivat tuntua myös päässä.
+        </p>
+        <div class="two-box">
+          <div class="danger-box">
+            <h3>Bulkkausi voi tuntua raskaalta näin</h3>
+            <ul class="clean">
+              <li>vaaka nousee ja pää voi säikähtää</li>
+              <li>peilikuva pehmenee hetkittäin</li>
+              <li>tulee olo että “lihoan pilalle” vaikka osa noususta on suunniteltua</li>
+              <li>syöminen voi alkaa tuntua työltä, jos ruokaa on paljon</li>
+              <li>liian aggressiivinen Bulkkausi tuo helposti turhaa rasvaa ja turhautumista</li>
+            </ul>
+          </div>
+
+          <div class="danger-box">
+            <h3>Cutkausi voi tuntua raskaalta näin</h3>
+            <ul class="clean">
+              <li>ärtyisyys ja lyhyt pinna</li>
+              <li>väsymys, kylmyys, heikompi treenifiilis</li>
+              <li>ajatukset alkavat pyöriä ruoan ympärillä liikaa</li>
+              <li>kehon tarkkailu voi muuttua pakkomielteisemmäksi</li>
+              <li>liian syvä Cutkausi nostaa riskiä menettää lihasta ja jaksamista</li>
+            </ul>
+          </div>
+        </div>
+        <div class="danger-box">
+          <h3>Body dysmorphia ja kehonkuvaoireilu</h3>
+          <p>
+            Jos peili, paino, iho, vatsan koko, käsien koko tai yleinen “en näytä koskaan tarpeeksi hyvältä” alkaa hallita arkea, kyse ei ole enää vain normaalista fitness-kurin tunteesta. Silloin kannattaa jarruttaa ja hakea tukea. Fitness saa olla tavoitteellista, mutta se ei saa syödä päätä, ihmissuhteita tai koko elämää.
+          </p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>5. Kenelle sama ruokavalio ei sovi sellaisenaan</h2>
+        <p>
+          Nämä ruokavaliot eivät ole “yksi kaikille” -kaavat. Niitä pitää säätää ainakin näiden mukaan:
+        </p>
+        <ul class="clean">
+          <li>pituus</li>
+          <li>paino ja kehon koko</li>
+          <li>aktiivisuus arjessa</li>
+          <li>treenin määrä ja laatu</li>
+          <li>lihasmassa ja rasvaprosentti</li>
+          <li>hormonit tai mahdollinen hormonihoito</li>
+          <li>ikä, uni, lääkitykset ja terveystilanne</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>6. Tärkeä huomio transihmisille ja hormoneihin liittyen</h2>
+        <p>
+          Jos henkilöllä on sukupuolenkorjaushoito, testosteronihoito, estrogeenihoito tai muu kehonkoostumukseen vaikuttava hormonihoito, ruokavaliota ei kannata rakentaa pelkän identiteetin perusteella. Fiksumpi tapa on katsoa:
+        </p>
+        <ul class="clean">
+          <li>mikä on nykyinen kehon koko</li>
+          <li>miten keho vastaa treeniin juuri nyt</li>
+          <li>paljonko aktiivisuutta oikeasti on</li>
+          <li>mikä on tavoite nyt, ei teoriassa</li>
+        </ul>
+        <div class="callout">
+          Käytännössä ruokavalio kannattaa laskea nykyisen kehon ja nykyisen tilanteen mukaan. Siksi tämän sivun laskuri nojaa ensisijaisesti rasvattomaan massaan, jos rasvaprosentti on tiedossa.
+        </div>
+      </section>
+
+      <section class="card full" id="laskuri">
+        <h2>7. Arviolaskuri: paljonko kehosi voi tarvita</h2>
+        <p>
+          Tämä laskuri on suuntaa antava työkalu. Se ei ole lääkärin tai ravitsemusterapeutin henkilökohtainen suunnitelma, mutta se auttaa hahmottamaan omaa lähtötasoani.
+        </p>
+
+        <div class="calc-grid">
+          <div class="field">
+            <label for="ika">Ikä</label>
+            <input id="ika" type="number" min="14" max="90" placeholder="esim. 22" />
+          </div>
+
+          <div class="field">
+            <label for="pituus">Pituus cm</label>
+            <input id="pituus" type="number" min="120" max="230" placeholder="esim. 178" />
+          </div>
+
+          <div class="field">
+            <label for="paino">Paino kg</label>
+            <input id="paino" type="number" min="35" max="250" step="0.1" placeholder="esim. 78.5" />
+          </div>
+
+          <div class="field">
+            <label for="rasva">Rasvaprosentti % (jos tiedossa)</label>
+            <input id="rasva" type="number" min="3" max="60" step="0.1" placeholder="esim. 18" />
+          </div>
+
+          <div class="field">
+            <label for="aktiivisuus">Aktiivisuus</label>
+            <select id="aktiivisuus">
+              <option value="low">Vähän liikkuva</option>
+              <option value="light">Kevyesti aktiivinen</option>
+              <option value="moderate" selected>Kohtalaisesti aktiivinen</option>
+              <option value="high">Aktiivinen</option>
+              <option value="very">Erittäin aktiivinen</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="tavoite">Tavoite</label>
+            <select id="tavoite">
+              <option value="bulk">Bulkkausi eli lihasten rakennus</option>
+              <option value="cut">Cutkausi eli kiristely</option>
+              <option value="maintain" selected>Kestävä peruskausi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-actions">
+          <button class="btn calc-btn" type="button" onclick="laskeFitnessArvio()">Laske arvio</button>
+          <button class="btn reset-btn" type="button" onclick="nollaaLaskuri()">Tyhjennä</button>
+        </div>
+
+        <div id="calcOutput" class="result-note" hidden>
+          <div class="result-grid">
+            <div class="result-card">
+              <strong id="yllapitoKcal">-</strong>
+              <span>Arvioitu ylläpitotaso kcal / vrk</span>
+            </div>
+            <div class="result-card">
+              <strong id="tavoiteKcal">-</strong>
+              <span>Tavoitteen mukainen kcal / vrk</span>
+            </div>
+            <div class="result-card">
+              <strong id="proteiiniRange">-</strong>
+              <span>Suuntaa antava proteiini / vrk</span>
+            </div>
+            <div class="result-card">
+              <strong id="rasvatonMassa">-</strong>
+              <span>Arvioitu rasvaton massa</span>
+            </div>
+          </div>
+
+          <div class="result-note">
+            <p><strong>Laskurin tulkinta</strong></p>
+            <p id="metodiTeksti">-</p>
+            <p id="liikuntaTeksti">-</p>
+            <p id="saatoTeksti">-</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card full" id="ruokavaliot">
+        <h2>8. Hillitty Bulkkausi ruokavalio</h2>
+        <p>
+          Tämä on tarkoitettu ihmiselle, joka haluaa kasvattaa lihasta ilman että lähtee täysin käsistä. Tavoite ei ole “syö niin paljon kuin pystyt”, vaan syö vähän yli kulutuksen.
+        </p>
+
+        <div class="meal-grid">
+          <article class="meal">
+            <strong>Aamiainen</strong>
+            <ul class="clean">
+              <li>kaurapuuroa 1-1,5 dl kuivana</li>
+              <li>2 dl maitoa tai jogurttia</li>
+              <li>1 banaani</li>
+              <li>2 kananmunaa</li>
+              <li>1 rkl pähkinöitä tai siemeniä</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Lounas</strong>
+            <ul class="clean">
+              <li>kanaa, kalaa tai jauhelihaa 140-180 g</li>
+              <li>riisiä, pastaa tai perunaa 1,5-2 dl tai 3-5 perunaa</li>
+              <li>kasviksia vähintään 2 dl</li>
+              <li>1 rkl öljyä tai muuta pehmeää rasvaa</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Välipala</strong>
+            <ul class="clean">
+              <li>rahkaa tai jogurttia 200-250 g</li>
+              <li>marjoja tai hedelmä</li>
+              <li>2 viipaletta täysjyväleipää</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Päivällinen</strong>
+            <ul class="clean">
+              <li>proteiini 140-180 g</li>
+              <li>hiilaria 1,5-2 dl kypsänä</li>
+              <li>kasviksia 2-3 dl</li>
+              <li>pieni määrä rasvaa</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="good-box">
+          Bulkkaudella hyvä perusajatus on: vähän enemmän ruokaa, ei kaksinkertaista ruokaa.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>9. Hillitty Cutkausi ruokavalio</h2>
+        <p>
+          Cutkaudella ei lähdetä romuttamaan itseä. Tavoite on syödä hieman vähemmän energiaa, mutta pitää proteiini ja perusrakenne kunnossa.
+        </p>
+
+        <div class="meal-grid">
+          <article class="meal">
+            <strong>Aamiainen</strong>
+            <ul class="clean">
+              <li>kaurapuuro 0,75-1 dl kuivana</li>
+              <li>maustamaton jogurtti tai rahka 200 g</li>
+              <li>marjoja 1 dl</li>
+              <li>1 kananmuna tai muu pieni proteiinilisä</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Lounas</strong>
+            <ul class="clean">
+              <li>proteiini 140-180 g</li>
+              <li>hiilaria vähemmän kuin Bulkkaudella</li>
+              <li>kasviksia paljon, vähintään 3 dl</li>
+              <li>rasva maltilla</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Välipala</strong>
+            <ul class="clean">
+              <li>rahka tai jogurtti</li>
+              <li>hedelmä tai marjat</li>
+              <li>tarvittaessa pieni määrä pähkinöitä</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Päivällinen</strong>
+            <ul class="clean">
+              <li>proteiini 140-180 g</li>
+              <li>kasviksia paljon</li>
+              <li>pieni tai kohtalainen hiilarilisä treenin ja kulutuksen mukaan</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="danger-box">
+          Cutkauden yleisin virhe on tehdä siitä liian kova. Silloin mieliala laskee, voima putoaa ja koko projekti alkaa tuntua viholliselta.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>10. Cutkauden ruokavalio 1: DASH-linja</h2>
+        <p>
+          DASH toimii Cutkaudella hyvin, jos haluat pitää ruokavalion sydänystävällisenä, kuitupainotteisena ja hallitumpana.
+        </p>
+        <ul class="clean">
+          <li>paljon kasviksia ja marjoja</li>
+          <li>täysjyvää kohtuudella</li>
+          <li>proteiinia joka aterialle</li>
+          <li>suola ja valmisruoka alas</li>
+          <li>pehmeät rasvat käyttöön</li>
+        </ul>
+        <div class="callout">
+          DASH-Cut sopii ihmiselle, joka haluaa siistin, terveysmyönteisen ja helposti ylläpidettävän kiristelyn.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>11. Cutkauden ruokavalio 2: VHH-linja</h2>
+        <p>
+          VHH voi toimia Cutkaudella joillekin hyvin, koska osa ihmisistä kokee sen hillitsevän nälkää ja helpottavan syömisen hallintaa. Mutta se ei ole pakollinen eikä automaattisesti paras kaikille.
+        </p>
+        <ul class="clean">
+          <li>proteiini pidetään korkeana</li>
+          <li>kasviksia edelleen paljon</li>
+          <li>hiilarit pidetään matalampina</li>
+          <li>rasvaa ei vedetä yli vain siksi että hiilarit ovat matalat</li>
+        </ul>
+        <div class="callout">
+          VHH-Cut sopii paremmin ihmiselle, joka viihtyy vähähiilihydraattisessa syömisessä eikä tarvitse kovaa hiilaripainetta treenistä suoriutumiseen.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>12. Kestävä peruskausi Bulkkauden ja Cutkauden välissä</h2>
+        <p>
+          Tämä on ehkä tärkein mutta aliarvostetuin vaihe. Kaiken ei tarvitse olla aina Bulkkausi tai Cutkausi. Kestävä peruskausi tarkoittaa sitä, että:
+        </p>
+        <ul class="clean">
+          <li>paino pidetään melko vakaana</li>
+          <li>treeni kulkee</li>
+          <li>ruokarytmi normalisoituu</li>
+          <li>pää lepää</li>
+          <li>kehonkuva ehtii rauhoittua</li>
+        </ul>
+        <div class="good-box">
+          Fiksu treenaaja ei elä koko vuotta äärimoodissa. Peruskausi suojaa päätä, kehoa ja tuloksia.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>13. Miten tiedät mikä kausi sinun pitäisi tehdä nyt</h2>
+        <div class="score-grid">
+          <div class="score-box">
+            <h3>Tee Bulkkausi, jos</h3>
+            <ul class="clean">
+              <li>olet hoikka tai normaali ja lihasta on vähän</li>
+              <li>haluat lisää kokoa ja voimaa</li>
+              <li>jaksaminen on hyvä eikä rasvaprosentti ole jo valmiiksi korkea</li>
+            </ul>
+          </div>
+          <div class="score-box">
+            <h3>Tee Cutkausi, jos</h3>
+            <ul class="clean">
+              <li>rasvaa on selvästi enemmän kuin haluat</li>
+              <li>lihas ei näy vaikka sitä on rakennettu</li>
+              <li>haluat siistimmän ja erottuvamman fysiikan</li>
+            </ul>
+          </div>
+          <div class="score-box">
+            <h3>Tee peruskausi, jos</h3>
+            <ul class="clean">
+              <li>olet väsynyt jatkuvaan kontrolliin</li>
+              <li>Bulkkausi tai Cutkausi on mennyt liian tunteisiin</li>
+              <li>haluat vakauttaa syömisen, treenin ja pään</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>14. Kiva tietää: fitness ei ole sama kuin terveysautomaatti</h2>
+        <p>
+          Fitness-keho voi näyttää kovalta ja viimeistellyltä, mutta pelkkä ulkonäkö ei kerro kaikkea jaksamisesta, hormoneista, mielialasta tai terveydestä. Siksi fitness kannattaa tehdä fiksusti, ei vain ulkonäkö edellä.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>15. Kiva tietää: mitä “patsasmainen” oikeasti tarkoittaa</h2>
+        <p>
+          Kun ihmiset puhuvat fitnessissä siitä, että halutaan näyttää vähän kuin patsaalta, he tarkoittavat yleensä tätä:
+        </p>
+        <ul class="clean">
+          <li>selkeät hartiat</li>
+          <li>näkyvä keskivartalo</li>
+          <li>muotoa käsivarsissa ja jaloissa</li>
+          <li>hallittu kokonaisuus, ei vain pieni painolukema</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>16. Tärkein muistettava lause</h2>
+        <div class="callout">
+          Bulkkausi rakentaa. Cutkausi paljastaa. Kestävä peruskausi pitää sinut järjissäsi.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Fitness ei ole pelkkä dieetti. Se on vaiheittain tehty projekti.</h2>
+      <p>
+        Kun ymmärrät mitä rakennat, miksi rakennat ja milloin pitää painaa ja milloin pitää rauhoittaa, fitness ei ole enää sekavaa ääripäämeininkiä vaan hallittua tekemistä.
+      </p>
+      <div class="msj-box">
+        <strong>MULTISALEJOURNEY</strong>
+        <p>Tekeillä ja tulossa pian.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Fitness ruokavalio opas • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function fmt(n) {
+      return Math.round(n).toLocaleString('fi-FI');
+    }
+
+    function laskeFitnessArvio() {
+      const ika = Number(document.getElementById('ika').value);
+      const pituus = Number(document.getElementById('pituus').value);
+      const paino = Number(document.getElementById('paino').value);
+      const rasva = Number(document.getElementById('rasva').value);
+      const aktiivisuus = document.getElementById('aktiivisuus').value;
+      const tavoite = document.getElementById('tavoite').value;
+
+      if (!paino || !pituus || !ika) {
+        alert('Täytä vähintään ikä, pituus ja paino.');
+        return;
+      }
+
+      const activityMap = {
+        low:      { factor: 1.20, rough: 28, text: 'Vähän liikkuva' },
+        light:    { factor: 1.35, rough: 30, text: 'Kevyesti aktiivinen' },
+        moderate: { factor: 1.50, rough: 33, text: 'Kohtalaisesti aktiivinen' },
+        high:     { factor: 1.65, rough: 36, text: 'Aktiivinen' },
+        very:     { factor: 1.80, rough: 39, text: 'Erittäin aktiivinen' }
+      };
+
+      const profile = activityMap[aktiivisuus];
+
+      let maintenance = 0;
+      let leanMass = null;
+      let methodText = '';
+
+      if (rasva && rasva > 3 && rasva < 60) {
+        leanMass = paino * (1 - rasva / 100);
+        const bmr = 370 + (21.6 * leanMass);
+        maintenance = bmr * profile.factor;
+        methodText = 'Arvio tehtiin rasvattomaan massaan perustuvalla mallilla, koska rasvaprosentti oli annettu. Tämä sopii hyvin myös silloin, kun et halua sitoa arviota sukupuolikaavaan.';
+      } else {
+        maintenance = paino * profile.rough;
+        methodText = 'Arvio tehtiin painon ja aktiivisuuden perusteella, koska rasvaprosenttia ei annettu. Tämä on karkea arvio, ei tarkka laboratoriotulos.';
+      }
+
+      let target = maintenance;
+      let proteinLow = 1.6 * paino;
+      let proteinHigh = 2.0 * paino;
+      let liikuntaTeksti = '';
+      let saatoTeksti = '';
+
+      if (tavoite === 'bulk') {
+        target = maintenance + 200;
+        proteinLow = 1.6 * paino;
+        proteinHigh = 2.2 * paino;
+        liikuntaTeksti = 'Bulkkaudella pidä voimaharjoittelu pääroolissa. Kestävyysliikuntaa voi tehdä, mutta sitä ei kannata kasvattaa niin paljon, että syömäsi ylijäämä katoaa siihen.';
+        saatoTeksti = 'Jos paino ei nouse 2-3 viikossa lainkaan ja treeni junnaa, lisää yleensä noin 100-150 kcal päivässä. Jos rasvaa alkaa tulla liian nopeasti, vähennä hieman.';
+      } else if (tavoite === 'cut') {
+        target = maintenance - 300;
+        proteinLow = 1.8 * paino;
+        proteinHigh = 2.4 * paino;
+        liikuntaTeksti = 'Jos haluat laihtua, pyri vähintään 150-300 minuuttiin reipasta liikuntaa viikossa tai 75-150 minuuttiin rasittavaa liikuntaa viikossa. Lisäksi tee lihaskuntoa vähintään 2 kertaa viikossa.';
+        saatoTeksti = 'Jos paino ei laske 2-3 viikossa, vähennä yleensä noin 100-150 kcal päivässä tai lisää liikettä maltillisesti. Jos taas suorituskyky romahtaa, vaje on todennäköisesti liian suuri.';
+      } else {
+        target = maintenance;
+        proteinLow = 1.6 * paino;
+        proteinHigh = 2.0 * paino;
+        liikuntaTeksti = 'Kestävässä peruskaudessa tavoite on pitää liikunta ja syöminen tasaisena. Pidä voima mukana, tee peruskuntoa järkevästi ja anna pään levätä.';
+        saatoTeksti = 'Jos paino karkaa vähitellen väärään suuntaan, säädä ensin noin 100 kcal kerrallaan tai tarkista annoskoot ja arjen aktiivisuus.';
+      }
+
+      document.getElementById('yllapitoKcal').textContent = fmt(maintenance) + ' kcal';
+      document.getElementById('tavoiteKcal').textContent = fmt(target) + ' kcal';
+      document.getElementById('proteiiniRange').textContent = fmt(proteinLow) + '-' + fmt(proteinHigh) + ' g';
+      document.getElementById('rasvatonMassa').textContent = leanMass ? fmt(leanMass) + ' kg' : 'ei annettu';
+      document.getElementById('metodiTeksti').textContent = methodText;
+      document.getElementById('liikuntaTeksti').textContent = liikuntaTeksti;
+      document.getElementById('saatoTeksti').textContent = saatoTeksti;
+      document.getElementById('calcOutput').hidden = false;
+    }
+
+    function nollaaLaskuri() {
+      ['ika', 'pituus', 'paino', 'rasva'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('aktiivisuus').value = 'moderate';
+      document.getElementById('tavoite').value = 'maintain';
+      document.getElementById('calcOutput').hidden = true;
+    }
+  </script>
+</body>
+</html>
