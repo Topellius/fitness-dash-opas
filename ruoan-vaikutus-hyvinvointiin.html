@@ -36,6 +36,34 @@
         radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
         linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
       line-height: 1.65;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.10) 0%,
+          rgba(255,255,255,0.42) 20%,
+          rgba(255,255,255,0.68) 34%,
+          rgba(255,255,255,0.68) 66%,
+          rgba(255,255,255,0.42) 80%,
+          rgba(255,255,255,0.10) 100%
+        ),
+        url("images/ruoan-vaikutus-bg.png");
+      background-repeat: no-repeat;
+      background-position: center -60px;
+      background-size: 100vw auto;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     a {
@@ -124,7 +152,7 @@
 
     header::after {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
       background:
         radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
@@ -238,18 +266,11 @@
 
     main {
       padding: 42px 0 84px;
+      position: relative;
+      z-index: 1;
     }
 
-    .intro-banner {
-      margin-top: -42px;
-      position: relative;
-      z-index: 3;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
+
 
     .intro-banner p {
       margin: 0;
