@@ -411,6 +411,35 @@
         padding: 38px 0 52px;
       }
     }
+  
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
   </style>
 </head>
 <body>
@@ -424,6 +453,14 @@
       <small>Author: Topi Järvinen</small>
     </div>
   </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a class="active" href="en.html">Page 1 • DASH guide</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+    </div>
+  </nav>
 
   <header>
     <div class="wrap hero">

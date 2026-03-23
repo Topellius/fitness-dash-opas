@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Shell Opas | Fitness GitHub Pages</title>
+  <meta name="description" content="Kanoninen opastesivu GitHub Pages sivuston yhteiselle headerille, footerille, fontille, väriteemalle ja päivitysmallille." />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 11ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.14rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .danger-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff2f4;
+      border-left: 6px solid var(--danger);
+      margin-top: 14px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .flow-step {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    pre {
+      margin: 14px 0 0;
+      padding: 16px;
+      border-radius: 18px;
+      background: #101a2a;
+      color: #edf4ff;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .mini-grid,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="site-shell-opas.html">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a class="active" href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">📘 GitHub Pages • header • footer • typografia • päivitysmalli</div>
+        <h1>Sivuston yhteinen site shell opas</h1>
+        <p>
+          Tämä sivu toimii projektin kanonisena opasteena yhteiselle headerille, footerille,
+          fontille, väriteemalle ja päivitysprosessille. Tätä sivua linkitetään lähteisiin,
+          jotta kaikki tulevat HTML-sivut pysyvät samassa visuaalisessa rungossa.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#malli">Siirry toimintamalliin</a>
+          <a class="btn secondary" href="#markerit">Siirry markerimalliin</a>
+        </div>
+        <p class="author-note">Tämä ei ole varsinainen sisältösivu. Tämä on runko, ohje ja yhteinen visuaalinen lähde.</p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Tämän sivun tarkoitus</h2>
+        <ul class="hero-list">
+          <li>määrittää yhteinen yläpalkki</li>
+          <li>määrittää yhteinen navigaatio</li>
+          <li>määrittää yhteinen footer</li>
+          <li>määrittää yhteinen väriteema ja typografia</li>
+          <li>määrittää miten vanhoja sivuja päivitetään</li>
+          <li>määrittää miten uusia poikkeamia estetään</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Yksi sivu toimii lähteenä. Muut sivut seuraavat sitä. Näin GitHub Pages sivustosta syntyy
+        yhtenäinen lehtiö, ei irrallisten HTML-sivujen kasa.
+      </p>
+    </div>
+
+    <div class="grid">
+      <section class="card" id="malli">
+        <h2>1. Kanoninen site shell</h2>
+        <ul class="clean">
+          <li><strong>langbar</strong> on ylin rivi</li>
+          <li><strong>site-nav</strong> on sivujen välinen navigaatio</li>
+          <li><strong>hero header</strong> on visuaalinen avaus</li>
+          <li><strong>footer-cta</strong> on sivun loppunosto</li>
+          <li><strong>footer</strong> on viimeinen yhteinen alatunniste</li>
+        </ul>
+        <div class="callout">
+          Sisältö saa vaihtua sivukohtaisesti. Site shell ei vaihdu sattumalta, vaan hallitusti.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2. Mitä ei rikota</h2>
+        <ul class="clean">
+          <li>sama fonttiperhe</li>
+          <li>sama väritoken-rakenne</li>
+          <li>sama padding- ja korttirytmi</li>
+          <li>sama headerin ja footerin rakenne</li>
+          <li>sama sivuleveys ja sama korttityyli</li>
+        </ul>
+        <div class="danger-box">
+          Yksittäistä sivua ei “parannella” eri suuntaan ilman että koko shell päivitetään hallitusti.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>3. Päivitysmalli vanhoille sivuille</h2>
+        <div class="flow">
+          <div class="flow-step">
+            <h3>1. VERIFY</h3>
+            <p>Varmista repo, branch, nykyiset HTML-sivut ja käytössä oleva header-rakenne.</p>
+          </div>
+          <div class="flow-step">
+            <h3>2. DIFF</h3>
+            <p>Vertaa vanhaa sivua tähän opassivuun. Etsi vain site shelliin liittyvät erot.</p>
+          </div>
+          <div class="flow-step">
+            <h3>3. PATCH</h3>
+            <p>Päivitä vain langbar, site-nav, hero-shell ja footer-rakenne. Älä sekoita sisältöön.</p>
+          </div>
+          <div class="flow-step">
+            <h3>4. VERIFY</h3>
+            <p>Avaa sivu selaimessa, tarkista navigaatio, aktiivinen linkki, mobiilirakenne ja footer.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card full" id="markerit">
+        <h2>4. Markerimalli yhteisille lohkoille</h2>
+        <p>
+          Jokaisessa päivitettävässä sivussa yhteiset osat kannattaa rajata samoilla markkereilla.
+          Silloin terminalista tai skriptillä voidaan päivittää vain yhteiset lohkot ilman että sisältö hajoaa.
+        </p>
+<pre><code>&lt;!-- SHARED:LANGBAR:START --&gt;
+... langbar tähän ...
+&lt;!-- SHARED:LANGBAR:END --&gt;
+
+&lt;!-- SHARED:SITE_NAV:START --&gt;
+... site-nav tähän ...
+&lt;!-- SHARED:SITE_NAV:END --&gt;
+
+&lt;!-- SHARED:FOOTER_CTA:START --&gt;
+... footer-cta tähän ...
+&lt;!-- SHARED:FOOTER_CTA:END --&gt;
+
+&lt;!-- SHARED:FOOTER:START --&gt;
+... footer tähän ...
+&lt;!-- SHARED:FOOTER:END --&gt;</code></pre>
+        <div class="good-box">
+          Markerimalli on käytännöllinen, koska se rajaa päivityksen tarkasti vain yhteisiin lohkoihin.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>5. Milloin luodaan uutta</h2>
+        <p>
+          Uutta yhteistä päivitysmekanismia ei luoda automaattisesti. Ensin tarkistetaan,
+          löytyykö reposta jo valmiiksi yhteinen CSS, yhteinen JS, layout-pohja tai aiempi header-komponentti.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>6. Milloin vain päivitetään vanhaa</h2>
+        <p>
+          Jos reposta löytyy jo olemassa oleva yhteinen navigaatiomalli, yhteinen layout-tiedosto,
+          tai edes toistuva HTML-rakenne, sitä käytetään lähtökohtana. Tämä opassivu toimii silloin
+          vertailupohjana, ei rinnakkaisena toisena totuutena.
+        </p>
+      </section>
+
+      <section class="card full">
+        <h2>7. Terminal-first audit checklist</h2>
+        <ul class="clean">
+          <li>mikä repo on oikea</li>
+          <li>mikä branch on aktiivinen</li>
+          <li>mitkä HTML-sivut kuuluvat tähän GitHub Pages kokonaisuuteen</li>
+          <li>onko navissa jo uusin sivu</li>
+          <li>onko header kahtena rivinä kuten pitää</li>
+          <li>onko footer kaikissa sama</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>8. Site shellin ydinajatus</h2>
+        <div class="callout">
+          Tämä sivu on visuaalinen standardi, rakenteellinen opas ja muutosten kontrollipiste.
+          Kun sivuja tulee lisää, ensin päivitetään tämä standardi tai varmennetaan että se on edelleen oikea.
+          Sen jälkeen muut sivut synkronoidaan hallitusti samaan runkoon.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Yksi yhteinen runko tekee kokonaisuudesta uskottavan</h2>
+      <p>
+        Kun header, navigaatio, typografia ja footer elävät saman mallin mukaan,
+        GitHub Pages sivustosta tulee eheä julkaisu eikä irrallisten demojen ketju.
+      </p>
+      <div class="msj-box">
+        <strong>MULTISALEJOURNEY</strong>
+        <p>Kanoninen site shell opas GitHub Pages käyttöön.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Site shell opas • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>
