@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rasvasolut, leptiini ja pitkä painonhallinta | Fitness hyvinvointi opas</title>
+  <meta name="description" content="Selkeä opas siitä, miten rasvasolut, leptiini, painon palautuminen ja pitkäjänteinen painonhallinta liittyvät toisiinsa." />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.7rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .two-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mode-box {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f7fbfc);
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .danger-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff2f4;
+      border-left: 6px solid var(--danger);
+      margin-top: 14px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .list-box {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .flow-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--border);
+    }
+
+    .flow-card strong {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--brand);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    th {
+      color: var(--ink);
+      background: #f7fbff;
+      font-weight: 800;
+    }
+
+    .quote-box {
+      padding: 22px;
+      border-left: 6px solid var(--brand-2);
+      border-radius: 20px;
+      background: #f4fbf8;
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .two-box,
+      .mini-grid,
+      .list-grid,
+      .flow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="rasvasolut-leptiini-ja-pitka-painonhallinta.html">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a class="active" href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">⚖️ Rasvasolut • leptiini • ylläpito • pitkä painonhallinta • biologinen realismi</div>
+        <h1>Rasvasolut, leptiini ja se miksi pitkä painonhallinta on helpompaa kuin jatkuva edestakainen laihdutus</h1>
+        <p>
+          Moni epäonnistuu laihduttamisessa siksi, että odottaa kehonsa toimivan kuin laskin. Todellisuudessa keho on mukautuva järjestelmä. Kun rasvakudosta kertyy pitkään, keho ei vain varastoi energiaa, vaan muuttaa myös sitä, miten nälkä, kylläisyys, energiankulutus ja painon palautuminen toimivat.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#mista-kaikki-alkaa">Aloita ydinasioista</a>
+          <a class="btn secondary" href="#lahteet">Siirry lähteisiin</a>
+        </div>
+        <p class="author-note">Tämä sivu kertoo: miksi pitkäjänteisyys, hyvä ruokarytmi, uni ja rauhallinen eteneminen palkitsevat lopulta enemmän kuin nopeat rykäisyt</p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Mitä tällä sivulla saat</h2>
+        <ul class="hero-list">
+          <li>miten rasvasolut varastoivat energiaa</li>
+          <li>miten solujen koko ja määrä voivat muuttua</li>
+          <li>miksi tavallinen laihtuminen pienentää soluja enemmän kuin poistaa niitä</li>
+          <li>mitä leptiinisignaali tekee ja miksi se voi häiriintyä</li>
+          <li>miksi painon ylläpito voi tuntua biologisesti vaikealta</li>
+          <li>mitä käytännön strategioita pitkä painonhallinta hyödyntää</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Tämän sivun viesti on kannustava: kyse ei ole heikkoudesta. Kyse on biologiasta. Siksi pitkäjänteisyys, hyvä ruokarytmi, uni, lihaskunnon ylläpito ja rauhallinen eteneminen rakentavat useammin paremman lopputuloksen kuin nopeat ja raskaat yritykset.
+      </p>
+    </div>
+
+    <div class="grid">
+      <section class="card full" id="mista-kaikki-alkaa">
+        <h2>1. Mistä kaikki alkaa kehossa</h2>
+        <p>
+          Rasvakudos ei ole pelkkä passiivinen varasto. Se on aktiivinen kudos, joka kommunikoi muun kehon kanssa hormonien, tulehdusviestien ja energiatasapainon kautta. Kun energiaa tulee sisään enemmän kuin kulutetaan, keho kasvattaa varastoa. Tämä tapahtuu ensin solujen kokoa lisäämällä ja joissakin tilanteissa myöhemmin myös solujen määrää lisäämällä.
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Ensimmäinen vaihe</h3>
+            <p>Rasvasolut täyttyvät. Ylimääräinen energia pakataan niihin pääosin triglyserideinä. Tätä kokoa kasvattavaa vaihetta kutsutaan hypertrofiaksi.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Toinen vaihe</h3>
+            <p>Jos kuormitus jatkuu pitkään, keho voi muodostaa uusia rasvasoluja esiasteista. Tätä kutsutaan hyperplasiaksi.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Pitkä vaikutus</h3>
+            <p>Kun ihminen laihtuu, rasvasolut yleensä pienenevät. Niiden määrä ei aikuisella tavallisesti vähene merkittävästi.</p>
+          </div>
+        </div>
+
+        <div class="flow-grid">
+          <div class="flow-card">
+            <strong>Vaihe 1</strong>
+            <p>Ylienergia. Ruokaa tulee kehoon enemmän kuin energiaa kuluu.</p>
+          </div>
+          <div class="flow-card">
+            <strong>Vaihe 2</strong>
+            <p>Varasto kasvaa. Rasvasolut suurenevat ja alkavat kantaa suurempaa kuormaa.</p>
+          </div>
+          <div class="flow-card">
+            <strong>Vaihe 3</strong>
+            <p>Järjestelmä mukautuu. Hormonaalinen viestintä, tulehdus ja aineenvaihdunnan säätely alkavat muuttua.</p>
+          </div>
+          <div class="flow-card">
+            <strong>Vaihe 4</strong>
+            <p>Ylläpito vaikeutuu. Painon pudotus on mahdollinen, mutta keho alkaa puolustaa aiempaa varastotasoa.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card full" id="miksi-yllapito-vaikeutuu">
+        <h2>2. Miksi pitkään lihavana olleen kehon on usein vaikeampi pysyä laihana</h2>
+        <p>
+          Painonlaskun jälkeen keho ei aina käyttäydy neutraalisti, vaan voi lisätä nälkää, muuttaa kylläisyysviestejä ja hidastaa energiankulutusta suhteessa uuteen painoon. Tämä ei tee onnistumisesta mahdotonta, mutta se tekee pitkästä ylläpidosta aidosti vaativampaa.
+        </p>
+
+        <div class="two-box">
+          <div class="mode-box">
+            <h3>Leptiinin rooli selkeästi</h3>
+            <p>
+              Leptiini on rasvakudoksen erittämä hormoni, joka kertoo aivoille energian varastotasosta. Kun energiavarastoa on riittävästi, leptiinisignaalin pitäisi tukea kylläisyyttä ja hillitä ruokahalua.
+            </p>
+            <p>
+              Pitkäaikaisessa lihavuudessa keho voi ajautua leptiinisignaalin häiriöön eli leptiiniresistenssiin. Tällöin korkeakaan leptiinimäärä ei tuota normaalia kylläisyysvastetta.
+            </p>
+          </div>
+
+          <div class="mode-box">
+            <h3>Miksi painonlasku tuntuu joskus epäreilulta</h3>
+            <p>
+              Kun rasvakudosta vähenee, myös leptiinisignaali laskee. Tämä voi lisätä nälkää ja samalla keho voi pyrkiä säästämään energiaa. Siksi painonpudottaja voi tuntea sekä suurempaa ruokahalua että hitaampaa etenemistä samaan aikaan.
+            </p>
+            <p>
+              Fitness urheilijalle tämä tarkoittaa sitä, että biologinen vastus kasvaa sitä enemmän mitä pidemmälle energiavaje viedään ja mitä kauemmin sitä ylläpidetään ilman fiksua palautumista.
+            </p>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          Laihtuminen ei ole pelkkä kaloreiden matematiikka. Se on myös hormonien, nälän, kylläisyyden, palautumisen ja ajan hallintaa.
+        </div>
+
+        <div class="table-wrap">
+          <table aria-label="Miksi ylläpito vaikeutuu">
+            <thead>
+              <tr>
+                <th>Ilmiö</th>
+                <th>Mitä kehossa tapahtuu</th>
+                <th>Mitä ihminen usein kokee arjessa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rasvasolujen koko ja määrä</td>
+                <td>Pitkä ylienergia kasvattaa ensin rasvasolujen kokoa ja voi ajan myötä lisätä myös niiden määrää.</td>
+                <td>Paino nousee helpommin takaisin kuin moni odotti.</td>
+              </tr>
+              <tr>
+                <td>Leptiinisignaalin häiriö</td>
+                <td>Rasvakudoksen viesti kylläisyydestä ei välity aivoihin yhtä tehokkaasti kuin pitäisi.</td>
+                <td>Nälkä ei vastaa aina sitä, kuinka paljon keho oikeasti tarvitsee energiaa.</td>
+              </tr>
+              <tr>
+                <td>Painonlaskun jälkeinen sopeutuminen</td>
+                <td>Leptiini laskee painonlaskussa ja keho voi lisätä ruokahalua sekä säästää energiaa.</td>
+                <td>Sama ruokamäärä tuntuu yhtäkkiä niukemmalta ja ylläpito vaikeammalta.</td>
+              </tr>
+              <tr>
+                <td>Rasvakudoksen muutos</td>
+                <td>Pitkään jatkunut lihavuus muuttaa rasvakudoksen rakennetta, toimintaa, tulehdusympäristöä ja metabolista joustavuutta.</td>
+                <td>Laihtuminen voi olla hitaampaa ja keho voi reagoida herkemmin takaisin nousuun.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="danger-box">
+          Tärkeä täsmennys on tämä: tarkempaa on sanoa, että pitkään jatkunut lihavuus muuttaa rasvakudoksen rakennetta ja toimintaa, kuin että rasva vain pakkautuisi kirjaimellisesti tiheämmäksi.
+        </div>
+      </section>
+
+      <section class="card" id="miksi-kannattaa-pitaa-paino-hallinnassa">
+        <h2>3. Miksi koko elämän mittainen painonhallinta on vahva strategia</h2>
+        <p>
+          Painonhallinta kannattaa nähdä pitkän aikavälin sijoituksena omaan fysiologiaan. Mitä aikaisemmin ihminen rakentaa tasaisen painon, toimivan unirytmin, hyvän lihaskunnon ja hallitun ruokasuhteen, sitä vähemmän keho joutuu rakentamaan suurta varastorakennetta ja sitä vähemmän vastaan tulee biologista vastatuulta myöhemmin.
+        </p>
+        <ul class="clean">
+          <li>vähemmän biologista vastusta</li>
+          <li>urheilullinen kehitys helpottuu</li>
+          <li>mieli saa enemmän työrauhaa</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>4. Tasaisempi strategia tukee arkea paremmin</h2>
+        <p>
+          Jatkuva jojoilu kuluttaa motivaatiota. Tasaisempi strategia vähentää tunnetta siitä, että ihminen on jatkuvasti joko dieetillä tai luovuttamassa. Tämä rakentaa luottamusta omaan tekemiseen.
+        </p>
+        <div class="good-box">
+          Pitkä peli tukee sekä suorituskykyä että arjen jaksamista.
+        </div>
+      </section>
+
+      <section class="card full" id="mita-voi-tehda">
+        <h2>5. Miten rasvasoluja saa pois ja miten leptiinijärjestelmää voi tukea käytännössä</h2>
+        <p>
+          Tavallinen laihtuminen ei yleensä poista merkittävää määrää rasvasoluja. Se pienentää niitä. Siksi tavoite ei ole odottaa ihmettä, vaan rakentaa ympäristö, jossa pienemmät rasvasolut pysyvät pienempinä, nälkä pysyy paremmin hallittuna ja uusi painotaso muuttuu ajan kanssa normaaliksi.
+        </p>
+
+        <div class="list-grid">
+          <div class="list-box">
+            <h3>Mikä todella vähentää rasvasoluja</h3>
+            <ul class="clean">
+              <li>suora poistaminen kuten rasvaimu vähentää rasvasolujen määrää paikallisesti</li>
+              <li>tavallinen ruokavalio ja liikunta pienentävät soluja enemmän kuin poistavat niitä</li>
+              <li>pitkän aikavälin ylläpito on tärkeämpi tavoite kuin nopea kuuri</li>
+            </ul>
+          </div>
+
+          <div class="list-box">
+            <h3>Mitä leptiinin kannalta kannattaa tehdä</h3>
+            <ul class="clean">
+              <li>nuku riittävästi</li>
+              <li>pidä energiavaje hallittuna</li>
+              <li>syö tavalla joka pitää kylläisenä</li>
+              <li>pidä lihaskunto ja arkiliike mukana</li>
+              <li>vältä ääriajattelua</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mini-grid" style="margin-top: 18px;">
+          <div class="mini-card">
+            <h3>Fitness urheilijan käytännön malli</h3>
+            <p>Ajattele painonpudotusta kausina. Tee jaksoja, joissa energiavaje on hallittu, harjoittelu säilyy laadukkaana, proteiini pysyy korkealla ja uni on suojattu. Tämän jälkeen ylläpidä.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Miksi nopeat tulokset hämäävät</h3>
+            <p>Nopea painonlasku voi näyttää paperilla tehokkaalta, mutta se ei aina rakenna hyvää suhdetta nälkään, suorituskykyyn tai ylläpitoon. Pitkäjänteinen eteneminen palkitaan useammin.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Milloin lääkärin tuki on järkevä</h3>
+            <p>Jos painonhallinta on toistuvasti erittäin vaikeaa tai lihavuuteen liittyy sairauksia, lääkärin arvio voi olla hyvä ratkaisu osana kokonaisuutta.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card full" id="dash-yhteys">
+        <h2>6. Yhteys aiempiin DASH teeman sivuihin</h2>
+        <p>
+          DASH-tyyppinen ajattelu ei ole vain sydänterveyden tai verenpaineen työkalu. Se tukee myös pitkäjänteistä kylläisyyttä, ateriarytmiä, kuitujen saantia, ruoan laatua ja sitä kautta painonhallinnan biologista realismia.
+        </p>
+        <p>
+          Tämä sivu sopii samaan kokonaisuuteen, jossa korostuvat selkeä rakenne, vahva header, rauhallinen mutta uskottava sävy, käytännönläheinen tieto ja helposti hahmotettava footer.
+        </p>
+      </section>
+
+      <section class="card full" id="yhteenveto">
+        <h2>7. Yhteenveto yhdellä kertaa</h2>
+        <div class="callout">
+          Rasvasolut varastoivat energiaa. Pitkä ylienergia kasvattaa ensin niiden kokoa ja joissakin tilanteissa myös niiden määrää. Kun ihminen laihtuu, rasvasolut yleensä pienenevät, mutta niitä ei tavallisesti poistu merkittävästi. Siksi kehoon voi jäädä aiempaa suurempi varastorakenne. Samalla leptiiniin ja nälkäsäätelyyn liittyvät muutokset voivat tehdä painon ylläpidosta vaikeampaa. Ratkaisu ei ole ankaruus vaan strategia. Pitkäjänteinen painonhallinta, toimiva unirytmi, riittävä proteiini, kuitupitoinen ruokailu, lihaskunnon säilyttäminen ja hallittu eteneminen auttavat enemmän kuin nopeat ääriratkaisut.
+        </div>
+      </section>
+
+      <section class="card full" id="lahteet">
+        <h2>8. Lähteet</h2>
+        <p>
+          Alla olevat lähteet tukevat sivun keskeisiä väitteitä rasvasolujen määrästä, koosta, vaihtuvuudesta, leptiinistä, leptiiniresistenssistä, painonlaskun jälkeisestä biologisesta vastuksesta, liikunnan vaikutuksista sekä unen yhteydestä ruokahalun säätelyyn.
+        </p>
+
+        <ol class="clean">
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/18454136/" target="_blank" rel="noopener noreferrer">Spalding KL et al. Dynamics of fat cell turnover in humans. Nature. 2008.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4371661/" target="_blank" rel="noopener noreferrer">MacLean PS et al. The role for adipose tissue in weight regain after weight loss. Obesity Reviews. 2015.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8167040/" target="_blank" rel="noopener noreferrer">Obradovic M et al. Leptin and Obesity: Role and Clinical Implication. Frontiers in Endocrinology. 2021.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10421039/" target="_blank" rel="noopener noreferrer">Horwitz A et al. Adipose Tissue Hyperplasia and Hypertrophy in Common and Syndromic Obesity. Cells. 2023.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11997358/" target="_blank" rel="noopener noreferrer">Arner P et al. Adipose cellularity as a measurement of long term changes in body weight. 2025.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12525331/" target="_blank" rel="noopener noreferrer">Caceres L et al. The Influence of Weight Loss and Weight Regain on Adipose Tissue Biology. 2025.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10342435/" target="_blank" rel="noopener noreferrer">de Assis GG et al. Exercise and Weight Management: The Role of Leptin. 2023.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3673773/" target="_blank" rel="noopener noreferrer">Rosenbaum M, Leibel RL. Adaptive thermogenesis in humans. International Journal of Obesity. 2010.</a></li>
+          <li><a href="https://www.niddk.nih.gov/health-information/weight-management/adult-overweight-obesity/factors-affecting-weight-health" target="_blank" rel="noopener noreferrer">NIDDK. Factors Affecting Weight and Health.</a></li>
+          <li><a href="https://www.niddk.nih.gov/health-information/weight-management/prescription-medications-treat-overweight-obesity" target="_blank" rel="noopener noreferrer">NIDDK. Prescription Medications to Treat Overweight and Obesity.</a></li>
+          <li><a href="https://mcpress.mayoclinic.org/healthy-aging/how-quality-sleep-impacts-your-lifespan/" target="_blank" rel="noopener noreferrer">Mayo Clinic Press. How quality sleep impacts your lifespan. 2024.</a></li>
+          <li><a href="https://www.nature.com/articles/s41586-024-08165-7" target="_blank" rel="noopener noreferrer">Hinte LC et al. Adipose tissue retains an epigenetic memory of obesity after weight loss. Nature. 2024.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12486228/" target="_blank" rel="noopener noreferrer">Hu W et al. Leptin and leptin resistance in obesity: current evidence and future directions. 2025.</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10535304/" target="_blank" rel="noopener noreferrer">Palacios Marin I et al. Adipose Tissue Dynamics: Cellular and Lipid Turnover. 2023.</a></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Pitkäjänteisyys palkitaan painonhallinnassa</h2>
+      <p>
+        Kun ymmärtää rasvasolujen, leptiinin, nälän ja kehon mukautumisen logiikkaa, omaa tilannetta on helpompi tulkita oikein. Pitkä painonhallinta rakentuu strategiasta, ei itsensä rankaisemisesta.
+      </p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Rasvasolut, leptiini ja pitkä painonhallinta • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>

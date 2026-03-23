@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruokavalio on suorituskyvyn perusta | Fitness hyvinvointi opas</title>
+  <meta name="description" content="Selkeä opas siitä, miten eri kuidut, imeytyminen, suoliston toiminta ja kehon luonnollinen viestintä tukevat urheilullista suorituskykyä ja pitkäjänteistä kehitystä." />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 84vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.7rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .two-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .mode-box {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f7fbfc);
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .danger-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff2f4;
+      border-left: 6px solid var(--danger);
+      margin-top: 14px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .list-box {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .meal {
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--border);
+    }
+
+    .meal strong {
+      color: var(--ink);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .two-box,
+      .mini-grid,
+      .list-grid,
+      .meal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+      .fiber-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.fiber-visual-card {
+  padding: 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.fiber-visual-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.fiber-visual-card h3 {
+  margin: 0 0 8px;
+}
+
+.fiber-visual-card p {
+  margin: 0;
+}
+
+.fiber-target {
+  display: grid;
+  gap: 12px;
+}
+
+.fiber-target-box {
+  padding: 16px;
+  border-radius: 18px;
+  background: #eef8ef;
+  border: 1px solid #d6ead9;
+}
+
+.fiber-target-box strong {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+@media (max-width: 980px) {
+  .fiber-visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fiber-visual-card img {
+    height: 240px;
+  }
+}
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="ruokavalio-on-suorituskyvyn-perusta.html">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a class="active" href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">🏋️ Ravitsemus • eri kuidut • imeytyminen • reseptorit • urheilullinen kehitys</div>
+        <h1>Ruokavalio on urheilussa tärkein avain onnistumiseen</h1>
+        <p>
+          Kova harjoittelu rakentaa suunnan, mutta ravinto antaa keholle materiaalit, energian ja biologisen tuen, joilla suorituskyky todella nousee. Kun puhutaan jaksamisesta, imeytymisestä, suoliston toiminnasta ja pitkäjänteisestä kehityksestä, ruokavalio on koko järjestelmän perusta.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#kuidut">Siirry eri kuituihin</a>
+          <a class="btn secondary" href="#kaytanto">Siirry käytännön malliin</a>
+        </div>
+        <p class="author-note">Tämä sivu kertoo: miten ravitsemus tukee vatsaa, imeytymistä, kehon luonnollista viestintää ja urheilullista jaksamista</p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Mitä tällä sivulla saat</h2>
+        <ul class="hero-list">
+          <li>selkeä perusmalli siitä, miksi ruokavalio ratkaisee niin paljon</li>
+          <li>ymmärrettävä osuus eri kuiduista ja niiden rooleista</li>
+          <li>selitys siihen, miksi imeytyminen on käytännön hyötyä</li>
+          <li>selkeä käsitys siitä, mitä reseptoreilla tässä yhteydessä tarkoitetaan</li>
+          <li>urheilullinen näkökulma jaksamiseen, palautumiseen ja kehitykseen</li>
+          <li>käytännön periaatteet päivittäiseen ravitsemukseen</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Yksinkertainen mutta erittäin tärkeä ajatus on tämä: urheilullinen kehitys ei synny vain siitä, että treenaa kovaa. Se syntyy siitä, että keho saa joka päivä sellaisen ravitsemuksellisen tuen, jonka varaan energia, vatsan toiminta, imeytyminen, palautuminen ja laadukas suorituskyky voivat rakentua.
+      </p>
+    </div>
+
+    <div class="grid">
+      <section class="card" id="perusta">
+        <h2>1. Miksi ruokavalio ratkaisee niin paljon</h2>
+        <p>
+          Urheilussa onnistuminen ei synny vain tahdosta, kurinalaisuudesta tai harjoitusmäärästä. Keho tarvitsee joka päivä oikeanlaista ravintoa, jotta se pystyy rakentamaan energiaa, säilyttämään tasaisen vireen, hyödyntämään harjoitusta ja toistamaan laadukasta tekemistä pitkällä aikavälillä.
+        </p>
+        <ul class="clean">
+          <li>ruoka tukee lihastyötä, hermoston toimintaa ja päivittäistä jaksamista</li>
+          <li>laadukas ravitsemus auttaa kehoa hyödyntämään harjoittelusta saatavan hyödyn paremmin</li>
+          <li>suorituskyky vahvistuu, kun ravinto tukee myös vatsan toimintaa ja palautumista</li>
+        </ul>
+        <div class="callout">
+          Ravitsemusta kannattaa ajatella suorituskyvyn infrastruktuurina. Se on se näkymätön perusta, jonka varaan hyvä olo, hyvä treeni ja hyvä kehitys rakentuvat.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2. Jaksaminen rakentuu päivittäisestä laadusta</h2>
+        <p>
+          Kun ihminen syö monipuolisesti, riittävästi ja tavoitteeseensa nähden viisaasti, harjoittelu tuntuu tasaisemmalta. Päivät pysyvät vakaampina, vatsan toiminta tukee oloa ja keho saa enemmän irti niistä aineista, joita ravinto tarjoaa.
+        </p>
+        <p>
+          Siksi ruokavalio ei ole urheilussa lisäosa. Se on koko käytännön toteutus siitä, kuinka paljon potentiaalista todella saadaan käyttöön.
+        </p>
+      </section>
+
+      <section class="card full" id="kuidut">
+        <h2>3. Eri kuidut tekevät eri töitä ja juuri siksi ne ovat niin arvokkaita</h2>
+        <p>
+          Kuitu ei ole yksi asia. Se on joukko erilaisia rakenteita, jotka käyttäytyvät kehossa eri tavoin. Juuri tästä syystä urheilijan kannattaa rakentaa ruokavalioon useita kuitulähteitä eikä nojata vain yhteen ratkaisuun.
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Liukoinen kuitu</h3>
+            <p>Liukoinen kuitu sitoo vettä ja muodostaa pehmeää rakennetta suolistossa. Se tukee kylläisyyttä, vatsan miellyttävää toimintaa ja tasaisempaa energian vapautumista.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Liukenematon kuitu</h3>
+            <p>Liukenematon kuitu lisää rakennetta ja auttaa ruokamassaa kulkemaan eteenpäin. Se tukee suoliston normaalia rytmiä ja arjen toimivuutta.</p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Prebioottinen kuitu</h3>
+            <p>Osa kuiduista ruokkii suoliston hyvää toimintaympäristöä. Kun suoliston pohja voi hyvin, myös koko ravitsemuksellinen ketju toimii paremmin.</p>
+          </div>
+        </div>
+
+        <div class="good-box">
+          Kaura, marjat, siemenet, kasvikset, palkokasvit, pähkinät ja täysjyväiset vaihtoehdot tuovat ruokavalioon erilaisia kuiturakenteita. Kun näitä yhdistetään fiksusti, suolisto saa monipuolista tukea ja koko ravitsemuksen laatu vahvistuu.
+        </div>
+      </section>
+
+      <section class="card full">
+  <h2>Kuitua näkyvästi lautaselle</h2>
+  <p>
+    Kuitua ei tarvitse ajatella vain ravintotaulukon numerona. Se näkyy käytännössä siinä,
+    mitä ihminen oikeasti syö päivittäin. Marjat, kaura, siemenet ja palkokasvit ovat
+    erittäin hyviä esimerkkejä lähteistä, joilla kuidun määrää ja laatua voi nostaa selkeästi.
+  </p>
+
+  <div class="fiber-visual-grid">
+    <article class="fiber-visual-card">
+      <img src="images/kuitu-marjat.jpg" alt="Marjoja kulhossa kuitupitoisena ruokana" />
+      <h3>Marjat</h3>
+      <p>
+        Marjat tuovat ruokavalioon kuitua, rakennetta ja käytännössä helposti lisättävää laatua.
+        Ne sopivat puuroon, jogurttiin, välipalaan ja arjen kuitupohjan vahvistamiseen.
+      </p>
+    </article>
+
+    <article class="fiber-visual-card">
+      <img src="images/kuitu-kaura.jpg" alt="Kaurapuuroa ja kauraa kuitupitoisena ruokana" />
+      <h3>Kaura</h3>
+      <p>
+        Kaura on erittäin käytännöllinen kuitulähde. Se sopii erityisen hyvin urheilulliseen arkeen,
+        koska se on helppo, selkeä ja monelle vatsaystävällinen tapa nostaa kuidun saantia.
+      </p>
+    </article>
+
+    <article class="fiber-visual-card">
+      <img src="images/kuitu-siemenet.jpg" alt="Siemeniä kuten chia- ja pellavansiemeniä" />
+      <h3>Siemenet</h3>
+      <p>
+        Siemenet tuovat ruokaan pientä mutta tehokasta lisärakennetta. Ne sopivat hyvin puuroon,
+        jogurttiin, smoothien päälle ja osaksi monipuolista kuitukokonaisuutta.
+      </p>
+    </article>
+
+    <article class="fiber-visual-card">
+      <img src="images/kuitu-palkokasvit.jpg" alt="Papuja ja linssejä kuitupitoisina ruokalähteinä" />
+      <h3>Palkokasvit</h3>
+      <p>
+        Pavut ja linssit ovat erittäin vahvoja kuituruokia. Ne tuovat samalla ruokaan myös
+        rakennetta, kylläisyyttä ja käytännöllistä ravitsemuksellista painoarvoa.
+      </p>
+    </article>
+
+    <article class="fiber-visual-card">
+      <img src="images/kuitu-kasvikset.jpg" alt="Kasviksia ja vihanneksia kuitulähteinä" />
+      <h3>Kasvikset</h3>
+      <p>
+        Kasvikset pitävät kuitupohjan leveänä. Mitä useammin lautasella näkyy erilaisia kasviksia,
+        sitä helpommin kuidun saanti nousee laadukkaasti osaksi normaalia arkea.
+      </p>
+    </article>
+
+    <article class="fiber-visual-card fiber-target">
+      <img src="images/kuitu-tavoite.jpg" alt="Kuitutavoite aikuisille naisille ja miehille" />
+      <h3>Paljonko kuitua päivässä</h3>
+
+      <div class="fiber-target-box">
+        <strong>Nainen</strong>
+        <span>Noin 25 g kuitua päivässä on selkeä käytännön tavoite.</span>
+      </div>
+
+      <div class="fiber-target-box">
+        <strong>Mies</strong>
+        <span>Noin 35 g kuitua päivässä on selkeä käytännön tavoite.</span>
+      </div>
+
+      <div class="fiber-target-box">
+        <strong>Uudempi pohjoismainen viite</strong>
+        <span>Vähintään 3 g kuitua per MJ päivässä sekä naisille että miehille.</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="callout">
+    Kuitu kannattaa rakentaa useasta lähteestä. Marjat, kaura, siemenet, kasvikset ja palkokasvit
+    eivät ole toistensa kilpailijoita, vaan ne täydentävät toisiaan.
+  </div>
+</section>
+
+      <section class="card full" id="imeytyminen">
+        <h2>4. Imeytyminen on se vaihe, jossa ravinto muuttuu käytännön hyödyksi</h2>
+        <div class="list-grid">
+          <div class="list-box">
+            <h3>Mitä imeytyminen tarkoittaa</h3>
+            <p>
+              Syöty ruoka ei hyödytä täysimääräisesti vain siksi, että se on lautasella. Kehon täytyy pystyä pilkkomaan, käsittelemään ja hyödyntämään ravintoa. Kun ruoansulatus toimii hyvin ja ruokavalio on rakennettu laadukkaista lähteistä, keho saa paremmat edellytykset hyödyntää energiaa, aminohappoja, rasvahappoja, vitamiineja ja kivennäisaineita.
+            </p>
+          </div>
+
+          <div class="list-box">
+            <h3>Miksi urheilija hyötyy tästä</h3>
+            <p>
+              Urheilijan tavoitteena ei ole vain syödä paljon tai syödä yleisesti terveellisesti. Tavoitteena on, että keho saa käyttöönsä juuri sitä, mitä se tarvitsee harjoittelun, palautumisen ja suorituskyvyn tueksi. Kun imeytymistä tukeva kokonaisuus toimii, ravitsemus tuntuu arjessa energiana, tasaisuutena, kylläisyytenä ja treenin kantavuutena.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Ruokavalion voima ei ole vain siinä mitä syödään, vaan siinä kuinka hyvin keho pystyy hyödyntämään sen.
+        </div>
+      </section>
+
+      <section class="card full" id="reseptorit">
+        <h2>5. Reseptorit ovat osa kehon luonnollista viestintäjärjestelmää</h2>
+        <p>
+          Tämä aihe voidaan sanoa selkeästi näin: kehossa on vastaanottavia rakenteita, joita kutsutaan reseptoreiksi. Ne auttavat kehoa tunnistamaan erilaisia viestejä. Ravinto, energia, kylläisyys, verensokerin säätely ja monet muut biologiset tapahtumat kulkevat osittain tämän viestinnän kautta.
+        </p>
+
+        <div class="two-box">
+          <div class="mode-box">
+            <h3>Mitä reseptoreilla tässä yhteydessä tarkoitetaan</h3>
+            <p>
+              Reseptorit ovat kuin kehon omia tunnistuspisteitä. Ne eivät ole erillinen temppu, vaan osa sitä järjestelmää, jonka avulla keho käsittelee informaatiota. Kun ravitsemus on tasapainoinen, monipuolinen ja tavoitteeseen sopiva, myös kehon sisäinen viestintäympäristö saa paremmat olosuhteet toimia.
+            </p>
+          </div>
+
+          <div class="mode-box">
+            <h3>Miksi tämä kiinnostaa urheilijaa</h3>
+            <p>
+              Urheilusuoritus ei ole pelkkää lihastyötä. Se on myös hermoston, energiankäytön, palautumisen ja koko biologisen yhteispelin tulos. Siksi ravitsemus on enemmän kuin kaloreita. Se on biologinen signaali, joka vaikuttaa siihen, millaisessa tilassa keho toimii päivästä toiseen.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Hyvä ruokavalio tukee ravintoaineiden hyödyntämistä, suoliston toimintaa ja kehon luonnollista viestintää. Tämä kokonaisuus edistää jaksamista, harjoittelun laatua ja urheilullista elämäntapaa.
+        </div>
+      </section>
+
+      <section class="card" id="urheilu">
+        <h2>6. Urheilussa ruokavalio toimii kuin koko suorituskyvyn käyttöjärjestelmä</h2>
+        <p>
+          Mitä korkeammalle ihminen haluaa nousta, sitä tarkemmin ravitsemuksen täytyy palvella tavoitetta. Tämä ei tarkoita jäykkyyttä. Tämä tarkoittaa korkeaa laatua, tarkoituksellisuutta ja päivittäistä rakennetta, joka antaa keholle parhaat mahdolliset olosuhteet onnistua.
+        </p>
+        <ul class="clean">
+          <li>ruokavalio luo perustan harjoittelun laadulle</li>
+          <li>ruokavalio auttaa palauttamaan sen, mitä treeni kuluttaa</li>
+          <li>ruokavalio tukee pitkää jaksamista elämäntapana</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>7. Korkea taso syntyy toistuvasta laadusta</h2>
+        <p>
+          Korkea taso ei synny yhdestä hyvästä viikosta. Se syntyy kuukausista ja vuosista, joissa keho saa jatkuvasti oikeanlaista tukea. Siksi ruokavalio on niin vahva avain onnistumiseen.
+        </p>
+        <div class="good-box">
+          Kun laatu toistuu, vaikutus kertyy vahvaksi pitkällä aikavälillä.
+        </div>
+      </section>
+
+      <section class="card full" id="kaytanto">
+        <h2>8. Näin rakennat ruokavalion, joka todella palvelee urheilullista tavoitetta</h2>
+        <div class="meal-grid">
+          <article class="meal">
+            <strong>Kuitu</strong>
+            <ul class="clean">
+              <li>yhdistä kauraa, marjoja, siemeniä, kasviksia ja palkokasveja</li>
+              <li>rakenna päivään useita erilaisia kuitulähteitä</li>
+              <li>anna vatsalle monipuolinen toimintaympäristö</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Rytmi</strong>
+            <ul class="clean">
+              <li>syö niin, että keho saa jatkuvaa tukea päivän aikana</li>
+              <li>pidä ravitsemus mukana kuormituksen tahdissa</li>
+              <li>rakenna päivään selkeä ja toistuva perusmalli</li>
+            </ul>
+          </article>
+
+          <article class="meal">
+            <strong>Laatu</strong>
+            <ul class="clean">
+              <li>valitse ravinteikasta ja tavoitteeseen sopivaa ruokaa</li>
+              <li>ajattele aterioita mahdollisuutena rakentaa suorituskykyä</li>
+              <li>tee laadusta päivittäinen tapa</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout">
+          Eri kuidut tukevat suoliston toimintaa. Hyvä suolisto tukee imeytymistä. Hyvä imeytyminen auttaa kehoa hyödyntämään ravintoa. Kehon luonnollinen viestintä toimii paremmin laadukkaan ravitsemuksen ympäristössä. Siksi ruokavalio on urheilussa paljon enemmän kuin syömistä. Se on suorituskyvyn perusta, jaksamisen tuki ja pitkäaikaisen onnistumisen tärkein avain.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>9. Usein kysyttyä</h2>
+
+        <h3>Onko kuitu tärkeä myös urheilijalle</h3>
+        <p>
+          Kyllä. Kuitu tukee vatsan toimintaa, ruokavalion laatua ja tasaisempaa arkea. Eri kuidut tuovat tähän eri vahvuuksia.
+        </p>
+
+        <h3>Miksi imeytymisestä kannattaa puhua</h3>
+        <p>
+          Koska ravinnon arvo näkyy lopulta siinä, kuinka hyvin keho pystyy hyödyntämään sen. Tämä tekee suoliston toiminnasta ja ruokavalion laadusta käytännössä erittäin merkittäviä.
+        </p>
+
+        <h3>Miten reseptorit liittyvät ruokavalioon</h3>
+        <p>
+          Ne ovat osa kehon viestintää. Ravinto ei ole vain polttoainetta, vaan myös biologinen viesti, joka tukee energiaa, kylläisyyttä, palautumista ja toiminnan laatua.
+        </p>
+
+        <h3>Mikä on koko sivun tärkein ajatus</h3>
+        <p>
+          Jos ihminen tavoittelee korkeaa urheilullista tasoa, ruokavalion on oltava suunniteltu tukemaan sitä tasoa. Tämä tekee ravitsemuksesta tärkeimmän päivittäisen avaimen pitkäjänteiseen onnistumiseen.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Ruoka on suorituskyvyn perusta</h2>
+      <p>
+        Kun puhutaan eri kuiduista, imeytymisestä, reseptoreista ja urheilullisesta jaksamisesta, kaikki johtaa samaan ytimeen. Kehon on saatava laadukasta, monipuolista ja tavoitteeseen sopivaa ravintoa, jotta se voi toimia korkealla tasolla pitkään.
+      </p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Ruokavalio on suorituskyvyn perusta • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>
