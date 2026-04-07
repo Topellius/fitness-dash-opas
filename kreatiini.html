@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kreatiini kuntosalikehityksen tukena | Fitness GitHub Pages</title>
+  <meta
+    name="description"
+    content="Kattava ja selkeä HTML-sivu kreatiinista, kreatiinimonohydraatista, annostelusta, ajoituksesta ja käytännön hyödyistä kuntosalikehityksen tukena."
+  />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 11ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.14rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 66ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .note-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff8ea;
+      border-left: 6px solid var(--warn);
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #f9fcff;
+      font-weight: 700;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .mini-grid,
+      .toc {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="kreatiini-kuntosalikehityksen-tukena.html">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a class="active" aria-current="page" href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">⚡ Ravitsemus • suorituskyky • lihastyö • pitkä kehityslinja</div>
+        <h1>Kreatiini kuntosalikehityksen tukena</h1>
+        <p>
+          Kreatiini on yksi tunnetuimmista, käytetyimmistä ja vahvimmin tutkituista suorituskykyä tukevista ravintolisistä.
+          Sen ydinidea on selkeä. Kun lihasten kreatiini ja fosfokreatiinivarastot nousevat, lihas pystyy tuottamaan
+          nopeasti energiaa tehokkaammin juuri silloin, kun työ on raskasta, lyhyttä ja toistuvaa.
+        </p>
+        <p>
+          Käytännössä tämä voi näkyä vahvempana voimantuottona, tasaisempana suorituskykynä sarjasta toiseen,
+          parempana toistokykynä kovilla painoilla ja laadukkaampana harjoitusvolyymina pitkällä aikavälillä.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#sisalto">Siirry sisältöön</a>
+          <a class="btn secondary" href="#yhteenveto">Siirry yhteenvetoon</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Miksi kreatiini kiinnostaa niin paljon</h2>
+        <ul class="hero-list">
+          <li>selkeä fysiologinen toimintaperiaate</li>
+          <li>vahva tutkimuspohja erityisesti monohydraatista</li>
+          <li>hyödyllinen kovatehoiseen harjoitteluun</li>
+          <li>helppo käyttää päivittäisessä rytmissä</li>
+          <li>pitkäjänteinen hyöty eikä vain yhden treenin tunne</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap" id="sisalto">
+    <div class="intro-banner">
+      <p>
+        Kreatiinin lopullinen tavoite ei ole pelkkä hetkellinen tunne. Tavoite on rakentaa lihaksiin vahva ja vakaa
+        energiavarasto, joka tukee kovaa harjoittelua päivästä toiseen ja tekee laadukkaasta treenistä helpommin
+        toistettavaa.
+      </p>
+    </div>
+
+    <section class="card full">
+      <h2>Sisältö</h2>
+      <div class="toc">
+        <a href="#toiminta">Miten kreatiini toimii</a>
+        <a href="#annostus">Annostus ja käyttömallit</a>
+        <a href="#ajoitus">Ajoitus ennen tai jälkeen treenin</a>
+        <a href="#enemman">Mitä tapahtuu suuremmilla määrillä</a>
+        <a href="#muodot">Kreatiinin eri muodot</a>
+        <a href="#hyva-tietaa">Hyvä tietää</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card" id="toiminta">
+        <h2>Miten kreatiini toimii</h2>
+        <p>
+          Lihas käyttää nopeissa ja raskaissa suorituksissa ATP-energiaa. ATP on lihastyön välitön käyttöenergia,
+          ja sitä täytyy muodostaa uudelleen hyvin nopeasti, jotta korkea teho voi jatkua. Tässä kohtaa kreatiinin
+          merkitys nousee esiin. Fosfokreatiinijärjestelmä auttaa rakentamaan ATP:tä takaisin nopeasti silloin,
+          kun työ on lyhyt, räjähtävä ja voimakas.
+        </p>
+        <p>
+          Tämä tekee kreatiinista erityisen kiinnostavan juuri kuntosalille, voimaharjoitteluun, lyhyisiin kovatehoisiin
+          sarjoihin ja tilanteisiin, joissa halutaan pitää tekemisen laatu korkealla usean sarjan ajan.
+        </p>
+        <div class="callout">
+          Kreatiinin vahvuus näkyy usein siinä, että kova harjoittelu pysyy vahvana useammin ja pidempään.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Mitä tämä voi tarkoittaa käytännössä</h2>
+        <p>
+          Kun treenaaja pystyy tekemään hieman enemmän laadukasta työtä riittävän pitkällä aikavälillä, kehitykselle
+          syntyy vahvempi pohja. Juuri siksi kreatiinin arvoa kannattaa ajatella harjoituskapasiteetin tukena,
+          ei pelkkänä yksittäisen hetken lisänä.
+        </p>
+        <ul class="clean">
+          <li>raskaiden toistojen laatu voi pysyä paremmin kasassa</li>
+          <li>sarjasta toiseen toistuva teho voi pysyä vakaampana</li>
+          <li>treenivolyymi voi nousta hallitusti</li>
+          <li>pitkän aikavälin kehitystyö voi tehostua</li>
+        </ul>
+      </section>
+
+      <section class="card full" id="annostus">
+        <h2>Kreatiinin kertakäyttö ja päivittäinen käyttö</h2>
+        <p>
+          Tavallisin ylläpitomalli on 3–5 grammaa vuorokaudessa. Se on selkeä, käytännöllinen ja monille erittäin hyvä
+          ratkaisu lihasten kreatiinivarastojen ylläpitämiseen. Kun käyttö pysyy säännöllisenä, varastot pysyvät
+          hyvällä tasolla ilman, että annostuksesta täytyy tehdä monimutkaista.
+        </p>
+        <p>
+          Toinen tunnettu malli on latausvaihe. Siinä käytetään tyypillisesti noin 20 grammaa vuorokaudessa 5–7 päivän ajan
+          ja määrä jaetaan useaan pieneen annokseen, esimerkiksi neljään 5 gramman osaan. Tämän jälkeen siirrytään usein
+          ylläpitomalliin, esimerkiksi 3–5 grammaan päivässä.
+        </p>
+        <p>
+          Kreatiinia voi käyttää myös jaettuna mallina samana päivänä. Esimerkiksi osa käyttää annoksen ennen treeniä
+          ja toisen osan treenin jälkeen. Tämä voi olla käytännöllinen tapa silloin, kun halutaan jakaa päivän kokonaismäärä
+          tasaisemmin tai tehdä käytöstä vatsalle miellyttävämpää.
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Ylläpitomalli</h3>
+            <p>Tyypillinen käyttö 3–5 grammaa päivässä. Selkeä peruslinja useimmille treenaajille.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Latausmalli</h3>
+            <p>Noin 20 grammaa päivässä jaettuna useaan annokseen muutaman päivän ajan, jonka jälkeen ylläpito.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Jaettu päiväannos</h3>
+            <p>Esimerkiksi kaksi pienempää annosta samana päivänä. Käytännöllinen malli tasaisempaan käyttöön.</p>
+          </div>
+        </div>
+
+        <div class="good-box">
+          Päivittäisen käytön päätavoite on varastojen rakentaminen ja ylläpito. Kreatiini ei ole piriste, vaan järjestelmällinen suorituskyvyn tuki.
+        </div>
+      </section>
+
+      <section class="card" id="ajoitus">
+        <h2>Kreatiinin käyttö ennen treeniä</h2>
+        <p>
+          Kreatiinin ajoitus kiinnostaa paljon. Ajatus ennen treeniä otettavasta annoksesta on houkutteleva,
+          koska se tuntuu loogiselta ja sopii hyvin kovaan harjoituspäivään. Käytännössä moni myös kokee sen
+          helpoksi tavaksi pitää käyttö säännöllisenä.
+        </p>
+        <p>
+          Tutkimuspuolella ajoituksesta on olemassa kiinnostavia tuloksia, mutta näyttö ei vielä osoita yksiselitteisesti,
+          että juuri ennen treeniä ottaminen olisi aina parempi kuin heti harjoituksen jälkeen. Tämän hetken vahvin käytännön
+          johtopäätös on se, että sekä ennen että jälkeen treenin käytetty kreatiini voivat olla toimivia malleja,
+          kun kokonaiskäyttö pysyy säännöllisenä.
+        </p>
+        <div class="note-box">
+          Ennen treeniä otettu kreatiini on täysin käyttökelpoinen strategia. Silti tärkein voittava tekijä on yleensä se,
+          että päivittäinen käyttö toteutuu johdonmukaisesti.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Kreatiini ennen ja jälkeen treenin samana päivänä</h2>
+        <p>
+          Kahteen annokseen jaettu käyttö on mahdollinen ja monille miellyttävä malli. Se voi sopia erityisesti silloin,
+          kun halutaan käyttää hieman suurempaa kokonaismäärää tai jakaa annos pehmeämmin päivän rytmiin.
+        </p>
+        <p>
+          Käytännössä tämä voi tarkoittaa esimerkiksi pienempää annosta ennen harjoitusta ja toista annosta harjoituksen jälkeen.
+          Tällainen malli voi tuoda käyttöön selkeyttä ja helpottaa rutiinin rakentamista.
+        </p>
+      </section>
+
+      <section class="card full" id="enemman">
+        <h2>Mitä tapahtuu, jos kreatiinia ottaa enemmän</h2>
+        <p>
+          Kreatiinia voidaan käyttää enemmän kuin 5 grammaa vuorokaudessa. Tunnetuin suuremman käytön malli on lataus,
+          jossa noin 20 gramman päiväannoksella nostetaan varastoja nopeammin. Tämä ei kuitenkaan tarkoita,
+          että suurempi määrä kasvattaisi hyötyä loputtomasti päivä päivältä.
+        </p>
+        <p>
+          Kun lihasten kreatiinivarastot ovat jo korkealla tasolla, suuremman annoksen lisähyöty tavallisesti pienenee.
+          Juuri tästä syystä suurempia määriä kannattaa ajatella varastojen nopeana nostostrategiana eikä jatkuvana
+          välttämättömyytenä.
+        </p>
+        <p>
+          Moni siirtyykin latausvaiheen jälkeen takaisin tavalliseen ylläpitoon, koska se riittää erittäin hyvin tavoitteen
+          kannalta. Ylläpitovaihe on usein koko käytön tärkein pitkä juoksu.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Mistä tietää, että määrää voi pienentää</h2>
+        <p>
+          Kun käyttö on ollut jo jonkin aikaa säännöllistä ja tavoite on siirtynyt varastojen nopeasta nostamisesta
+          niiden ylläpitämiseen, annosta voi usein pienentää tavalliseen ylläpitotasoon.
+        </p>
+        <p>
+          Hyvä käytännön ajatus on tämä: jos suurempi määrä oli työvaihe varastojen rakentamiseen, ylläpitomäärä on
+          työvaihe niiden pitämiseen hyvällä tasolla.
+        </p>
+      </section>
+
+      <section class="card" id="muodot">
+        <h2>Kreatiinin eri muodot</h2>
+        <p>
+          Markkinoilla näkyy useita erilaisia kreatiinityyppejä ja pakkausmuotoja. Yleisimmät nimet ovat seuraavat:
+        </p>
+        <ul class="clean">
+          <li>kreatiinimonohydraatti</li>
+          <li>mikronisoitu kreatiinimonohydraatti</li>
+          <li>kreatiini HCl</li>
+          <li>puskuroitu kreatiini</li>
+          <li>kreatiininitraatti</li>
+          <li>kreatiinipyruvaatti</li>
+          <li>kapselit</li>
+          <li>purutabletit ja gummies-tuotteet</li>
+        </ul>
+        <p>
+          Näistä selvin perusvalinta on kreatiinimonohydraatti. Mikronisoitu versio on käytännössä sama perusmuoto,
+          mutta hienojakoisempana jauheena se voi sekoittua nesteeseen miellyttävämmin.
+        </p>
+        <div class="callout">
+          Jos tavoite on tehdä mahdollisimman vahva, järkevä ja tutkitun tiedon kanssa linjassa oleva valinta,
+          puhdas kreatiinimonohydraatti on päälinja.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Makuvaihtoehdot markkinoilla</h2>
+        <p>
+          Kreatiinia myydään sekä maustamattomana että maustettuna. Maustamaton jauhe on erittäin käytännöllinen,
+          koska sen voi sekoittaa helposti veteen, mehuun, palautusjuomaan tai proteiinijuomaan.
+        </p>
+        <p>
+          Maustettujen tuotteiden puolella näkyy usein esimerkiksi seuraavia makuja:
+        </p>
+        <ul class="clean">
+          <li>blue raspberry</li>
+          <li>fruit punch</li>
+          <li>orange</li>
+          <li>lemon</li>
+          <li>berry</li>
+          <li>cola</li>
+          <li>peach passion</li>
+          <li>mango</li>
+        </ul>
+        <p>
+          Gummies- ja purutablettituotteissa valikoima painottuu usein makeampiin hedelmämakuihin.
+          Maun valinta on kuitenkin käytännössä mukavuuskysymys. Kehityksen kannalta ratkaisevampi kysymys on se,
+          että käyttö pysyy säännöllisenä.
+        </p>
+      </section>
+
+      <section class="card full" id="hyva-tietaa">
+        <h2>Hyvä tietää</h2>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>1. Tärkein tavoite on varastotaso</h3>
+            <p>
+              Kreatiinin käyttöä kannattaa ajatella lihasten sisäisenä energiavalmiuden rakentamisena.
+              Kun varastotaso on hyvä, hyöty voi näkyä harjoittelun laadussa laajasti.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>2. Ajoitus ei yleensä voita johdonmukaisuutta</h3>
+            <p>
+              Ennen treeniä tai jälkeen treenin voi molemmat toimia. Käytännössä vahvin tulos tulee yleensä siitä,
+              että käyttö toteutuu päivästä toiseen.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>3. Monohydraatti on selkein päävalinta</h3>
+            <p>
+              Markkinoilla on monta nimeä ja muotoa, mutta tutkimus- ja käytännön perustaso painottuu edelleen
+              monohydraattiin.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Kiva tietää</h2>
+        <p>
+          Kreatiinin käyttöön liittyy usein myös alkuvaiheen painonmuutos. Tämä voi näkyä osalla treenaajista
+          nopeana nousuna, joka liittyy usein lihassolun nestetasapainon muutokseen. Moni kokee tämän hyvänä merkkinä siitä,
+          että lihas on siirtymässä vahvempaan energiavalmiuden tilaan.
+        </p>
+        <p>
+          Käytännössä tämä muistuttaa siitä, että kreatiinin vaikutusta ei kannata arvioida vain vaa'an kautta,
+          vaan ennen kaikkea treenin laadun, voimatasojen, toistokyvyn ja pitkäjänteisen kehityksen kautta.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Kenelle tämä on erityisen kiinnostava</h2>
+        <ul class="clean">
+          <li>voimaharjoittelijoille</li>
+          <li>kuntosalilla tavoitteellisesti treenaaville</li>
+          <li>lyhyttä kovatehoista suorituskykyä arvostaville urheilijoille</li>
+          <li>henkilöille, jotka haluavat rakentaa harjoitteluun vahvemman energiapohjan</li>
+        </ul>
+      </section>
+
+      <section class="card full" id="yhteenveto">
+        <h2>Selkeä käytännön yhteenveto</h2>
+        <ul class="clean">
+          <li>Kreatiinin päätavoite on nostaa ja ylläpitää lihasten kreatiinivarastoja.</li>
+          <li>Ylläpitokäytössä tavallinen määrä on 3–5 grammaa vuorokaudessa.</li>
+          <li>Latausvaiheessa voidaan käyttää noin 20 grammaa vuorokaudessa jaettuna useaan annokseen.</li>
+          <li>Ennen treeniä tai jälkeen treenin käytetty kreatiini voi molemmat olla toimiva ratkaisu.</li>
+          <li>Johdonmukainen päivittäinen käyttö on yleensä tärkeämpi kuin täydellisen ajoitushetken etsiminen.</li>
+          <li>Suositelluin kreatiinityyppi on kreatiinimonohydraatti.</li>
+          <li>Mikronisoitu kreatiinimonohydraatti on hyvä vaihtoehto silloin, kun halutaan sama perusmuoto helpommin sekoittuvana.</li>
+          <li>Maustamaton tai maustettu tuote voi molemmat toimia hyvin. Makua tärkeämpää on käyttörytmin pysyvyys.</li>
+          <li>Kreatiinin arvo näkyy usein parhaiten pitkässä kehityslinjassa, ei vain yhden treenin tuntemuksessa.</li>
+        </ul>
+
+        <div class="good-box">
+          Kreatiini on parhaimmillaan silloin, kun sitä käytetään osana vahvaa kokonaisuutta:
+          laadukas harjoittelu, riittävä ravinto, hyvä palautuminen ja johdonmukainen päivärytmi.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Johdonmukainen ravitsemus rakentaa vahvan harjoittelun pohjan</h2>
+      <p>
+        Kreatiini on yksi niistä työkaluista, joiden arvo näkyy parhaiten silloin, kun koko harjoittelun perusta
+        on kunnossa ja tekeminen pysyy pitkäjänteisenä.
+      </p>
+      <div class="msj-box">
+        <strong>MULTISALEJOURNEY</strong>
+        <p>Kanoninen site shell opas GitHub Pages käyttöön.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Kreatiini kuntosalikehityksen tukena • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>

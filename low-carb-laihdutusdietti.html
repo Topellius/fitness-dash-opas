@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Low carb laihdutusdietti ja hiilihydraattitaulukot</title>
+  <meta
+    name="description"
+    content="Käytännöllinen low carb laihdutusdietti, hiilihydraattitaulukot eri ihmisille, treeniohjeet, lautasmallit ja ravitsemuksen peruslinjaukset."
+  />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79, 158, 143, 0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29, 106, 91, 0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 56vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(79,158,143,0.20), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.10), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 28px;
+      align-items: center;
+      padding: 58px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      color: rgba(255,255,255,0.94);
+      margin: 0 0 16px;
+      max-width: 65ch;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    main section {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 1.12rem;
+      margin: 22px 0 10px;
+      color: var(--ink);
+    }
+
+    p,
+    li,
+    td,
+    th {
+      color: var(--muted);
+    }
+
+    p,
+    li,
+    td,
+    th,
+    h1,
+    h2,
+    h3 {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.2rem;
+    }
+
+    table {
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    thead tr {
+      background: #edf8f5;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    article {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    sup {
+      font-size: 0.8em;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 24px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 0 54px;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      main section,
+      .intro-banner {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      main section,
+      .intro-banner,
+      article {
+        padding: 18px;
+      }
+
+      th,
+      td {
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="low-carb-laihdutusdietti.html">Suomi</a>
+      </div>
+      <small>Fitness ravitsemus</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a class="active" aria-current="page" href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Ravitsemus • painonhallinta • hiilihydraatit • treeni</div>
+        <h1>Low carb laihdutusdietti ja hiilihydraattitaulukot</h1>
+        <p>
+          Käytännöllinen kokonaisuus ihmiselle, joka haluaa yhdistää laihtumisen, toimivan arjen,
+          hyvän kylläisyyden ja mahdollisimman järkevän treenituntuman samaan ruokamalliin.
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Tällä sivulla</h2>
+        <ul class="hero-list">
+          <li>low carb mallin perusidea</li>
+          <li>tarkat hiilihydraattimäärät eri profiileille</li>
+          <li>käytännön dietit 60 g, 90 g ja 120 g tasoille</li>
+          <li>lautasmallit levossa ja treenipäivinä</li>
+          <li>kuntosalille sopiva ajoitus</li>
+          <li>ruokaesmerkit ja lähteet</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Käytännöllinen tietosivu low carb laihdutuksesta, hiilihydraattimääristä, treenin ympärille ajoitetusta syömisestä ja arjessa toimivista ruokavalinnoista.
+      </p>
+    </div>
+
+    <div class="content-grid">
+      <section>
+        <h1>Low carb laihdutusdietti ja tarkat hiilihydraattimäärät eri ihmisille</h1>
+        <p>
+          Tämä sivu kokoaa käytännöllisen low carb mallin ihmiselle, jonka tavoite on laihtuminen, hyvä jaksaminen ja mahdollisimman toimiva arki tai kuntosaliharjoittelu.
+          Low carb tarkoittaa tavallisesti enintään 130 grammaa hiilihydraattia päivässä. Hyvin matala hiilihydraattimäärä eli ketoosi on eri asia, eikä sitä haeta tällä sivulla.<sup>[1][2]</sup>
+        </p>
+        <p>
+          Tärkeä periaate on tämä: mitä enemmän lihasmassaa, mitä suurempi keho, mitä enemmän askelia, työtä, urheilua tai kuntosaliharjoittelua, sitä enemmän energiaa ja yleensä myös hiilihydraattia tarvitaan.
+          Samalla on hyvä ymmärtää, että urheiluravitsemuksen viralliset hiilihydraattisuositukset kovaa harjoitteleville ovat yleensä paljon korkeampia kuin low carb ruokavalion rajat.
+          Siksi low carb urheilijalle on aina kompromissi painonhallinnan, suorituskyvyn ja palautumisen välillä.<sup>[1][3][4]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Miksi low carb toimii laihtumisessa</h2>
+        <p>
+          Low carb voi auttaa laihtumisessa, koska se voi helpottaa ruokahalun hallintaa, vähentää napostelua, tasoittaa syömistä ja tehdä energiansaannista hallitumpaa.
+          Tutkimuskatsauksissa low carb ruokavaliot ovat olleet käyttökelpoinen vaihtoehto painonpudotukseen, etenkin lyhyellä ja keskipitkällä aikavälillä.
+          Silti ratkaiseva tekijä on kokonaisuus: riittävän hyvä ruokavalion laatu, riittävä proteiini, hallittu energiansaanti ja se, että mallia pystyy oikeasti noudattamaan kuukausia.<sup>[5][6][7]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Miksi low carb on myös vaikea</h2>
+        <p>
+          Low carb on vaikea siksi, että se rajaa pois suuren osan tavallisista energianlähteistä.
+          Kun hiilihydraatteja lasketaan alas, nälkä, treenin tehon lasku, mieliteot, sosiaalinen syöminen ja yksipuolinen ruokavalio voivat vaikeuttaa toteutusta.
+          Urheilussa liian matala energiansaanti voi heikentää suorituskykyä, palautumista, hormonitoimintaa, vastustuskykyä ja luuston terveyttä.
+          Kansainvälinen olympiakomitea kuvaa tätä ilmiötä matalan energia saatavuuden ja REDs ilmiön kautta sekä naisilla että miehillä.<sup>[4]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Oireet siitä, että energiaa tai hiilihydraattia on liian vähän</h2>
+        <ul>
+          <li>poikkeuksellinen väsymys</li>
+          <li>treenitehon lasku</li>
+          <li>voiman junnaaminen tai lasku</li>
+          <li>huono palautuminen</li>
+          <li>ylensyönti iltaisin</li>
+          <li>ärtyneisyys ja keskittymisvaikeus</li>
+          <li>kylmän tunne</li>
+          <li>heikentynyt uni</li>
+          <li>kohonnut loukkaantumisriski</li>
+          <li>naisilla kuukautiskierron häiriöt</li>
+          <li>miehilläkin hormonitoiminnan häiriöitä ja libidon laskua</li>
+        </ul>
+        <p>
+          Jos nämä oireet kasaantuvat, ongelma ei ole yleensä pelkkä tahdonvoima vaan liian pieni kokonaisenergia, liian kova treeni suhteessa syömiseen tai liian tiukka hiilihydraattirajoitus.<sup>[4]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Käytännön hiilihydraattimalli low carb laihtumiseen</h2>
+        <p>
+          Käytännössä toimiva low carb laihtumismalli asettuu usein tähän rakenteeseen:
+        </p>
+        <ul>
+          <li>kevyt low carb: 100–130 g hiilihydraattia päivässä</li>
+          <li>selkeä low carb: 70–100 g päivässä</li>
+          <li>tiukka low carb ilman ketoositavoitetta: 50–70 g päivässä</li>
+        </ul>
+        <p>
+          Kovaa treenaavilla henkilöillä on usein järkevää käyttää haarukan yläpäätä, koska urheiluravitsemuksen yleiset hiilihydraattisuositukset ovat muutenkin paljon korkeammat kuin low carbissa.
+          Tästä syystä aktiiviselle henkilölle 90–130 g voi olla käytännöllisempi kuin 50–70 g, vaikka molemmat ovat edelleen low carb alueella.<sup>[1][3][4]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Taulukko: tarkat low carb hiilihydraattimäärät eri ihmisille</h2>
+        <table border="1" cellpadding="8" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Profiili</th>
+              <th>Paino</th>
+              <th>Aktiivisuus</th>
+              <th>Tavoite</th>
+              <th>Suositeltu HH / vrk</th>
+              <th>Käytännön jako päivään</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nainen, kevyt arki</td>
+              <td>55–65 kg</td>
+              <td>toimistotyö, kävely, ei kovaa treeniä</td>
+              <td>laihtuminen ja hyvä kylläisyys</td>
+              <td>50–70 g</td>
+              <td>aamu 15 g, lounas 15 g, välipala 5 g, päivällinen 15 g, ilta 5–10 g</td>
+            </tr>
+            <tr>
+              <td>Nainen, aktiivinen</td>
+              <td>60–75 kg</td>
+              <td>3–4 salia viikossa tai reipas arki</td>
+              <td>laihtuminen ilman tehon romahtamista</td>
+              <td>70–90 g</td>
+              <td>aamu 20 g, lounas 20 g, ennen tai jälkeen treenin 15–25 g, päivällinen 15–20 g, ilta 5 g</td>
+            </tr>
+            <tr>
+              <td>Urheilullinen nainen</td>
+              <td>60–75 kg</td>
+              <td>4–6 harjoitusta viikossa</td>
+              <td>laihtuminen ja treenitehon säilyttäminen</td>
+              <td>90–120 g</td>
+              <td>aamu 25 g, lounas 20 g, ennen treeniä 20 g, jälkeen treenin 25 g, päivällinen 15–25 g</td>
+            </tr>
+            <tr>
+              <td>Mies, kevyt arki</td>
+              <td>70–85 kg</td>
+              <td>toimistotyö, satunnainen liikunta</td>
+              <td>laihtuminen</td>
+              <td>60–80 g</td>
+              <td>aamu 15–20 g, lounas 20 g, välipala 5 g, päivällinen 15–20 g, ilta 5–10 g</td>
+            </tr>
+            <tr>
+              <td>Mies, aktiivinen salilla</td>
+              <td>80–95 kg</td>
+              <td>3–5 raskasta salia viikossa</td>
+              <td>laihtuminen ja voiman säilyttäminen</td>
+              <td>80–110 g</td>
+              <td>aamu 20–25 g, lounas 20–25 g, ennen treeniä 15–25 g, jälkeen treenin 20–30 g, ilta 5–10 g</td>
+            </tr>
+            <tr>
+              <td>Urheilullinen mies</td>
+              <td>85–105 kg</td>
+              <td>5–6 raskasta harjoitusta viikossa</td>
+              <td>rasvanpoltto ja mahdollisimman hyvä suorituskyky</td>
+              <td>100–130 g</td>
+              <td>aamu 25–30 g, lounas 20–25 g, ennen treeniä 20–30 g, jälkeen treenin 25–35 g, päivällinen 15–20 g</td>
+            </tr>
+            <tr>
+              <td>Nuori nainen</td>
+              <td>50–65 kg</td>
+              <td>aktiivinen arki, kasvuikä tai nuori aikuinen</td>
+              <td>painonhallinta ilman energian alisyöntiä</td>
+              <td>80–110 g</td>
+              <td>aamu 20 g, lounas 20–25 g, välipala 10 g, päivällinen 20–25 g, ilta 10–20 g</td>
+            </tr>
+            <tr>
+              <td>Nuori mies</td>
+              <td>60–85 kg</td>
+              <td>aktiivinen arki, urheilu tai sali</td>
+              <td>painonhallinta ja harjoittelun tukeminen</td>
+              <td>90–130 g</td>
+              <td>aamu 20–25 g, lounas 20–25 g, ennen tai jälkeen treenin 20–30 g, päivällinen 20–25 g, ilta 10–20 g</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Taulukon luvut ovat käytännön aloitustasoja, jotka pitävät ruokavalion low carb alueella.
+          Ne eivät ole urheiluravitsemuksen maksimit, vaan tarkoituksella rajatut laihdutuksen ja toteutettavuuden näkökulmasta.
+          Mitä enemmän treeniä ja lihasmassaa, sitä lähemmäs 130 gramman kattoa monen on järkevää mennä.<sup>[1][3][4]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Tarkat dietit kolmelle eri tasolle</h2>
+
+        <article>
+          <h3>Dietti A: 60 g hiilihydraattia päivässä</h3>
+          <p>Sopii kevyempään arkeen tai henkilölle, joka ei tee kovaa treeniä joka päivä.</p>
+          <ul>
+            <li>Aamiainen: 200 g kreikkalainen jogurtti, 100 g mustikat, 20 g pähkinät = noin 16 g HH</li>
+            <li>Lounas: kanaa, iso salaatti, pinaatti, paprika, oliiviöljy, 150 g vihanneksia = noin 12 g HH</li>
+            <li>Välipala: raejuusto 200 g ja 100 g marjoja = noin 10 g HH</li>
+            <li>Päivällinen: lohi, parsakaali, kesäkurpitsa, 150 g kukkakaalia = noin 12 g HH</li>
+            <li>Iltapala: 2 kananmunaa ja 100 g ananasta = noin 10 g HH</li>
+          </ul>
+          <p>Yhteensä noin 60 g HH.</p>
+        </article>
+
+        <article>
+          <h3>Dietti B: 90 g hiilihydraattia päivässä</h3>
+          <p>Sopii aktiiviselle laihduttajalle ja useimmille salilla kävijöille.</p>
+          <ul>
+            <li>Aamiainen: 60 g kaurahiutaleita, 150 g rahkaa, 100 g mustikat = noin 45 g HH</li>
+            <li>Lounas: 150 g kanaa, 200 g vihanneksia, pinaatti, oliiviöljy = noin 12 g HH</li>
+            <li>Ennen tai jälkeen treenin: 150 g ananasta ja proteiinijuoma = noin 18 g HH</li>
+            <li>Päivällinen: jauheliha, vihanneksia, 100 g marjoja = noin 10 g HH</li>
+            <li>Iltapala: kananmunat ja vihreä salaatti = noin 5 g HH</li>
+          </ul>
+          <p>Yhteensä noin 90 g HH.</p>
+        </article>
+
+        <article>
+          <h3>Dietti C: 120 g hiilihydraattia päivässä</h3>
+          <p>Sopii urheilulliselle henkilölle, joka haluaa low carb mallin mutta ei halua menettää liikaa treenitehoa.</p>
+          <ul>
+            <li>Aamiainen: 70 g kaurahiutaleita, 200 g jogurttia, 100 g mustikoita = noin 55 g HH</li>
+            <li>Lounas: kana, pinaattisalaatti, vihanneksia, 150 g ananasta = noin 20 g HH</li>
+            <li>Ennen treeniä: banaani tai 3 riisikakkua = noin 20 g HH</li>
+            <li>Jälkeen treenin: proteiinijuoma ja 100 g marjoja = noin 12 g HH</li>
+            <li>Päivällinen: liha tai kala, vihanneksia, 150 g uunijuureksia = noin 13 g HH</li>
+          </ul>
+          <p>Yhteensä noin 120 g HH.</p>
+        </article>
+      </section>
+
+      <section>
+        <h2>Lautasmallit</h2>
+
+        <article>
+          <h3>Lautasmalli levossa tai kevyenä päivänä</h3>
+          <ul>
+            <li>puolet lautasesta vihanneksia</li>
+            <li>neljäsosa proteiinia kuten kanaa, kalaa, lihaa, tofuja, kananmunia tai raejuustoa</li>
+            <li>neljäsosa energiaa rasvasta ja pienestä määrästä hiilihydraattia</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Lautasmalli treenipäivänä</h3>
+          <ul>
+            <li>paljon proteiinia</li>
+            <li>reilusti vihanneksia</li>
+            <li>selkeä hiilihydraattiosuus treenin ympärille</li>
+            <li>rasvaa kohtuullisesti, ei kaikkea energiaa rasvasta juuri ennen treeniä</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Lautasmalli kovan salin jälkeen</h3>
+          <ul>
+            <li>30–40 g proteiinia</li>
+            <li>20–40 g hiilihydraattia</li>
+            <li>vihanneksia</li>
+            <li>rasvaa maltillisesti</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Kuinka monta kertaa päivässä kannattaa syödä</h2>
+        <p>
+          Käytännössä useimmille toimiva malli on 3–5 ruokailua päivässä.
+          Proteiinin tasainen jakaminen päivän aikana toimii hyvin lihasmassan säilyttämisessä ja palautumisessa.
+          Urheiluravitsemuksessa 20–40 grammaa hyvälaatuista proteiinia noin 3–4 tunnin välein on toimiva käytännön malli monille harjoitteleville.<sup>[8][9]</sup>
+        </p>
+        <ul>
+          <li>3 ateriaa päivässä sopii henkilölle, jolla nälkä pysyy kurissa hyvin</li>
+          <li>4 ateriaa päivässä on monille helpoin low carb malli</li>
+          <li>5 ateriaa päivässä voi toimia kovaa treenaavalle, jos treenin ympärille tarvitaan oma ateria</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Jos käyt kuntosalilla: mitä, milloin ja kuinka paljon kannattaa syödä</h2>
+        <p>
+          Kuntosaliharjoittelussa hiilihydraattia ei tarvitse jakaa tasan koko päivälle.
+          Low carb mallissa järkevin ratkaisu on keskittää isoin osa päivän hiilihydraateista treenin ympärille, koska silloin niistä saa parhaimman käytännön hyödyn suorituskyvylle ja palautumiselle.<sup>[3][8]</sup>
+        </p>
+
+        <article>
+          <h3>Noin 2 tuntia ennen salia</h3>
+          <ul>
+            <li>20–40 g proteiinia</li>
+            <li>15–30 g hiilihydraattia</li>
+            <li>vain maltillisesti rasvaa</li>
+          </ul>
+          <p>
+            Esimerkkejä:
+          </p>
+          <ul>
+            <li>rahka ja mustikat</li>
+            <li>kana ja pieni määrä riisiä</li>
+            <li>raejuusto ja ananas</li>
+            <li>munakas ja pieni kaurapuuroannos</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Treenin jälkeen</h3>
+          <ul>
+            <li>25–40 g proteiinia</li>
+            <li>15–40 g hiilihydraattia harjoituksen kovuuden mukaan</li>
+          </ul>
+          <p>
+            Esimerkkejä:
+          </p>
+          <ul>
+            <li>proteiinijuoma ja marjat</li>
+            <li>kana, vihannekset ja pieni peruna</li>
+            <li>jogurtti, mustikat ja proteiinilisä</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Käytännön low carb treenijaot</h3>
+          <ul>
+            <li>Kevyt treenipäivä: 60–80 g HH päivässä</li>
+            <li>Raskas salipäivä: 80–110 g HH päivässä</li>
+            <li>Hyvin raskas tai hyvin lihaksikas treenaaja: 100–130 g HH päivässä</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Miksi pinaatti, ananas, mustikat ja muut marjat kannattaa ottaa mukaan</h2>
+
+        <article>
+          <h3>Pinaatti</h3>
+          <p>
+            Pinaatti on ravinnetiheä valinta, koska siinä on muun muassa folaattia, magnesiumia, kaliumia ja runsaasti vihreiden lehtivihannesten hyödyllisiä yhdisteitä.
+            Nitraattipitoisista vihreistä on näyttöä siitä, että ne voivat tukea verenkiertoa ja joissakin tilanteissa suorituskykyä.
+            Pinaatti ei ole taikaruoka, mutta se on erittäin hyvä tapa nostaa ravinteiden laatua vähillä kaloreilla.<sup>[10][11][12]</sup>
+          </p>
+        </article>
+
+        <article>
+          <h3>Ananas</h3>
+          <p>
+            Ananas tuo ruokavalioon hiilihydraattia, C vitamiinia ja mangaania.
+            Sitä pidetään kiinnostavana myös bromelainin vuoksi.
+            Bromelainia on tutkittu etenkin tulehdus ja palautumiskontekstissa, mutta varmin näyttö liittyy enemmän tiivistettyihin bromelainvalmisteisiin kuin tavalliseen ananasannokseen.
+            Silti ananas toimii erinomaisesti treenin ympärillä helposti sulavana hiilihydraatin lähteenä.<sup>[13][14]</sup>
+          </p>
+        </article>
+
+        <article>
+          <h3>Mustikat ja muut marjat</h3>
+          <p>
+            Mustikat ja monet muut marjat sisältävät polyfenoleja ja antosyaaneja.
+            Tutkimuskirjallisuudessa marjojen käyttöä on yhdistetty mahdolliseen hyötyyn palautumisen, tulehduskuorman ja oksidatiivisen stressin hallinnassa, vaikka kaikki tutkimukset eivät näytä yhtä voimakasta vaikutusta.
+            Käytännössä marjat ovat low carb ruokavaliossa erittäin hyödyllinen tapa saada kuitua, makua ja mikroravinteita ilman suurta hiilihydraattikuormaa.<sup>[15][16][17]</sup>
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <h2>Ammattilaisten ydinviesti eri ihmisille</h2>
+        <ul>
+          <li>Kevyesti liikkuva laihduttaja pärjää usein 50–80 grammalla hiilihydraattia päivässä.</li>
+          <li>Aktiivinen saliharrastaja toimii usein paremmin 80–110 grammalla.</li>
+          <li>Hyvin urheilullinen ja lihaksikas henkilö tarvitsee usein 100–130 grammaa, jos hän haluaa pysyä low carb alueella menettämättä liikaa treenitehoa.</li>
+          <li>Nuorille ja kovaa urheileville liian aggressiivinen hiilihydraattien lasku on tavallista riskialttiimpi ratkaisu.</li>
+          <li>Jos harjoittelun määrä kasvaa paljon, tavallinen urheiluravitsemus siirtyy yleensä selvästi low carb rajojen yläpuolelle.</li>
+        </ul>
+        <p>
+          Tästä syystä parhaat ammattilaiset eivät puhu vain yhdestä ihmedietistä.
+          He puhuvat kuormasta, palautumisesta, energiasta, proteiinista, hiilihydraatin ajoituksesta ja siitä, pystyykö henkilö elämään mallin kanssa pitkällä aikavälillä.<sup>[3][4][8]</sup>
+        </p>
+      </section>
+
+      <section>
+        <h2>Yhteenveto</h2>
+        <p>
+          Paras low carb laihdutusmalli ei ole automaattisesti mahdollisimman matala hiilihydraattimäärä.
+          Paras malli on sellainen, jossa paino laskee, nälkä pysyy hallinnassa, treeni kulkee, olo pysyy hyvänä ja ruokavaliota pystyy oikeasti noudattamaan.
+        </p>
+        <p>
+          Käytännön aloittava nyrkkisääntö:
+        </p>
+        <ul>
+          <li>kevyt arki: 50–70 g HH</li>
+          <li>aktiivinen arki tai sali 3–4 kertaa viikossa: 70–100 g HH</li>
+          <li>urheilullinen ja lihaksikas: 100–130 g HH</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lähteet</h2>
+        <ol>
+          <li>Low Carbohydrate Diet. StatPearls. NCBI Bookshelf. low carb alle 130 g päivässä, very low carb 20–50 g päivässä. 0</li>
+          <li>Expert consensus on nutrition and lower carbohydrate diets. hiilihydraatin suositusmäärän ja low carb määritelmän taustaa. 1</li>
+          <li>Nutrition and Athletic Performance. Academy of Nutrition and Dietetics, Dietitians of Canada, ACSM. urheilun hiilihydraattitarpeiden peruslinjaukset. 2</li>
+          <li>IOC Consensus Statement on Relative Energy Deficiency in Sport 2023. matalan energia saatavuuden oireet ja riskit naisilla ja miehillä. 3</li>
+          <li>Systematic review and meta analysis of low carbohydrate diets 2024. low carb ruokavalioiden painonpudotusvaikutus. 4</li>
+          <li>Impact of low carbohydrate diet on health status 2024. nykykirjallisuuden yhteenveto painonhallinnan näkökulmasta. 5</li>
+          <li>JAMA 2018. healthy low fat vs healthy low carbohydrate diet, pitkäkestoisen painonhallinnan kokonaisuus. 6</li>
+          <li>International Society of Sports Nutrition Position Stand on nutrient timing. proteiini 20–40 g ja treenin ympärille ajoitettu syöminen. 7</li>
+          <li>International Society of Sports Nutrition Position Stand on protein and exercise. proteiinin jakaminen 3–4 tunnin välein. 8</li>
+          <li>Spinach extract and physical performance 2025. pinaatin nitraattitaustan ja suorituskykypotentiaalin yhteenveto. 9</li>
+          <li>Alternative dietary nitrate sources 2024. vihreät nitraattilähteet ja fyysinen suorituskyky. 10</li>
+          <li>Yleinen urheiluravitsemuksen näyttö nitraattilähteistä ja verenkiertoa tukevasta vaikutuksesta. 11</li>
+          <li>Exploring the Therapeutic Potential of Bromelain 2024. bromelainin anti inflammatorinen tutkimustausta. 12</li>
+          <li>Pineapple extract and bromelain evidence 2024. ananaksen bromelainiin liittyvä tutkimusnäyttö. 13</li>
+          <li>The state of the science on the health benefits of blueberries 2024. mustikoiden ja palautumisen tutkimusnäyttö. 14</li>
+          <li>Berry derived polyphenol supplementation and exercise 2024. marjojen polyfenolit ja mahdollinen hyöty. 15</li>
+          <li>Systematic review on Vaccinium berries 2024. vaikutukset eivät ole kaikissa tutkimuksissa yhtä vahvoja. 16</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Lisää ravitsemussivuja samaan kokonaisuuteen</h2>
+      <p>
+        Tämä sivu kuuluu samaan fitness ja ravitsemusaiheiseen kokonaisuuteen, jossa painopiste on
+        käytännöllisessä syömisessä, suorituskyvyssä, palautumisessa ja pitkän aikavälin painonhallinnassa.
+      </p>
+
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Fitness ravitsemus • Low carb laihdutusdietti</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>

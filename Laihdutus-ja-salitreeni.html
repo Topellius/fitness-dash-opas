@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laihdutus ja salitreeni aloittelijalle | Fitness GitHub Pages</title>
+  <meta
+    name="description"
+    content="Selkeä ja käytännöllinen opas aloittelijalle siitä, miksi kuntosali tukee rasvanpolttoa laihdutuksen aikana ja miten laihdutus ja salitreeni kannattaa rakentaa toimivaksi kokonaisuudeksi."
+  />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active {
+      background: rgba(255,255,255,0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.14rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    .author-note {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full {
+      grid-column: 1 / -1;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .danger-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff2f4;
+      border-left: 6px solid var(--danger);
+      margin-top: 14px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .number-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--brand);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero {
+        padding: 40px 0 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="laihdutus-ja-salitreeni-aloittelijalle.html">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a class="active" aria-current="page" href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Fitness opas • rasvanpoltto • voimaharjoittelu • aloittelija</div>
+        <h1>Laihdutus ja salitreeni aloittelijalle</h1>
+        <p>
+          Laihdutuksessa tavoite ei ole vain pienempi painolukema. Tavoite on parempi kehonkoostumus,
+          parempi toimintakyky ja vahvempi olo omassa kehossa. Kuntosali tekee tästä kokonaisuudesta
+          laadukkaamman, koska se auttaa kehoa säilyttämään lihasta samalla kun rasvaa lähtee pois.
+        </p>
+        <p>
+          Paras tulos tulee yleensä silloin, kun ruokavalio on hallittu, kalorivaje on maltillinen,
+          salilla käydään säännöllisesti ja arjessa pysytään liikkeessä. Tämä sivu kokoaa aloittelijalle
+          selkeän mallin, jonka voi oikeasti ottaa käyttöön.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#malli">Siirry käytännön malliin</a>
+          <a class="btn secondary" href="#ohjelmat">Siirry treeniohjelmiin</a>
+        </div>
+        <p class="author-note">
+          Fiksu laihdutus tekee kehosta kevyemmän, vahvemman ja paremmin toimivan samaan aikaan.
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Tällä sivulla opit</h2>
+        <ul class="hero-list">
+          <li>miksi sali tukee rasvanpolttoa</li>
+          <li>miten lihasmassaa suojataan kalorivajeessa</li>
+          <li>mikä on toimiva rytmi viikolle</li>
+          <li>miten treeni rakennetaan käytännössä</li>
+          <li>miten tuloksia seurataan oikein</li>
+          <li>miten vältetään yleisimmät virheet</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Pelkkä syömisen vähentäminen voi laskea painoa, mutta salitreeni auttaa varmistamaan,
+        että pudotuksesta mahdollisimman suuri osa tulee rasvasta eikä lihasmassasta.
+        Siksi kuntosali ei ole vain lisäosa laihdutukseen, vaan usein yksi sen tärkeimmistä tukipilareista.
+      </p>
+    </div>
+
+    <div class="grid">
+      <section class="card full">
+        <h2>Miksi kuntosali tukee rasvanpolttoa</h2>
+        <p>
+          Kuntosali ei polta rasvaa siksi, että jokin yksittäinen treeni olisi taikakeino.
+          Sen todellinen arvo on siinä, että se antaa keholle syyn pitää kiinni lihaksista,
+          voimasta ja suorituskyvystä silloin, kun energiaa syödään hieman vähemmän kuin kulutetaan.
+        </p>
+        <p>
+          Kun laihdutus tehdään ilman lihaksia kuormittavaa harjoittelua, keho voi purkaa myös
+          lihaskudosta. Kun taas lihaksia harjoitetaan säännöllisesti, keho saa viestin siitä,
+          että niitä tarvitaan edelleen. Tämä tekee laihdutuksesta huomattavasti laadukkaampaa.
+        </p>
+        <div class="callout">
+          Paras tavoite ei ole vain pienempi numero vaa assa. Paras tavoite on pienempi rasvamäärä,
+          parempi ryhti, parempi voima ja parempi olo omassa kehossa.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Se suojaa lihasmassaa kalorivajeessa</h2>
+        <p>
+          Laihdutus vaatii kalorivajeen. Keho alkaa silloin käyttää varastoituja energialähteitä.
+          Ilman voimaharjoittelua keho voi ottaa mukaan myös lihasmassaa, mikä heikentää lopputuloksen laatua.
+        </p>
+        <p>
+          Salitreeni toimii lihaksille säilytyssignaalina. Kun lihaksia kuormitetaan fiksusti,
+          keho pyrkii pitämään niistä paremmin kiinni. Tämän vuoksi sali kuuluu vahvasti mukaan
+          lähes kaikkiin järkevästi toteutettuihin rasvanpudotusjaksoihin.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Se pitää suorituskyvyn parempana</h2>
+        <p>
+          Kun laihdutus tehdään liian passiivisesti, jaksaminen heikkenee helposti.
+          Arki voi tuntua raskaammalta, liikkuminen tahmeammalta ja olo veltomammalta.
+          Kuntosaliharjoittelu muistuttaa kehoa siitä, että voimaa ja toimintakykyä tarvitaan yhä.
+        </p>
+        <p>
+          Tämä näkyy usein käytännössä parempana ryhtinä, tasaisempana vireenä ja siinä,
+          että normaali elämä tuntuu helpommalta myös dietin aikana.
+        </p>
+      </section>
+
+      <section class="card full">
+        <h2>Se parantaa kehon muotoa, vaikka paino ei putoaisi nopeasti</h2>
+        <p>
+          Vaaka kertoo kokonaispainon, mutta ei kerro mistä tuo paino koostuu.
+          Kaksi ihmistä voi painaa saman verran ja näyttää silti täysin erilaisilta.
+          Ero syntyy kehonkoostumuksesta.
+        </p>
+        <p>
+          Kun laihdutus yhdistyy salitreeniin, keho voi muuttua tiiviimmäksi, ryhdikkäämmäksi ja
+          urheilullisemman näköiseksi, vaikka paino laskisi rauhallisesti. Tämä on usein paljon arvokkaampi
+          lopputulos kuin nopea painonpudotus, joka vie samalla voimia ja lihasmassaa.
+        </p>
+        <div class="good-box">
+          Hyvä laihdutus näkyy peilissä, vaatteiden istuvuudessa, ryhdissä, voimatasoissa ja arjen
+          jaksamisessa, ei vain vaa an lukemassa.
+        </div>
+      </section>
+
+      <section class="card full" id="malli">
+        <h2>Mitä onnistunut laihdutus käytännössä tarkoittaa</h2>
+        <p>
+          Toimiva kokonaisuus on yleensä yllättävän yksinkertainen. Suurin virhe on yrittää tehdä
+          kaikki mahdollinen samalla kertaa. Parempi ratkaisu on rakentaa malli, jota pystyy toistamaan
+          viikosta toiseen ilman, että palautuminen tai motivaatio hajoaa.
+        </p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="number-box">1</div>
+            <h3>Kalorivaje pidetään maltillisena</h3>
+            <p>
+              Syödään hieman vähemmän kuin kulutetaan, mutta ei niin vähän, että olo hyytyy ja treeni romahtaa.
+              Maltillinen vaje kestää aikaa paremmin ja tuottaa useimmiten laadukkaamman tuloksen.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="number-box">2</div>
+            <h3>Salilla käydään säännöllisesti</h3>
+            <p>
+              Useimmille aloittelijoille hyvä rytmi on 2, 3 tai 4 treeniä viikossa.
+              Tärkeintä ei ole maksimi määrä, vaan johdonmukaisuus.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="number-box">3</div>
+            <h3>Proteiinia saadaan riittävästi</h3>
+            <p>
+              Proteiini tukee lihasmassan säilymistä, kylläisyyttä ja palautumista.
+              Käytännössä lähes jokaisella aterialla kannattaa olla selkeä proteiinin lähde.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="number-box">4</div>
+            <h3>Arkiaktiivisuus pidetään mukana</h3>
+            <p>
+              Kävely, portaiden käyttö ja yleinen liikkeellä pysyminen auttavat kulutusta ilman,
+              että kokonaiskuormitus nousee liian kovaksi.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="number-box">5</div>
+            <h3>Voimat pyritään säilyttämään</h3>
+            <p>
+              Dietin aikana tärkeä tavoite ei ole jatkuva ennätysvauhti, vaan se,
+              että voimat pysyvät kohtuullisen hyvällä tasolla läpi jakson.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="number-box">6</div>
+            <h3>Palautuminen pidetään mukana</h3>
+            <p>
+              Riittävä uni, toimiva ruokarytmi ja järkevä treenimäärä pitävät kokonaisuuden hallinnassa.
+              Silloin eteneminen on tasaisempaa ja luotettavampaa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card full" id="ohjelmat">
+        <h2>Toimivat viikkorytmit aloittelijalle</h2>
+        <p>
+          Aloittelijan ei tarvitse harjoitella kuin kilpaurheilija saadakseen erittäin hyvää tulosta.
+          Usein juuri kohtuullinen määrä tekee kokonaisuudesta vahvan.
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Kaksi salitreeniä viikossa</h3>
+            <p>
+              Erinomainen aloitusrytmi silloin, kun tavoitteena on päästä varmasti liikkeelle.
+              Tee esimerkiksi yksi koko kehon treeni alkuviikosta ja toinen loppuviikosta.
+            </p>
+            <p>
+              Tämä malli toimii hyvin myös silloin, kun työ, opiskelu tai muu elämä vie paljon energiaa.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Kolme salitreeniä viikossa</h3>
+            <p>
+              Monelle paras perusrytmi. Koko kehon treeni maanantaina, keskiviikkona ja perjantaina
+              on selkeä ja tehokas malli. Treenien väliin jää sopivasti palautumisaikaa.
+            </p>
+            <p>
+              Tämä rytmi tarjoaa hyvän yhdistelmän kehitystä, rasvanpolton tukea ja palautumisen hallintaa.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Neljä salitreeniä viikossa</h3>
+            <p>
+              Toimii silloin, kun palautuminen, uni ja ruokailu ovat jo kunnossa.
+              Tällöin treenit voi jakaa esimerkiksi yläkropan ja alakropan päiviin.
+            </p>
+            <p>
+              Tämä ei ole automaattisesti parempi kuin kolme treeniä, vaan vain hieman laajempi vaihtoehto.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          Aloittelijan tärkein mittari ei ole se, kuinka monta treeniä mahtuu kalenteriin parhaalla viikolla.
+          Tärkein mittari on se, kuinka monta treeniä pystyy tekemään tasaisesti useiden viikkojen ajan.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Miltä yhden treenin rakenne voi näyttää</h2>
+        <p>
+          Hyvä treeni ei vaadi monimutkaista järjestelmää. Selkeä rakenne riittää.
+        </p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>1. Alku</h3>
+            <p>
+              Muutama minuutti kevyttä liikkeelle lähtöä, esimerkiksi pyörää tai kävelyä,
+              jotta keho lämpenee ja olo terävöityy.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>2. Pääliikkeet</h3>
+            <p>
+              Tee aluksi liikkeet, joissa käytetään isoja lihasryhmiä.
+              Juuri nämä liikkeet antavat parhaan signaalin lihaksille ja koko keholle.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>3. Täydentävät liikkeet</h3>
+            <p>
+              Lisää muutama liike tukemaan kokonaisuutta, esimerkiksi keskivartaloa,
+              takareisiä, yläselkää tai hartioita.
+            </p>
+          </div>
+        </div>
+        <p>
+          Useimmille aloittelijoille riittää hyvin 4 tai 6 liikettä per harjoitus.
+          Kun tekeminen pysyy napakkana, kokonaiskesto asettuu yleensä noin 45 ja 75 minuutin väliin,
+          mikä toimii käytännössä erittäin hyvin.
+        </p>
+      </section>
+
+      <section class="card full">
+        <h2>Liikkeet, joilla aloittelija pääsee pitkälle</h2>
+        <p>
+          Kaikkein tärkeintä ei ole löytää erikoisin liike, vaan tehdä tavallisimmat liikkeet hyvin.
+          Näillä pääsee jo erittäin pitkälle.
+        </p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Alakroppa</h3>
+            <p>
+              Jalkaprässi, kyykkyvariaatiot, askelkyykyt, lantionnostot ja takareisiä kuormittavat laitteet
+              rakentavat vahvan perustan.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Työntävät yläkropan liikkeet</h3>
+            <p>
+              Rintaprässi, käsipainopenkki ja pystypunnerrus ovat selkeitä perusliikkeitä,
+              joilla saa paljon aikaan.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Vetävät yläkropan liikkeet</h3>
+            <p>
+              Soutuliikkeet, ylätalja ja muut selkää vahvistavat vedot tukevat ryhtiä,
+              voimatasoja ja koko ylävartalon laatua.
+            </p>
+          </div>
+        </div>
+        <div class="good-box">
+          Tavoite ei ole tehdä mahdollisimman monta liikettä. Tavoite on tehdä tärkeimmät liikkeet
+          hyvin ja palata niihin viikko toisensa jälkeen.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Sarjat, toistot ja kuormitus</h2>
+        <p>
+          Aloittelijalle hyvä perusajatus on tehdä useimmissa liikkeissä 2 tai 4 työsarjaa.
+          Toistoja voi olla esimerkiksi 6, 8, 10 tai 12 sen mukaan, millainen liike on kyseessä.
+        </p>
+        <p>
+          Kuormituksen pitäisi tuntua selvästi työtä vaativalta, mutta liikeradan ja tekniikan
+          pitää pysyä hallinnassa. Kun ylin tavoitetoistomäärä alkaa onnistua hyvällä laadulla,
+          painoa voidaan nostaa hieman.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Pidä voimat mukana</h2>
+        <p>
+          Dietin aikana kaikkein tärkein tavoite salilla ei ole jatkuva ennätysjahti.
+          Vielä tärkeämpää on, että suorituskyky pysyy kohtuullisen vakaana.
+        </p>
+        <p>
+          Jos pääliikkeissä voimat pysyvät hyvin mukana viikosta toiseen, se kertoo usein siitä,
+          että kokonaisuus on edelleen toimiva ja lihasmassaa suojataan onnistuneesti.
+        </p>
+      </section>
+
+      <section class="card full">
+        <h2>Cardio ja kävely oikein käytettynä</h2>
+        <p>
+          Cardio voi olla hyödyllinen osa rasvanpudotusta, mutta se ei saa syödä voimaharjoittelun laatua.
+          Siksi kävely on monelle aloittelijalle erinomainen ratkaisu. Se nostaa kulutusta, tukee palautumista
+          ja on helppo pitää mukana arjessa.
+        </p>
+        <p>
+          Jos taas voimaharjoittelun päälle lisätään jatkuvasti paljon raskasta lisäliikuntaa,
+          seurauksena voi olla väsymys, huonompi treeniteho ja heikompi palautuminen.
+          Tällöin kokonaisuus ei enää palvele päätavoitetta parhaalla mahdollisella tavalla.
+        </p>
+        <div class="callout">
+          Hyvä peruslinja on selkeä: sali rakentaa ja suojaa, kävely tukee kulutusta ja pitää kehon liikkeessä.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Ruokavalion tärkein perusta laihdutuksessa</h2>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Proteiini jokaiselle aterialle</h3>
+            <p>
+              Rahka, kananmunat, kana, kala, liha, tofu, tempe, pavut, linssit ja proteiinijogurtit
+              auttavat rakentamaan päivän rungon. Usein hyvä taso asettuu noin 1,6 gramman ja 2,2 gramman
+              välille per painokilo päivässä.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Ateriarytmi pidetään selkeänä</h3>
+            <p>
+              Säännöllinen rytmi helpottaa nälän hallintaa ja pitää energiatason tasaisempana.
+              Kun päivän syöminen on selkeästi jäsennelty, myös kalorivajeen pitäminen hallittuna helpottuu.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Kylläisyys ratkaisee paljon</h3>
+            <p>
+              Kasvikset, proteiini, riittävä juominen ja fiksu aterioiden rakenne tekevät dieetistä
+              huomattavasti helpomman. Hyvä laihdutus ei perustu jatkuvaan kärsimykseen.
+            </p>
+          </div>
+        </div>
+        <p>
+          Helpoin käytännön sääntö on tämä: lähes jokaisella aterialla on selkeä proteiinin lähde,
+          mukana on kasviksia tai muuta volyymia tuovaa ruokaa, ja kokonaismäärä pysyy hallittuna.
+        </p>
+      </section>
+
+      <section class="card full">
+        <h2>Miten etenemistä kannattaa seurata</h2>
+        <p>
+          Pelkkä vaaka ei riitä. Paino voi vaihdella nesteiden, suolan, hiilihydraattien, ruoansulatuksen
+          ja hormonitoiminnan vuoksi. Siksi kokonaiskuvaa kannattaa katsoa useasta kulmasta.
+        </p>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Vaa an keskiarvo</h3>
+            <p>
+              Yksittäisen päivän lukema ei kerro kaikkea. Viikon keskiarvo kertoo paljon enemmän.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Peili ja vaatteet</h3>
+            <p>
+              Kehon muoto voi muuttua hyvään suuntaan, vaikka paino laskisi hitaasti.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Voimatasot ja olo</h3>
+            <p>
+              Jos voimat pysyvät mukana ja olo on toimintakykyinen, laihdutus on usein oikealla uralla.
+            </p>
+          </div>
+        </div>
+        <div class="good-box">
+          Paras seuranta on yhdistelmä: painon viikkokeskiarvo, peilikuva, mitat, vaatteiden istuvuus,
+          treenitulokset ja yleinen vire.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Merkit siitä, että kalorivaje on liian kova</h2>
+        <p>
+          Jos palelet paljon, nukut heikommin, olet jatkuvasti poikki, ajatus kulkee tahmeasti
+          ja treeniteho laskee nopeasti, kokonaisuutta kannattaa pehmentää.
+        </p>
+        <p>
+          Tavoite ei ole puristaa mahdollisimman rajua vaihetta läpi, vaan rakentaa malli,
+          joka vie varmasti perille.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Palautuminen on osa tulosta</h2>
+        <p>
+          Uni, säännöllinen syöminen ja hallittu treenimäärä ratkaisevat paljon.
+          Ilman palautumista laihdutus voi muuttua helposti projektiksi, joka tuntuu raskaalta koko ajan.
+        </p>
+        <p>
+          Kun palautuminen on kunnossa, myös treenin laatu säilyy ja arki toimii paremmin.
+        </p>
+      </section>
+
+      <section class="card full">
+        <h2>Yleisimmät virheet laihdutuksen ja salitreenin yhdistämisessä</h2>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Liian vähän ruokaa</h3>
+            <p>
+              Tällöin treeni kärsii, nälkä kasvaa ja arki muuttuu raskaaksi. Liian suuri kiire syö usein tulosta.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Liian paljon treeniä</h3>
+            <p>
+              Sali, juoksu, pyöräily, jumpat ja jatkuva lisäkardio voivat näyttää tehokkailta paperilla,
+              mutta palautuminen voi hajota nopeasti.
+            </p>
+          </div>
+          <div class="mini-card">
+            <h3>Vaakaa tuijotetaan liikaa</h3>
+            <p>
+              Hidas painonmuutos ei tarkoita huonoa etenemistä, jos kehonkoostumus muuttuu hyvään suuntaan.
+            </p>
+          </div>
+        </div>
+        <div class="danger-box">
+          Rasvanpoltto ei parane loputtomasti sillä, että tekee koko ajan enemmän.
+          Usein paras ratkaisu on tehdä hieman vähemmän, mutta tehdä se tasaisesti hyvin.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Selkeä aloittelijan yhteenveto</h2>
+        <p>
+          Jos tavoite on laihtua rasvasta, kuntosali on erittäin vahva työkalu. Se suojaa lihasmassaa,
+          pitää voimia mukana, parantaa kehon muotoa ja tukee toimintakykyä koko prosessin ajan.
+        </p>
+        <p>
+          Toimiva kokonaisuus syntyy yleensä siitä, että kalorivaje on maltillinen, salilla käydään
+          säännöllisesti, proteiinia saadaan riittävästi ja arjessa pysytään liikkeessä.
+          Juuri nämä perusasiat tuottavat useimmiten parhaat tulokset.
+        </p>
+        <p>
+          Aloittelijan ei tarvitse tehdä mitään ylivaikeaa. Riittää, että harjoittelee johdonmukaisesti,
+          seuraa kokonaisuutta viisaasti ja antaa keholle mahdollisuuden sekä tehdä töitä että palautua.
+        </p>
+        <div class="callout">
+          Fiksu laihdutus ei ole itsensä rikkomista. Fiksu laihdutus on prosessi, jossa rasvaa lähtee pois
+          ja keho pysyy samaan aikaan vahvana, ryhdikkäänä ja toimintakykyisenä.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Johdonmukainen perusmalli voittaa kiireisen säätämisen</h2>
+      <p>
+        Kun ruokavalio, salitreeni, kävely ja palautuminen toimivat samassa suunnassa,
+        laihdutuksesta tulee hallittu projekti, joka näyttää hyvältä sekä paperilla että peilissä.
+      </p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Laihdutus ja salitreeni aloittelijalle • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>

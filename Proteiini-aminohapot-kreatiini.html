@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proteiini, aminohapot ja kreatiini</title>
+  <meta
+    name="description"
+    content="Selkeä ja kattava sivu proteiinin, aminohappojen ja kreatiinin merkityksestä treenaajalle. Mukana avattavat lisätietopaneelit ilman kuvia."
+  />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --accent-3: #f7fbff;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --shadow-soft: 0 10px 24px rgba(20, 33, 51, 0.08);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1180px;
+      --nav-dark: #0f1a2b;
+      --nav-top: #132033;
+      --hero-1: rgba(20, 33, 51, 0.96);
+      --hero-2: rgba(29, 106, 91, 0.92);
+      --white: #ffffff;
+      --panel-width: min(94vw, 760px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79, 158, 143, 0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29, 106, 91, 0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.68;
+    }
+
+    body.panel-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      background: var(--white);
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      z-index: 3000;
+      font-weight: 800;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .langbar {
+      background: var(--nav-top);
+      color: var(--white);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: var(--white);
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .lang-links a.active {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .site-nav {
+      background: var(--nav-dark);
+      color: var(--white);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: var(--white);
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.24);
+      transform: translateY(-1px);
+    }
+
+    .site-nav a.active {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, var(--hero-1), var(--hero-2));
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241, 216, 148, 0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79, 158, 143, 0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      padding: 66px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 4.7rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 11ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.14rem);
+      color: rgba(255, 255, 255, 0.93);
+      margin: 0 0 18px;
+      max-width: 68ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 46px rgba(20, 33, 51, 0.14);
+    }
+
+    .btn.primary {
+      background: var(--white);
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin: 0 0 16px;
+      font-size: 1.22rem;
+      color: var(--white);
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    main {
+      padding: 42px 0 84px;
+    }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 28px;
+      margin-top: 28px;
+    }
+
+    .section-shell {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-shell h2 {
+      font-size: clamp(1.55rem, 2vw, 2rem);
+      margin: 0 0 16px;
+      line-height: 1.18;
+      color: var(--ink);
+    }
+
+    .section-shell > p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .section-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .topic-card,
+    .food-card {
+      border: 1px solid var(--border);
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+    }
+
+    .topic-card h3,
+    .food-card h3 {
+      margin: 0;
+      font-size: 1.24rem;
+      line-height: 1.24;
+      color: var(--ink);
+    }
+
+    .topic-card p,
+    .food-card p {
+      margin: 0;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .topic-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--brand);
+      font-weight: 900;
+      font-size: 1rem;
+      border: 1px solid rgba(29, 106, 91, 0.15);
+    }
+
+    .food-subtitle {
+      margin: 26px 0 14px;
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .card-button {
+      margin-top: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: var(--white);
+      font-weight: 800;
+      align-self: flex-start;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .card-button:hover,
+    .card-button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(20, 33, 51, 0.12);
+      opacity: 0.98;
+    }
+
+    .card-button[aria-expanded="true"] {
+      background: linear-gradient(135deg, #16354a, #1d6a5b);
+    }
+
+    .summary-box {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 16, 28, 0.55);
+      display: none;
+      z-index: 1998;
+      backdrop-filter: blur(4px);
+    }
+
+    .panel-overlay.active {
+      display: block;
+    }
+
+    .info-panel {
+      position: fixed;
+      top: 0;
+      right: calc(-1 * var(--panel-width) - 30px);
+      width: var(--panel-width);
+      height: 100vh;
+      background: var(--white);
+      overflow-y: auto;
+      transition: right 0.35s ease;
+      z-index: 1999;
+      box-shadow: -18px 0 40px rgba(20, 33, 51, 0.16);
+      padding: 0;
+      border-left: 1px solid var(--border);
+    }
+
+    .info-panel.active {
+      right: 0;
+    }
+
+    .panel-scroll {
+      padding: 24px;
+    }
+
+    .panel-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .panel-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--brand);
+      font-weight: 800;
+      border: 1px solid rgba(29, 106, 91, 0.14);
+    }
+
+    .close-btn {
+      padding: 10px 14px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      border-radius: 999px;
+      color: var(--ink);
+      font-weight: 800;
+      transition: transform 0.2s ease, background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus-visible {
+      transform: translateY(-1px);
+      background: #f6fbff;
+    }
+
+    .panel-visual {
+      width: 100%;
+      min-height: 180px;
+      border-radius: 24px;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(79, 158, 143, 0.18), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(29, 106, 91, 0.14), transparent 24%),
+        linear-gradient(135deg, #f8fcff, #eef6fb);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .panel-visual strong {
+      display: block;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+
+    .panel-visual span {
+      display: block;
+      max-width: 36ch;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .panel-content h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.12;
+      color: var(--ink);
+    }
+
+    .panel-content p {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .panel-content h3 {
+      margin: 24px 0 10px;
+      font-size: 1.14rem;
+      color: var(--ink);
+    }
+
+    .panel-content ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .panel-content li {
+      margin-bottom: 7px;
+      color: var(--muted);
+    }
+
+    .panel-note {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--accent-3);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29, 106, 91, 0.98), rgba(20, 33, 51, 0.98));
+      color: var(--white);
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .footer-cta h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+    }
+
+    .footer-cta p {
+      margin: 0 0 14px;
+      max-width: 72ch;
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    footer {
+      background: var(--nav-top);
+      color: var(--white);
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .food-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px) {
+      header {
+        min-height: auto;
+      }
+
+      .hero,
+      .section-list,
+      .food-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 44px 0 54px;
+      }
+
+      .topic-card,
+      .food-card,
+      .section-shell,
+      .intro-banner {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .info-panel {
+        width: 100vw;
+        right: -100vw;
+        border-left: none;
+      }
+
+      .panel-scroll {
+        padding: 20px;
+      }
+
+      .panel-topbar {
+        align-items: flex-start;
+      }
+
+      .footer-meta {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .site-nav {
+        position: relative;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .info-panel,
+      .card-button,
+      .btn,
+      .site-nav a,
+      .close-btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Siirry sisältöön</a>
+
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="#top" aria-current="page">Suomi</a>
+      </div>
+      <small>Fitness ravitsemus</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a class="active" aria-current="page" href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Proteiini • aminohapot • kreatiini</div>
+        <h1>Proteiini, aminohapot ja kreatiini</h1>
+        <p>
+          Tämä sivu kertoo selkeästi, miksi treenaaja hyötyy monipuolisista proteiininlähteistä,
+          mitä aminohapot tekevät kehossa, mistä kreatiinia saa luonnollisesti ja miksi sitä
+          käytetään myös erikseen lisänä.
+        </p>
+        <p>
+          Kun harjoittelu on tavoitteellista, ravinto ei ole sivuasia vaan koko kehityksen perusta.
+          Laadukas proteiini, vahva aminohappopohja ja oikein ymmärretty kreatiinin rooli tukevat
+          suoritusta, palautumista ja pitkäjänteistä kehitystä.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#paaasia">Siirry pääasioihin</a>
+          <a class="btn secondary" href="#ruokaesimerkit">Siirry ruokaesimerkkeihin</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Sivun tärkeimmät hyödyt">
+        <h2>Tällä sivulla opit</h2>
+        <ul class="hero-list">
+          <li>miksi proteiini rakentaa, korjaa ja ylläpitää</li>
+          <li>miksi eri proteiinit täydentävät toisiaan</li>
+          <li>miksi aminohapot ratkaisevat proteiinin laadun</li>
+          <li>miksi kreatiini kiinnostaa tavoitteellista treenaajaa</li>
+          <li>mitä kana, kananmuna, lohi ja vahvat kasvipohjaiset proteiiniruoat käytännössä tuovat</li>
+          <li>miten avattavat lisätietopaneelit helpottavat syvempään tietoon menemistä</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main id="main-content" class="wrap">
+    <div class="intro-banner">
+      <p>
+        Harjoittelu antaa keholle syyn kehittyä. Ruoka antaa materiaalin, jolla tuo kehitys tehdään
+        todeksi. Siksi proteiinin, aminohappojen ja kreatiinin ymmärtäminen auttaa rakentamaan
+        vahvemman ja käytännöllisemmän ruokavalion.
+      </p>
+    </div>
+
+    <div class="content-grid">
+      <section class="section-shell" id="paaasia">
+        <h2>Pääasiat nopeasti</h2>
+        <p>
+          Alta löydät tärkeimmät kokonaisuudet. Jokainen painike avaa sivupaneelin, jossa aihe
+          kerrotaan laajemmin ja käytännöllisemmin.
+        </p>
+
+        <div class="section-list">
+          <article class="topic-card">
+            <span class="topic-number" aria-hidden="true">1</span>
+            <h3>Proteiini rakentaa, korjaa ja ylläpitää</h3>
+            <p>
+              Proteiini antaa keholle aminohapot, joita tarvitaan lihaksiin, kudosten korjaukseen,
+              palautumiseen ja koko elimistön toimintaan.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-protein-basics"
+              aria-controls="panel-protein-basics"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="topic-card">
+            <span class="topic-number" aria-hidden="true">2</span>
+            <h3>Eri proteiinit täydentävät toisiaan</h3>
+            <p>
+              Kaikki proteiinit eivät ole täysin samanlaisia. Ne eroavat aminohappokoostumuksessa,
+              sulavuudessa, kylläisyydessä ja siinä, mitä muuta ravintoa ne tuovat mukana.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-protein-variety"
+              aria-controls="panel-protein-variety"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="topic-card">
+            <span class="topic-number" aria-hidden="true">3</span>
+            <h3>Aminohapot ovat proteiinin rakennusosia</h3>
+            <p>
+              Kun syöt proteiinia, keho pilkkoo sen aminohapoiksi. Näistä aminohapoista keho rakentaa
+              lihasta ja muita elintärkeitä rakenteita.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-amino-acids"
+              aria-controls="panel-amino-acids"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="topic-card">
+            <span class="topic-number" aria-hidden="true">4</span>
+            <h3>Kreatiini tukee kovatehoista harjoittelua</h3>
+            <p>
+              Kreatiinia saa luonnollisesti lihasta, kalasta ja muista eläinperäisistä lähteistä,
+              mutta lisänä sitä käytetään siksi, että varastoja on helpompi nostaa tehokkaalle tasolle.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-creatine"
+              aria-controls="panel-creatine"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+        </div>
+
+        <div class="summary-box">
+          Mitä tavoitteellisempi harjoittelu on, sitä tärkeämpää on ymmärtää mitä syöt, miksi syöt
+          ja miten ruoka tukee kehitystäsi päivästä toiseen.
+        </div>
+      </section>
+
+      <section class="section-shell" id="ruokaesimerkit">
+        <h2>Ruokaesimerkkejä</h2>
+        <p>
+          Seuraavat ruokaesimerkit näyttävät käytännössä, miten eri proteiininlähteet voivat tukea
+          monipuolista ja vahvaa ruokavaliota. Tässä osiossa on mukana myös kasvipohjaisia vahvoja
+          proteiiniruokia, jotta kokonaisuus olisi täsmällisempi ja ravitsemuksellisesti laajempi.
+        </p>
+
+        <div class="food-subtitle">Eläinperäiset esimerkit</div>
+        <div class="food-grid">
+          <article class="food-card">
+            <h3>Kana</h3>
+            <p>
+              Kana on laadukas proteiininlähde, josta saa runsaasti välttämättömiä aminohappoja.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-chicken"
+              aria-controls="panel-chicken"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Kananmuna</h3>
+            <p>
+              Kananmunaa pidetään laadukkaana proteiininlähteenä, koska sen aminohappokoostumus on vahva.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-egg"
+              aria-controls="panel-egg"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Lohi</h3>
+            <p>
+              Lohi tuo proteiinin lisäksi myös hyödyllisiä rasvoja. Se on yksi luonnollisista kreatiinin lähteistä.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-salmon"
+              aria-controls="panel-salmon"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+        </div>
+
+        <div class="food-subtitle">Kasvipohjaiset vahvat proteiiniruoat</div>
+        <div class="food-grid">
+          <article class="food-card">
+            <h3>Parsakaali</h3>
+            <p>
+              Parsakaali ei ole tämän aiheen voimakkain varsinainen proteiiniruoka, mutta se on erittäin
+              hyödyllinen lisä, koska se tuo hieman proteiinia, kuitua ja paljon ravitsemuksellista laatua.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-broccoli"
+              aria-controls="panel-broccoli"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Edamame</h3>
+            <p>
+              Edamame on yksi vahvimmista kasvipohjaisista proteiiniruoista, ja se sopii loistavasti
+              sekä lämpimiin aterioihin että kylmiin annoksiin.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-edamame"
+              aria-controls="panel-edamame"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Tofu</h3>
+            <p>
+              Tofu on käytännöllinen, monipuolinen ja proteiiniltaan vahva ruoka, joka on helppo maustaa
+              monenlaisiin kokonaisuuksiin.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-tofu"
+              aria-controls="panel-tofu"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Tempe</h3>
+            <p>
+              Tempe on erittäin vahva kasvipohjainen proteiiniruoka, jossa on tiivis rakenne, paljon proteiinia
+              ja hyvä kylläisyys.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-tempeh"
+              aria-controls="panel-tempeh"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Linssit</h3>
+            <p>
+              Linssit ovat käytännöllinen ja ravitseva proteiiniruoka, joka tuo samalla runsaasti kuitua
+              ja tukee kylläisyyttä erittäin hyvin.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-lentils"
+              aria-controls="panel-lentils"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+
+          <article class="food-card">
+            <h3>Hampunsiemenet</h3>
+            <p>
+              Hampunsiemenet ovat pieni mutta tehokas lisä, jolla voi nostaa proteiinia, energiapitoisuutta
+              ja siementen tuomaa ravitsemuksellista laatua.
+            </p>
+            <button
+              type="button"
+              class="card-button"
+              data-panel="panel-hemp-seeds"
+              aria-controls="panel-hemp-seeds"
+              aria-expanded="false"
+            >
+              Klikkaa tästä saadaksesi lisätietoja
+            </button>
+          </article>
+        </div>
+
+        <div class="summary-box">
+          Parsakaali on erinomainen tukiruoka, mutta tämän osion vahvimmat kasvipohjaiset proteiiniankkurit
+          ovat erityisesti edamame, tofu, tempe, linssit ja hampunsiemenet.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta" aria-label="Loppunosto">
+    <div class="wrap">
+      <h2>Laadukas ravinto antaa harjoittelulle todellisen pohjan</h2>
+      <p>
+        Proteiinin määrä on tärkeä, mutta vielä tärkeämpää on ymmärtää laatu, aminohapot, käytännön
+        toteutus ja kokonaisuus. Kun nämä asiat ovat kunnossa, ruokavalio tukee kehitystäsi
+        johdonmukaisesti ja vahvasti.
+      </p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Proteiini, aminohapot ja kreatiini</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+
+  <div id="panelOverlay" class="panel-overlay" hidden></div>
+
+  <aside id="panel-protein-basics" class="info-panel" aria-hidden="true" aria-labelledby="panel-protein-basics-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Pääasia 1</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Proteiini on kehon rakennusmateriaalia</strong>
+          <span>Se tukee lihaksia, kudoksia, palautumista ja koko elimistön toiminnan laatua.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-protein-basics-title">Proteiini rakentaa, korjaa ja ylläpitää</h2>
+        <p>
+          Proteiini on paljon enemmän kuin vain lihaksen rakennusaine. Se on koko elimistön
+          toiminnan keskeinen rakennusmateriaali. Lihas, entsyymit, kuljetusproteiinit,
+          immuunipuolustuksen osat ja monet kehon rakenteet rakentuvat proteiinista.
+        </p>
+
+        <h3>Mitä proteiini tekee treenaajalle</h3>
+        <ul>
+          <li>antaa aminohapot lihaskudoksen korjaukseen harjoittelun jälkeen</li>
+          <li>tukee uuden lihasmassan rakentumista</li>
+          <li>auttaa palautumaan seuraavaa harjoitusta varten</li>
+          <li>ylläpitää kudoksia myös silloin, kun et harjoittele</li>
+          <li>tukee kylläisyyttä ja kehonkoostumuksen hallintaa</li>
+        </ul>
+
+        <h3>Miksi proteiini on tärkeä juuri harjoittelussa</h3>
+        <p>
+          Harjoitus antaa keholle signaalin muuttua. Proteiini antaa materiaalin, jolla tuo muutos
+          voidaan toteuttaa. Jos treeni kuormittaa paljon mutta ravinto ei tuo riittävästi laadukasta
+          proteiinia, kehon kyky rakentua, vahvistua ja palautua heikkenee.
+        </p>
+
+        <h3>Miksi pelkkä proteiinigrammojen laskeminen ei aina riitä</h3>
+        <p>
+          Treenaajan näkökulmasta merkitystä on sekä kokonaismäärällä että proteiinin laadulla.
+          Eri proteiinit eroavat siinä, kuinka hyvin ne tuovat välttämättömät aminohapot ja kuinka
+          tehokkaasti ne tukevat lihaksen rakentumista päivän eri tilanteissa.
+        </p>
+
+        <div class="panel-note">
+          Kun tavoitteena on vahva suoritus, kehittyminen ja hyvä palautuminen, proteiinia kannattaa
+          ajatella koko päivän laatutekijänä eikä vain yhtenä numerona.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-protein-variety" class="info-panel" aria-hidden="true" aria-labelledby="panel-protein-variety-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Pääasia 2</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Eri proteiinit täydentävät toisiaan</strong>
+          <span>Monipuolinen proteiinipohja tuo aminohappoja, ravinteita, kylläisyyttä ja käytännöllisyyttä.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-protein-variety-title">Miksi useat eri proteiinit ovat treenaajalle eduksi</h2>
+        <p>
+          Monipuolinen proteiinipohja on hyödyllinen siksi, että eri proteiinit tuovat eri vahvuuksia.
+          Yksi lähde voi olla erittäin hyvä lihaksen rakennussignaalin kannalta, toinen voi taas
+          täydentää ruokavaliota kuidulla, rasvan laadulla, vitamiineilla tai kivennäisaineilla.
+        </p>
+
+        <h3>Monipuolisuuden tärkeimmät hyödyt</h3>
+        <ul>
+          <li>eri aminohappoprofiilit täydentävät toisiaan</li>
+          <li>eri sulavuudet ja imeytymisnopeudet tukevat päivän rytmitystä</li>
+          <li>eläinproteiinit tuovat usein vahvan välttämättömien aminohappojen profiilin</li>
+          <li>kasviproteiinit tuovat kuitua ja monipuolisen ravinnepaketin</li>
+          <li>ruokavaliosta tulee helpommin pitkäjänteinen ja käytännöllinen</li>
+        </ul>
+
+        <h3>Miksi tämä auttaa lihaskasvussa</h3>
+        <p>
+          Lihaskasvu ei tarvitse vain yhtä proteiinilähdettä, vaan riittävästi välttämättömiä
+          aminohappoja, hyvän kokonaismäärän ja toistuvan signaalin päivän aikana. Kun ruokavaliossa
+          on useita proteiininlähteitä, aminohappojen saanti on varmempaa ja ruokavalio on helpompi
+          toteuttaa laadukkaasti päivästä toiseen.
+        </p>
+
+        <h3>Miksi tämä auttaa palautumisessa</h3>
+        <p>
+          Palautuminen ei ole vain lihaskudoksen korjaamista. Se liittyy myös energiansaantiin,
+          tulevaan harjoitusvalmiuteen, kylläisyyteen ja siihen, että elimistö saa laajasti
+          tarvitsemansa ravintoaineet. Monipuolinen proteiinipohja tukee tätä kokonaisuutta paremmin
+          kuin yksipuolinen ruokavalio.
+        </p>
+
+        <div class="panel-note">
+          Monipuolisuus tekee ruokavaliosta vahvemman myös käytännössä, koska se helpottaa arjen
+          toteutusta, vaihtelua ja pitkän aikavälin jatkuvuutta.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-amino-acids" class="info-panel" aria-hidden="true" aria-labelledby="panel-amino-acids-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Pääasia 3</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Aminohapot ratkaisevat proteiinin arvon</strong>
+          <span>Keho käyttää proteiinin sisältämiä aminohappoja rakentamiseen, ylläpitoon ja palautumiseen.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-amino-acids-title">Aminohapot ja niiden tehtävä kehossa</h2>
+        <p>
+          Aminohapot ovat proteiinin rakennusosia. Kun syöt proteiinia sisältävää ruokaa, keho pilkkoo
+          sen aminohapoiksi ja käyttää niitä lihasten, kudosten ja muiden tärkeiden rakenteiden
+          rakentamiseen ja ylläpitoon.
+        </p>
+
+        <h3>Välttämättömät aminohapot</h3>
+        <p>
+          Osa aminohapoista on sellaisia, joita keho ei pysty valmistamaan riittävästi itse.
+          Näitä kutsutaan välttämättömiksi aminohapoiksi, ja ne on saatava ravinnosta.
+        </p>
+
+        <h3>Treenaajalle usein tärkeitä aminohappoja</h3>
+        <ul>
+          <li><strong>Leusiini</strong> tukee lihasproteiinisynteesin käynnistymistä</li>
+          <li><strong>Isoleusiini</strong> ja <strong>valiini</strong> kuuluvat haaraketjuisiin aminohappoihin</li>
+          <li><strong>Lysiini</strong> on tärkeä kudosten rakentumisessa</li>
+          <li><strong>Methioniini</strong> osallistuu moniin aineenvaihdunnan prosesseihin</li>
+          <li><strong>Treoniini</strong>, <strong>fenyylialaniini</strong> ja <strong>tryptofaani</strong> kuuluvat myös tärkeisiin välttämättömiin aminohappoihin</li>
+        </ul>
+
+        <h3>Miksi aminohapoista puhutaan niin paljon</h3>
+        <p>
+          Siksi, että keho ei käytä proteiinia sellaisenaan. Se käyttää aminohappoja. Kun puhutaan
+          laadukkaasta proteiinista, puhutaan käytännössä siitä, kuinka hyvin kyseinen ruoka tuo
+          keholle tarvitsemat aminohapot oikeassa suhteessa.
+        </p>
+
+        <div class="panel-note">
+          Kun ymmärtää aminohapot, ymmärtää paremmin myös sen, miksi laadukas ja monipuolinen
+          proteiiniruokavalio tukee kehitystä niin tehokkaasti.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-creatine" class="info-panel" aria-hidden="true" aria-labelledby="panel-creatine-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Pääasia 4</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Kreatiini tukee kovaa tekemistä</strong>
+          <span>Se liittyy nopeaan energian tuotantoon ja voi tukea voimaa, tehoa ja sarjakapasiteettia.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-creatine-title">Kreatiini luonnollisessa ravinnossa ja treenaajan käytössä</h2>
+        <p>
+          Kreatiinia saa luonnollisesti etenkin lihasta, kalasta ja muista eläinperäisistä lähteistä.
+          Keho valmistaa sitä myös itse aminohapoista, erityisesti glysiinistä, arginiinista ja
+          metioniinista.
+        </p>
+
+        <h3>Mistä kreatiinia saa luonnollisesti</h3>
+        <ul>
+          <li>naudanliha</li>
+          <li>porsaanliha</li>
+          <li>kana</li>
+          <li>lohi</li>
+          <li>tonnikala</li>
+          <li>silli ja muut kalat</li>
+        </ul>
+
+        <h3>Miksi treenaaja käyttää kreatiinia myös erikseen</h3>
+        <p>
+          Luonnollisesta ravinnosta kreatiinia saa, mutta käytännössä lisänä sitä käytetään siksi,
+          että lihasten kreatiinivarastoja on helpompi nostaa tehokkaalle tasolle. Tämä voi tukea
+          kovatehoista suorituskykyä, voimaa, sarjakapasiteettia ja pitkällä aikavälillä myös
+          harjoittelun laatua.
+        </p>
+
+        <h3>Miksi tämä on hyödyllistä harjoittelussa</h3>
+        <ul>
+          <li>tukee nopean energian tuotantoa kovissa suorituksissa</li>
+          <li>voi auttaa tekemään hieman enemmän laadukkaita toistoja</li>
+          <li>voi parantaa harjoituskapasiteettia ajan mittaan</li>
+          <li>helpottaa varastojen nostamista ilman erittäin suurta lihamäärää ruokavaliossa</li>
+        </ul>
+
+        <div class="panel-note">
+          Kreatiinin idea ei ole korvata hyvää ruokavaliota, vaan täydentää sitä tilanteessa,
+          jossa tavoitteena on vahva suoritus ja tehokas harjoittelu.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-chicken" class="info-panel" aria-hidden="true" aria-labelledby="panel-chicken-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Kana on käytännöllinen proteiiniperusta</strong>
+          <span>Se sopii helposti osaksi lounasta, päivällistä ja tavoitteellista ruokarytmiä.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-chicken-title">Kana proteiininlähteenä</h2>
+        <p>
+          Kana on suosittu treenaajan ruoka, koska se on käytännöllinen, proteiinipitoinen ja helposti
+          yhdistettävissä monenlaisiin aterioihin.
+        </p>
+
+        <h3>Mitä kana tuo</h3>
+        <ul>
+          <li>laadukasta proteiinia</li>
+          <li>runsaasti välttämättömiä aminohappoja</li>
+          <li>hyvän leuciinipitoisuuden lihaksen rakennussignaalin tueksi</li>
+          <li>lysiiniä, isoleusiinia, valiinia ja muita lihakselle tärkeitä aminohappoja</li>
+        </ul>
+
+        <h3>Miksi kana on hyvä treenaajalle</h3>
+        <p>
+          Kana sopii hyvin aterioihin, joissa halutaan selkeä proteiiniperusta ilman raskasta
+          kokonaisuutta. Se on hyvä valinta esimerkiksi lounaalle, päivälliselle tai harjoittelun
+          jälkeiseen ateriaan yhdessä hiilihydraatin ja kasvisten kanssa.
+        </p>
+
+        <div class="panel-note">
+          Kana toimii hyvin silloin, kun haluat rakentaa aterian, jossa proteiinin määrä ja käytännöllisyys
+          ovat selkeästi hallinnassa.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-egg" class="info-panel" aria-hidden="true" aria-labelledby="panel-egg-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Kananmuna on vahva laatuproteiini</strong>
+          <span>Se on helppo, monipuolinen ja ravitsemuksellisesti arvokas osa päivän aterioita.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-egg-title">Kananmuna proteiininlähteenä</h2>
+        <p>
+          Kananmuna on yksi tunnetuimmista laadukkaan proteiinin lähteistä. Se tuo hyvän
+          aminohappokoostumuksen ja sopii moniin tilanteisiin aamupalasta iltapalaan.
+        </p>
+
+        <h3>Mitä kananmunasta saa</h3>
+        <ul>
+          <li>täysipainoista proteiinia</li>
+          <li>välttämättömiä aminohappoja</li>
+          <li>leusiinia, lysiiniä, methioniinia ja treoniinia</li>
+          <li>monipuolisen ravinnepaketin proteiinin ohella</li>
+        </ul>
+
+        <h3>Miksi kananmunaa arvostetaan</h3>
+        <p>
+          Kananmuna on käytännöllinen esimerkki ruoasta, jossa proteiinin laatu on vahva.
+          Se toimii hyvin osana päivän proteiinijakoa ja tukee aterioiden laatua ilman monimutkaista
+          valmistelua.
+        </p>
+
+        <div class="panel-note">
+          Kananmuna on hyvä esimerkki siitä, miten yksinkertainen ruoka voi olla samalla sekä
+          ravitseva että käytännöllinen.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-salmon" class="info-panel" aria-hidden="true" aria-labelledby="panel-salmon-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Lohi yhdistää proteiinin ja laadukkaan rasvan</strong>
+          <span>Se tuo samalla monipuolisuutta, palautumista tukevaa ravitsemusta ja luonnollista kreatiinia.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-salmon-title">Lohi proteiinin ja kreatiinin lähteenä</h2>
+        <p>
+          Lohi on vahva ruoka treenaajalle, koska se tuo laadukkaan proteiinin lisäksi rasvahappoja
+          ja luonnollisesti myös kreatiinia kuten muutkin eläinperäiset lihaskudokset.
+        </p>
+
+        <h3>Mitä lohi tuo</h3>
+        <ul>
+          <li>laadukasta proteiinia</li>
+          <li>välttämättömiä aminohappoja</li>
+          <li>leusiinia, isoleusiinia, valiinia ja lysiiniä</li>
+          <li>luonnollista kreatiinia</li>
+          <li>hyödyllisiä rasvoja osana monipuolista ruokavaliota</li>
+        </ul>
+
+        <h3>Miksi lohi on hyvä valinta</h3>
+        <p>
+          Lohi yhdistää proteiinin, palautumista tukevan ravinnepaketin ja ruokavalion monipuolisuuden.
+          Se on hyvä esimerkki siitä, miksi eri proteiininlähteet täydentävät toisiaan.
+        </p>
+
+        <div class="panel-note">
+          Lohi tuo ruokavalioon laatua useasta suunnasta yhtä aikaa, mikä tekee siitä arvokkaan osan
+          tavoitteellista syömistä.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-broccoli" class="info-panel" aria-hidden="true" aria-labelledby="panel-broccoli-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Kasvipohjainen ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Parsakaali on ravitsemuksellinen tukipilari</strong>
+          <span>Se ei ole tämän aiheen voimakkain varsinainen proteiiniruoka, mutta se vahvistaa aterian laatua monesta suunnasta.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-broccoli-title">Parsakaali proteiinia tukevana ruokana</h2>
+        <p>
+          Parsakaali ansaitsee paikkansa tällä sivulla, koska se on erittäin hyödyllinen osa vahvaa
+          ruokavaliota. Se tuo proteiinia jonkin verran, mutta vielä tärkeämpää on sen kyky täydentää
+          proteiinipainotteista ateriaa kuidulla, volyymilla ja laadukkaalla ravitsemuksellisella tuella.
+        </p>
+
+        <h3>Miksi parsakaali on hyödyllinen</h3>
+        <ul>
+          <li>tuo hieman proteiinia kasvikseksi</li>
+          <li>tukee kylläisyyttä ja aterian rakennetta</li>
+          <li>sopii helposti kanan, kalan, tofun, tempen ja linssien rinnalle</li>
+          <li>auttaa tekemään proteiiniateriasta ravitsemuksellisesti vahvemman</li>
+        </ul>
+
+        <h3>Miten parsakaalia kannattaa ajatella</h3>
+        <p>
+          Parsakaali ei ole tämän sivun pääproteiiniankkuri samalla tavalla kuin tofu, tempe, edamame
+          tai linssit. Sen vahvuus on siinä, että se parantaa proteiiniruoan ympärille rakennettua
+          kokonaisuutta ja tekee ateriasta tasapainoisemman.
+        </p>
+
+        <div class="panel-note">
+          Paras tapa käyttää parsakaalia on ajatella sitä vahvana tukiruokana, joka tekee varsinaisesta
+          proteiiniateriasta ravitsemuksellisesti entistä paremman.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-edamame" class="info-panel" aria-hidden="true" aria-labelledby="panel-edamame-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Kasvipohjainen ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Edamame on vahva kasviproteiini</strong>
+          <span>Se yhdistää hyvän proteiinitason, helpon käytettävyyden ja soijapohjaisen laadun.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-edamame-title">Edamame proteiininlähteenä</h2>
+        <p>
+          Edamame kuuluu käytännössä vahvimpiin kasvipohjaisiin proteiiniruokiin. Se sopii erityisen
+          hyvin treenaajalle, joka haluaa kasvipohjaiseen ruokavalioon ruoan, jossa proteiinia on
+          selvästi enemmän kuin tavallisissa kasviksissa.
+        </p>
+
+        <h3>Mitä edamame tuo</h3>
+        <ul>
+          <li>vahvan proteiinimäärän kasvipohjaiseksi ruoaksi</li>
+          <li>hyvän kylläisyyden</li>
+          <li>helpon lisän salaatteihin, kulhoihin, lämpimiin aterioihin ja välipaloihin</li>
+          <li>luontevan sillan kasvispainotteiseen, mutta suorituskykyä tukevaan syömiseen</li>
+        </ul>
+
+        <h3>Miksi edamame on treenaajalle arvokas</h3>
+        <p>
+          Edamame auttaa nostamaan kasvipohjaisen aterian proteiinitasoa ilman monimutkaista valmistelua.
+          Se sopii hyvin tilanteisiin, joissa halutaan sekä helppoutta että oikeasti hyödyllinen
+          proteiinimäärä.
+        </p>
+
+        <div class="panel-note">
+          Jos haluat kasvipohjaisen ruoan, joka tuntuu oikeasti proteiiniruoalta eikä vain lisukkeelta,
+          edamame on erittäin hyvä valinta.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-tofu" class="info-panel" aria-hidden="true" aria-labelledby="panel-tofu-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Kasvipohjainen ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Tofu on monipuolinen proteiiniankkuri</strong>
+          <span>Se mukautuu mausteisiin hyvin ja toimii arjessa erittäin käytännöllisesti.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-tofu-title">Tofu proteiininlähteenä</h2>
+        <p>
+          Tofu on yksi tunnetuimmista kasvipohjaisista proteiiniruoista. Sen suurin vahvuus on siinä,
+          että se on helppo maustaa, helppo yhdistää eri aterioihin ja riittävän proteiinipitoinen
+          toimimaan varsinaisena ruoan perustana.
+        </p>
+
+        <h3>Mitä tofu tuo</h3>
+        <ul>
+          <li>vahvan proteiinilisän kasvipohjaiseen ateriaan</li>
+          <li>käytännöllisen rakenteen paistamiseen, uuniin ja kastikkeisiin</li>
+          <li>hyvän vaihtoehdon silloin, kun halutaan vähentää eläinperäisiä proteiineja menettämättä rakennetta</li>
+          <li>selkeän proteiinipohjan riisin, perunan, nuudelien ja kasvisten rinnalle</li>
+        </ul>
+
+        <h3>Miksi tofu toimii hyvin</h3>
+        <p>
+          Tofun etu on sen muunneltavuus. Sama ruoka voi toimia hyvin hyvin erilaisissa aterioissa,
+          mikä tekee siitä helpon pitkäjänteiseen käyttöön. Kun ruoka on helppo toteuttaa, siitä tulee
+          myös todennäköisemmin pysyvä osa laadukasta syömistä.
+        </p>
+
+        <div class="panel-note">
+          Tofu on hyvä valinta silloin, kun haluat kasvipohjaisen proteiinin, joka on sekä helppo
+          että aidosti hyödyllinen päivän kokonaisproteiinille.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-tempeh" class="info-panel" aria-hidden="true" aria-labelledby="panel-tempeh-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Kasvipohjainen ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Tempe on proteiiniltaan erittäin vahva</strong>
+          <span>Se on tiiviimpi, kylläisempi ja usein vielä voimakkaampi proteiiniruoka kuin tofu.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-tempeh-title">Tempe proteiininlähteenä</h2>
+        <p>
+          Tempe on yksi tämän osion voimakkaimmista kasvipohjaisista proteiiniruoista. Sen rakenne on
+          tiivis ja ruokaisa, minkä vuoksi se sopii hyvin tilanteisiin, joissa aterialta halutaan
+          selkeää proteiinista painopistettä.
+        </p>
+
+        <h3>Mitä tempe tuo</h3>
+        <ul>
+          <li>erittäin vahvan proteiinimäärän kasvipohjaiseksi ruoaksi</li>
+          <li>hyvän kylläisyyden ja ruokaisuuden</li>
+          <li>vahvan rungon salaatteihin, pannulle, kulhoihin ja lämpimiin ruokiin</li>
+          <li>hyvän vaihtoehdon niille, jotka haluavat kasvipohjaiselta ruoalta enemmän purutuntumaa</li>
+        </ul>
+
+        <h3>Miksi tempe erottuu</h3>
+        <p>
+          Tempen vahvuus näkyy erityisesti silloin, kun halutaan kasvipohjainen ruoka, joka kantaa
+          aterian proteiinipuolen lähes yksinään. Se tekee siitä erittäin kiinnostavan ruoan
+          tavoitteelliseen syömiseen.
+        </p>
+
+        <div class="panel-note">
+          Jos etsit kasvipohjaista ruokaa, joka tuntuu oikeasti voimakkaalta proteiinivalinnalta,
+          tempe kuuluu kärkipäähän.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-lentils" class="info-panel" aria-hidden="true" aria-labelledby="panel-lentils-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Kasvipohjainen ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Linssit ovat proteiinia ja kuitua samassa paketissa</strong>
+          <span>Ne tukevat kylläisyyttä, aterian rakennetta ja pitkän aikavälin käytännöllistä syömistä.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-lentils-title">Linssit proteiininlähteenä</h2>
+        <p>
+          Linssit ovat yksi käytännöllisimmistä kasvipohjaisista proteiiniruoista. Ne ovat helppoja,
+          ravitsevia ja erittäin hyödyllisiä erityisesti silloin, kun ruokavalioon halutaan sekä
+          proteiinia että hyvää kylläisyyttä.
+        </p>
+
+        <h3>Mitä linssit tuovat</h3>
+        <ul>
+          <li>selkeän kasvipohjaisen proteiinilisän</li>
+          <li>runsaasti kuitua</li>
+          <li>hyvän kylläisyyden ilman raskasta tunnetta</li>
+          <li>helpon rungon keittoihin, patoihin, kastikkeisiin ja lämpimiin kulhoihin</li>
+        </ul>
+
+        <h3>Miksi linssit ovat arvokkaita</h3>
+        <p>
+          Linssit ovat hyvä esimerkki ruoasta, joka ei tue vain proteiinia vaan koko arjen hallintaa.
+          Kun ruoka pitää hyvin kylläisenä ja on helppo valmistaa, ruokavaliosta tulee huomattavasti
+          helpompi toteuttaa johdonmukaisesti.
+        </p>
+
+        <div class="panel-note">
+          Linssit ovat yksi parhaista kasvipohjaisista perustarvikkeista silloin, kun tavoitteena on
+          ravitseva, täsmällinen ja pitkäjänteinen syöminen.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="panel-hemp-seeds" class="info-panel" aria-hidden="true" aria-labelledby="panel-hemp-seeds-title" role="dialog">
+    <div class="panel-scroll">
+      <div class="panel-topbar">
+        <span class="panel-kicker">Kasvipohjainen ruokaesimerkki</span>
+        <button type="button" class="close-btn" data-close>Sulje</button>
+      </div>
+      <div class="panel-visual" aria-hidden="true">
+        <div>
+          <strong>Hampunsiemenet ovat pieni mutta tehokas lisä</strong>
+          <span>Ne nostavat proteiinia helposti jogurttiin, puuroon, salaattiin ja smoothieen.</span>
+        </div>
+      </div>
+      <div class="panel-content">
+        <h2 id="panel-hemp-seeds-title">Hampunsiemenet proteiinia tukevana lisänä</h2>
+        <p>
+          Hampunsiemenet eivät yleensä toimi yksinään kokonaisen aterian pääproteiininä, mutta ne ovat
+          erittäin hyvä lisä silloin, kun halutaan nostaa proteiinia helposti pienessä tilassa.
+        </p>
+
+        <h3>Mitä hampunsiemenet tuovat</h3>
+        <ul>
+          <li>hyvän lisäproteiinimäärän pienessä annoksessa</li>
+          <li>helpon tavan vahvistaa puuroa, jogurttia, salaattia ja smoothieita</li>
+          <li>käytännöllisen ratkaisun silloin, kun pieni lisä tekee kokonaisuudesta vahvemman</li>
+          <li>siemenpohjaisen lisän, joka sopii monenlaiseen ruokarytmiin</li>
+        </ul>
+
+        <h3>Miksi hampunsiemenet ovat hyödyllisiä</h3>
+        <p>
+          Hampunsiemenien vahvuus on tehokkuudessa. Niitä ei tarvita suurta määrää, jotta ne nostavat
+          aterian ravitsemuksellista arvoa. Tämän vuoksi ne toimivat erityisen hyvin lisänä jo muuten
+          hyvään ateriaan.
+        </p>
+
+        <div class="panel-note">
+          Hampunsiemenet eivät korvaa varsinaista pääproteiinin lähdettä, mutta ne ovat erittäin hyvä
+          tapa vahvistaa aterian kokonaisuutta helposti ja nopeasti.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const overlay = document.getElementById('panelOverlay');
+    const openButtons = document.querySelectorAll('[data-panel]');
+    const closeButtons = document.querySelectorAll('[data-close]');
+    const panels = document.querySelectorAll('.info-panel');
+
+    let activePanel = null;
+    let lastTrigger = null;
+
+    function updateButtonsState(expandedId = null) {
+      openButtons.forEach((button) => {
+        const controls = button.getAttribute('aria-controls');
+        button.setAttribute('aria-expanded', controls === expandedId ? 'true' : 'false');
+      });
+    }
+
+    function closeAllPanels() {
+      panels.forEach((panel) => {
+        panel.classList.remove('active');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+
+      overlay.classList.remove('active');
+      overlay.hidden = true;
+      document.body.classList.remove('panel-open');
+      updateButtonsState();
+      activePanel = null;
+
+      if (lastTrigger) {
+        lastTrigger.focus();
+      }
+    }
+
+    function openPanel(panelId, triggerButton = null) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      panels.forEach((item) => {
+        item.classList.remove('active');
+        item.setAttribute('aria-hidden', 'true');
+      });
+
+      panel.classList.add('active');
+      panel.setAttribute('aria-hidden', 'false');
+
+      overlay.hidden = false;
+      overlay.classList.add('active');
+      document.body.classList.add('panel-open');
+
+      activePanel = panel;
+      lastTrigger = triggerButton;
+      updateButtonsState(panelId);
+
+      const closeButton = panel.querySelector('[data-close]');
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }
+
+    openButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-panel');
+        openPanel(targetId, button);
+      });
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener('click', closeAllPanels);
+    });
+
+    overlay.addEventListener('click', closeAllPanels);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && activePanel) {
+        closeAllPanels();
+      }
+    });
+  </script>
+</body>
+</html>
