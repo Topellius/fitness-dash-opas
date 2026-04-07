@@ -190,6 +190,30 @@
       color: #fff;
     }
 
+    .hero-photo {
+      margin: 0;
+      padding: 18px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      max-height: 520px;
+    }
+
+    .hero-photo figcaption {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.94);
+      font-weight: 600;
+    }
+
     .hero-list {
       display: grid;
       gap: 12px;
@@ -432,17 +456,16 @@
         </p>
       </div>
 
-      <aside class="hero-card">
-        <h2>Tällä sivulla</h2>
-        <ul class="hero-list">
-          <li>low carb mallin perusidea</li>
-          <li>tarkat hiilihydraattimäärät eri profiileille</li>
-          <li>käytännön dietit 60 g, 90 g ja 120 g tasoille</li>
-          <li>lautasmallit levossa ja treenipäivinä</li>
-          <li>kuntosalille sopiva ajoitus</li>
-          <li>ruokaesmerkit ja lähteet</li>
-        </ul>
-      </aside>
+      <figure class="hero-photo">
+        <img
+          src="images/low-carb-hero-pexels-31233885.jpg"
+          alt="Grillattu kanasalaatti ja tuoreita kasviksia"
+          loading="lazy"
+        />
+        <figcaption>
+          Low carb toimii parhaiten silloin, kun hiilihydraattimäärä, kylläisyys ja treenituntuma sovitetaan samaan kokonaisuuteen.
+        </figcaption>
+      </figure>
     </div>
   </header>
 
