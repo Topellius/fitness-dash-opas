@@ -218,6 +218,30 @@
       color: #fff;
     }
 
+    .hero-photo {
+      margin: 0;
+      padding: 18px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      max-height: 520px;
+    }
+
+    .hero-photo figcaption {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.94);
+      font-weight: 600;
+    }
+
     .hero-list {
       display: grid;
       gap: 14px;
@@ -460,17 +484,16 @@
         </p>
       </div>
 
-      <aside class="hero-card">
-        <h2>Tällä sivulla opit</h2>
-        <ul class="hero-list">
-          <li>miksi sali tukee rasvanpolttoa</li>
-          <li>miten lihasmassaa suojataan kalorivajeessa</li>
-          <li>mikä on toimiva rytmi viikolle</li>
-          <li>miten treeni rakennetaan käytännössä</li>
-          <li>miten tuloksia seurataan oikein</li>
-          <li>miten vältetään yleisimmät virheet</li>
-        </ul>
-      </aside>
+      <figure class="hero-photo">
+        <img
+          src="images/laihdutus-sali-hero-pexels-4853297.jpg"
+          alt="Mies auttaa naista painoharjoittelussa kuntosalilla"
+          loading="lazy"
+        />
+        <figcaption>
+          Järkevä laihdutus ja salitreeni rakentavat samaan aikaan vahvuutta, ryhtiä ja parempaa kehonkoostumusta.
+        </figcaption>
+      </figure>
     </div>
   </header>
 
