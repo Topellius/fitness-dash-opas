@@ -1,141 +1,687 @@
-<!doctype html>
-<html lang="fi">
+<!DOCTYPE html>
+<html lang="fi" id="top">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Käytännön malli ruokahimojen, harjoittelun ja urheilijan palautumisen seurantaan.">
-  <title>Ruokahimojen seuranta ja ruokavalion säätäminen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruokahimojen seuranta ja ruokavalion säätäminen | Fitness</title>
+  <meta name="description" content="Käytännön malli ruokahimojen, harjoittelun ja urheilijan palautumisen seurantaan." />
   <style>
-    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
     * { box-sizing: border-box; }
-    body { margin: 0; color: #172126; background: #fff; line-height: 1.6; }
-    header, main, footer { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
-    header { padding: 2.5rem 0 1.25rem; }
-    nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
-    nav a { color: inherit; }
-    h1 { max-width: 20ch; font-size: clamp(2.1rem, 5vw, 4.5rem); line-height: 1.05; margin: 0 0 1rem; }
-    h2 { line-height: 1.15; }
-    p, li { max-width: 74ch; }
-    .lead { font-size: 1.15rem; }
-    .visuals { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2.5rem 0 3.5rem; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .langbar {
+      background: #132033;
+      color: #fff;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .langbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lang-links a {
+      color: #fff;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-links a.active { background: rgba(255,255,255,0.18); }
+
+    .site-nav {
+      background: #0f1a2b;
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .site-nav .wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: #fff;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .site-nav a.active { background: rgba(255,255,255,0.18); }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 64px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      max-width: 13ch;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.14rem);
+      color: rgba(255,255,255,0.93);
+      margin: 0 0 22px;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--brand);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 1.22rem;
+      color: #fff;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .hero-list li {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.94);
+    }
+
+    main { padding: 42px 0 84px; }
+
+    .intro-banner {
+      margin-top: -42px;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-banner p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    section.card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    section.card.full { grid-column: 1 / -1; }
+
+    h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      margin: 0 0 18px;
+      line-height: 1.18;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 22px 0 10px;
+    }
+
+    p, li, td { color: var(--muted); }
+
+    ul.clean, ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .visuals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
     figure { margin: 0; }
-    figure img { display: block; width: 100%; height: auto; }
-    figcaption { margin-top: .65rem; color: #536168; font-size: .9rem; }
-    .steps { counter-reset: step; display: grid; gap: 2rem; padding: 0; list-style: none; }
-    .steps > li { counter-increment: step; border-top: 1px solid #d7dedb; padding-top: 1.5rem; }
+
+    figure img {
+      display: block;
+      width: 100%;
+      max-height: 620px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .steps > li {
+      counter-increment: step;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .steps > li:last-child { grid-column: 1 / -1; }
+    .steps h3 { margin-top: 0; }
     .steps h3::before { content: counter(step) ". "; }
-    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 3rem; }
-    th, td { text-align: left; vertical-align: top; padding: .85rem; border-bottom: 1px solid #d7dedb; }
-    th { font-weight: 650; }
-    .note { border-left: 3px solid #253f35; padding-left: 1rem; margin: 2rem 0; }
-    footer { border-top: 1px solid #d7dedb; padding: 2rem 0 3rem; font-size: .9rem; color: #536168; }
-    footer ul { padding-left: 1.2rem; }
-    @media (max-width: 760px) { .visuals { grid-template-columns: 1fr; } table, tbody, tr, th, td { display: block; } thead { position: absolute; left: -9999px; } td { padding-inline: 0; } td::before { display: block; font-weight: 650; } td:nth-child(1)::before { content: "Havainto"; } td:nth-child(2)::before { content: "Tarkista"; } td:nth-child(3)::before { content: "Hallittu muutos"; } }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--ink);
+      font-weight: 800;
+      background: #f7fafc;
+    }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #edf8f5;
+      border-left: 6px solid var(--brand-2);
+      color: var(--ink);
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .good-box {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eef8ef;
+      border-left: 6px solid #4aa057;
+      margin-top: 14px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fcfffb;
+      border: 1px solid var(--border);
+    }
+
+    .source-list a { overflow-wrap: anywhere; }
+
+    .footer-cta {
+      background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98));
+      color: #fff;
+      padding: 54px 0;
+      margin-top: 40px;
+    }
+
+    .footer-cta h2,
+    .footer-cta p,
+    footer p,
+    footer a {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .msj-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .msj-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    footer {
+      background: #132033;
+      color: #fff;
+      padding: 20px 0 34px;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero, .grid, .visuals, .steps, .mini-grid { grid-template-columns: 1fr; }
+      .steps > li:last-child { grid-column: auto; }
+      header { min-height: auto; }
+      .hero { padding: 40px 0 54px; }
+    }
+
+    @media (max-width: 760px) {
+      table, tbody, tr, th, td { display: block; }
+      thead { position: absolute; left: -9999px; }
+      tr { border-bottom: 1px solid var(--border); padding: 12px 0; }
+      td { border: 0; padding: 8px 0; }
+      td::before { display: block; font-weight: 800; color: var(--ink); }
+      td:nth-child(1)::before { content: "Havainto"; }
+      td:nth-child(2)::before { content: "Tarkista"; }
+      td:nth-child(3)::before { content: "Hallittu muutos"; }
+    }
   </style>
 </head>
 <body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links">
+        <a class="active" href="ruokahimojen-seuranta.html" aria-current="page">Suomi</a>
+      </div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+    <nav class="site-nav" aria-label="Sivuston päävalikko">
+    <div class="wrap nav-inner">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="ruokahimot-urheilijalla.html">Sivu 10 • Ruokahimot urheilijalla</a>
+      <a class="active" aria-current="page" href="ruokahimojen-seuranta.html">Sivu 11 • Ruokahimojen seuranta</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
   <header>
-    <nav aria-label="Sivuston osiot">
-      <a href="fitness-ruokavalio.html">Fitness ruokavalio</a>
-      <a href="ruokahimot-urheilijalla.html">Ruokahimot urheilijalla</a>
-      <a href="ruokahimojen-seuranta.html" aria-current="page">Seuranta ja muutokset</a>
-    </nav>
-    <h1>Havainnosta hallittuun muutokseen</h1>
-    <p class="lead">Ruokahimoa kannattaa käsitellä palautteena arjesta, ei suorana ravintoaineanalyysinä. Toistuva havainto voidaan yhdistää harjoituspäiväkirjaan, testata yhdellä muutoksella ja arvioida uudelleen.</p>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Seuranta • yksi muutos kerrallaan • suorituskyky</div>
+        <h1>Havainnosta hallittuun muutokseen</h1>
+        <p>
+          Ruokahimoa kannattaa käsitellä palautteena arjesta, ei suorana ravintoaineanalyysinä.
+          Toistuva havainto voidaan yhdistää harjoituspäiväkirjaan, testata yhdellä muutoksella ja arvioida uudelleen.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#kartoitus">Aloita 7 päivän kartoitus</a>
+          <a class="btn secondary" href="ruokahimot-urheilijalla.html">Palaa ruokahimojen taustaan</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Seurannan perusmalli</h2>
+        <ul class="hero-list">
+          <li>kirjaa himo ja sen ajankohta</li>
+          <li>yhdistä havainto harjoituskuormaan</li>
+          <li>tarkista päivän syömisen perusrakenne</li>
+          <li>muuta yksi asia kerrallaan 7–14 päiväksi</li>
+          <li>arvioi tulos suorituskyvyn ja palautumisen kautta</li>
+        </ul>
+      </aside>
+    </div>
   </header>
 
-  <main>
-    <section class="visuals" aria-label="Ruokahimojen yhteydet">
-      <figure>
-        <img src="images/ruokahimot/RuokaHimo5.png" alt="Ruokien ja ravintotekijöiden mahdollisia yhteyksiä tutkiva kuvitus" width="1055" height="1491" loading="eager">
-        <figcaption>Sama mieliteko voi syntyä monesta tilanteesta. Yhteys löytyy vertaamalla havaintoa päivän kuormitukseen ja syömiseen.</figcaption>
-      </figure>
-      <figure>
-        <img src="images/ruokahimot/85517afe-03d1-4006-8ce7-03c706451b01.png" alt="Ruokahimoja, ravintoaineita ja ruokia yhdistävä muistitaulukko" width="1024" height="1536" loading="eager">
-        <figcaption>Yksittäinen ketju toimii korkeintaan kysymyksenä. Urheilijan ratkaisu tehdään kokonaiskuvan, seurannan ja tarvittaessa tutkimusten perusteella.</figcaption>
-      </figure>
-    </section>
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Tämä sivu jatkaa suoraan ruokahimot urheilijalla -sivusta. Ensimmäinen sivu auttaa tunnistamaan mahdollisen
+        taustan, tämä sivu auttaa testaamaan havaintoa hallitusti ilman että yhdestä mieliteosta tehdään liian pitkälle menevää päätelmää.
+      </p>
+    </div>
 
-    <section aria-labelledby="prosessi">
-      <h2 id="prosessi">Seitsemän päivän kartoitus</h2>
-      <ol class="steps">
-        <li>
-          <h3>Kirjaa tilanne silloin, kun himo alkaa</h3>
-          <p>Merkitse kellonaika, haluttu ruoka, voimakkuus, edellinen ateria, päivän harjoitus ja sen kesto. Lisää lyhyesti uni, stressi, nälkä sekä mahdolliset vatsaoireet. Tarkoitus ei ole laskea jokaista suupalaa, vaan löytää toistuva rakenne.</p>
-        </li>
-        <li>
-          <h3>Vertaa himoa harjoituskuormaan</h3>
-          <p>Katso kasaantuuko ilmiö pitkien harjoitusten, kahden harjoituksen päivien, energiavajeen, kuumuuden tai kilpailumatkojen yhteyteen. Jos himo ilmestyy aina samoissa olosuhteissa, ruokavalion ajoitus voi olla tärkeämpi kuin yksittäinen ravintoaine.</p>
-        </li>
-        <li>
-          <h3>Tarkista päivän perusrakenne</h3>
-          <p>Arvioi pääaterioiden määrä, välipalat, hiilihydraattien sijoittuminen harjoituksen ympärille, proteiinin jakautuminen päivän aterioille, rasvan riittävyys ja juominen. Huippu-urheilijan tarve muuttuu kevyen, kovan ja palauttavan päivän välillä.</p>
-        </li>
-        <li>
-          <h3>Muuta yksi asia kerrallaan</h3>
-          <p>Valitse havaintoon sopiva muutos 7–14 päiväksi. Pidä muu ruokailu mahdollisimman vakaana. Näin nähdään, liittyikö muutos himoon, harjoitusvireeseen ja palautumiseen vai tarvitaanko uusi hypoteesi.</p>
-        </li>
-        <li>
-          <h3>Arvioi tulos suorituskyvyn kautta</h3>
-          <p>Seuraa mieliteon lisäksi harjoituksen laatua, koettua kuormitusta, unen laatua, palautumista, mielialaa, vatsan toimintaa ja mahdollisia vammoja. Hyvä muutos tukee kokonaisuutta eikä ainoastaan poista yhtä mielitekoa.</p>
-        </li>
-      </ol>
-    </section>
+    <div class="grid">
+      <section class="card full">
+        <h2>Kaksi kuvaa, yksi tulkintaperiaate</h2>
+        <div class="visuals">
+          <figure>
+            <img src="images/ruokahimot/RuokaHimo5.png" alt="Ruokien ja ravintotekijöiden mahdollisia yhteyksiä tutkiva kuvitus" width="1055" height="1491" loading="eager" />
+            <figcaption>Sama mieliteko voi syntyä monesta tilanteesta. Yhteys löytyy vertaamalla havaintoa päivän kuormitukseen ja syömiseen.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/ruokahimot/85517afe-03d1-4006-8ce7-03c706451b01.png" alt="Ruokahimoja, ravintoaineita ja ruokia yhdistävä muistitaulukko" width="1024" height="1536" loading="eager" />
+            <figcaption>Yksittäinen ketju toimii korkeintaan kysymyksenä. Ratkaisu tehdään kokonaiskuvan, seurannan ja tarvittaessa tutkimusten perusteella.</figcaption>
+          </figure>
+        </div>
+      </section>
 
-    <section aria-labelledby="taulukko">
-      <h2 id="taulukko">Havainto ja ensimmäinen kokeilu</h2>
-      <table>
-        <thead>
-          <tr><th>Havainto</th><th>Tarkista</th><th>Hallittu muutos</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Makeanhimo illalla</td>
-            <td>Aamiainen, lounas, harjoitusta edeltävä syöminen ja palautumisateria.</td>
-            <td>Lisää harjoituksen ympärille hiilihydraattia ja proteiinia sisältävä välipala. Pidä pääateriat säännöllisinä viikon ajan.</td>
-          </tr>
-          <tr>
-            <td>Pastan tai leivän voimakas halu</td>
-            <td>Päivän kokonaisenergia, hiilihydraattien määrä ja edeltävien päivien harjoituskuorma.</td>
-            <td>Kasvata hiilihydraattiosuutta kovina harjoituspäivinä ja sijoita osa ennen harjoitusta sekä palautumiseen.</td>
-          </tr>
-          <tr>
-            <td>Suolainen ruoka pitkän harjoituksen jälkeen</td>
-            <td>Harjoituksen kesto, kuumuus, hikoilu, juotu määrä ja painonmuutos.</td>
-            <td>Rakenna toistuvien mittausten perusteella henkilökohtainen nesteytyssuunnitelma. Vältä sekä liian vähäistä että liiallista juomista.</td>
-          </tr>
-          <tr>
-            <td>Jatkuva jään pureskelu</td>
-            <td>Väsymys, suorituskyky, hengästyminen, ruokavalio, kuukautiset ja aikaisemmat rauta-arvot.</td>
-            <td>Hakeudu terveydenhuollon arvioon. Älä aloita suurta rauta-annosta ennen tutkimuksia ja syyn selvittämistä.</td>
-          </tr>
-          <tr>
-            <td>Napostelun tarve levottomana tai väsyneenä</td>
-            <td>Uni, stressi, palautumispäivät, ruokarajoitukset ja aterioiden kylläisyys.</td>
-            <td>Vakioi unirytmi ja ateriat ennen kuin tulkitset tilanteen ravintoainepuutokseksi.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <section class="card full" id="kartoitus">
+        <h2>Seitsemän päivän kartoitus</h2>
+        <ol class="steps">
+          <li>
+            <h3>Kirjaa tilanne silloin, kun himo alkaa</h3>
+            <p>
+              Merkitse kellonaika, haluttu ruoka, voimakkuus, edellinen ateria, päivän harjoitus ja sen kesto.
+              Lisää lyhyesti uni, stressi, nälkä sekä mahdolliset vatsaoireet. Tarkoitus ei ole laskea jokaista suupalaa,
+              vaan löytää toistuva rakenne.
+            </p>
+          </li>
+          <li>
+            <h3>Vertaa himoa harjoituskuormaan</h3>
+            <p>
+              Katso kasaantuuko ilmiö pitkien harjoitusten, kahden harjoituksen päivien, energiavajeen, kuumuuden
+              tai kilpailumatkojen yhteyteen. Jos himo ilmestyy samoissa olosuhteissa, ruokavalion ajoitus voi olla
+              tärkeämpi kuin yksittäinen ravintoaine.
+            </p>
+          </li>
+          <li>
+            <h3>Tarkista päivän perusrakenne</h3>
+            <p>
+              Arvioi pääaterioiden määrä, välipalat, hiilihydraattien sijoittuminen harjoituksen ympärille,
+              proteiinin jakautuminen päivän aterioille, rasvan riittävyys ja juominen. Tarve muuttuu kevyen,
+              kovan ja palauttavan päivän välillä.
+            </p>
+          </li>
+          <li>
+            <h3>Muuta yksi asia kerrallaan</h3>
+            <p>
+              Valitse havaintoon sopiva muutos 7–14 päiväksi. Pidä muu ruokailu mahdollisimman vakaana.
+              Näin nähdään, liittyikö muutos himoon, harjoitusvireeseen ja palautumiseen vai tarvitaanko uusi hypoteesi.
+            </p>
+          </li>
+          <li>
+            <h3>Arvioi tulos suorituskyvyn kautta</h3>
+            <p>
+              Seuraa mieliteon lisäksi harjoituksen laatua, koettua kuormitusta, unen laatua, palautumista,
+              mielialaa, vatsan toimintaa ja mahdollisia vammoja. Hyvä muutos tukee kokonaisuutta eikä ainoastaan poista yhtä mielitekoa.
+            </p>
+          </li>
+        </ol>
+      </section>
 
-    <section aria-labelledby="ammattilainen">
-      <h2 id="ammattilainen">Milloin oma kokeilu ei riitä?</h2>
-      <p>Urheilulääkärin tai urheiluravitsemukseen perehtyneen ravitsemusterapeutin arvio on perusteltu, kun suorituskyky laskee useita viikkoja, paino muuttuu tahattomasti, kuukautiskierto häiriintyy, sairastelu tai rasitusvammat lisääntyvät, syömiseen liittyy pakonomaisuutta tai jään pureskelu jatkuu.</p>
-      <div class="note">
-        <p>Lisäravinteet eivät ole ensimmäinen askel epäselvässä tilanteessa. Rauta, elektrolyytit ja muut valmisteet valitaan todetun tarpeen, kokonaisruokavalion ja urheilijan terveystietojen perusteella.</p>
-      </div>
-    </section>
+      <section class="card full">
+        <h2>Ensimmäisen sivun havainnot muutetaan näin kokeiluiksi</h2>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <h3>Makeanhimo</h3>
+            <p>Tarkista energiansaanti, ateriavälit ja harjoituksen ympärille sijoittuva syöminen.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Hiilihydraattien kaipuu</h3>
+            <p>Vertaa hiilihydraattien määrää ja ajoitusta harjoituskuormaan sekä palautumiseen.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Suolaisen halu</h3>
+            <p>Tarkista harjoituksen kesto, kuumuus, hikoilu, juotu määrä ja harjoituksen aikainen painonmuutos.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Jään pureskelu</h3>
+            <p>Älä käsittele sitä tavallisena ruokakokeiluna, vaan hakeudu tarvittaessa terveydenhuollon arvioon.</p>
+          </div>
+        </div>
+        <div class="callout">
+          <a href="ruokahimot-urheilijalla.html"><strong>Katso tilanteiden tarkemmat taustat sivulta 10 →</strong></a>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Havainto ja ensimmäinen hallittu muutos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Havainto</th>
+              <th>Tarkista</th>
+              <th>Hallittu muutos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Makeanhimo illalla</td>
+              <td>Aamiainen, lounas, harjoitusta edeltävä syöminen ja palautumisateria.</td>
+              <td>Lisää harjoituksen ympärille hiilihydraattia ja proteiinia sisältävä välipala. Pidä pääateriat säännöllisinä viikon ajan.</td>
+            </tr>
+            <tr>
+              <td>Pastan tai leivän voimakas halu</td>
+              <td>Päivän kokonaisenergia, hiilihydraattien määrä ja edeltävien päivien harjoituskuorma.</td>
+              <td>Kasvata hiilihydraattiosuutta kovina harjoituspäivinä ja sijoita osa ennen harjoitusta sekä palautumiseen.</td>
+            </tr>
+            <tr>
+              <td>Suolainen ruoka pitkän harjoituksen jälkeen</td>
+              <td>Harjoituksen kesto, kuumuus, hikoilu, juotu määrä ja painonmuutos.</td>
+              <td>Rakenna toistuvien mittausten perusteella henkilökohtainen nesteytyssuunnitelma. Vältä sekä liian vähäistä että liiallista juomista.</td>
+            </tr>
+            <tr>
+              <td>Jatkuva jään pureskelu</td>
+              <td>Väsymys, suorituskyky, hengästyminen, ruokavalio, kuukautiset ja aikaisemmat rauta-arvot.</td>
+              <td>Hakeudu terveydenhuollon arvioon. Älä aloita suurta rauta-annosta ennen tutkimuksia ja syyn selvittämistä.</td>
+            </tr>
+            <tr>
+              <td>Napostelun tarve levottomana tai väsyneenä</td>
+              <td>Uni, stressi, palautumispäivät, ruokarajoitukset ja aterioiden kylläisyys.</td>
+              <td>Vakioi unirytmi ja ateriat ennen kuin tulkitset tilanteen ravintoainepuutokseksi.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Mitä seurannasta etsitään?</h2>
+        <ul class="clean">
+          <li>väheneekö himon voimakkuus tai toistuvuus</li>
+          <li>paraneeko harjoituksen aikainen vire</li>
+          <li>paraneeko palautuminen seuraavaan harjoitukseen</li>
+          <li>vakautuuko nälkä päivän aikana</li>
+          <li>paraneeko uni tai keskittyminen</li>
+          <li>väheneekö tarve hallitsemattomaan iltanaposteluun</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Milloin oma kokeilu ei riitä?</h2>
+        <p>
+          Urheilulääkärin tai urheiluravitsemukseen perehtyneen ravitsemusterapeutin arvio on perusteltu,
+          kun suorituskyky laskee useita viikkoja, paino muuttuu tahattomasti, kuukautiskierto häiriintyy,
+          sairastelu tai rasitusvammat lisääntyvät, syömiseen liittyy pakonomaisuutta tai jään pureskelu jatkuu.
+        </p>
+        <div class="good-box">
+          Lisäravinteet eivät ole ensimmäinen askel epäselvässä tilanteessa. Rauta, elektrolyytit ja muut valmisteet
+          valitaan todetun tarpeen, kokonaisruokavalion ja urheilijan terveystietojen perusteella.
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Keskeiset lähteet</h2>
+        <ul class="clean source-list">
+          <li><a href="https://bjsm.bmj.com/content/57/17/1073">IOC:n REDs-konsensuslausuma 2023</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/26920240/">Nutrition and Athletic Performance - yhteinen kannanotto</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/29073412/">NATA: Fluid Replacement for the Physically Active</a></li>
+          <li><a href="https://www.ausport.gov.au/ais/nutrition/health-and-medical/iron-deficiency">Australian Institute of Sport: Iron Deficiency</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/32578025/">Meule: The Psychology of Food Cravings</a></li>
+        </ul>
+      </section>
+    </div>
   </main>
 
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Yksi havainto, yksi muutos, yksi uusi arvio</h2>
+      <p>
+        Seurannasta tulee hyödyllinen, kun ruokahimoa ei tarkastella yksin vaan yhdessä harjoittelun,
+        syömisen, unen ja palautumisen kanssa.
+      </p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <h2>Keskeiset lähteet</h2>
-    <ul>
-      <li><a href="https://bjsm.bmj.com/content/57/17/1073">IOC:n REDs-konsensuslausuma 2023</a></li>
-      <li><a href="https://pubmed.ncbi.nlm.nih.gov/26920240/">Nutrition and Athletic Performance - yhteinen kannanotto</a></li>
-      <li><a href="https://pubmed.ncbi.nlm.nih.gov/29073412/">NATA: Fluid Replacement for the Physically Active</a></li>
-      <li><a href="https://www.ausport.gov.au/ais/nutrition/health-and-medical/iron-deficiency">Australian Institute of Sport: Iron Deficiency</a></li>
-      <li><a href="https://pubmed.ncbi.nlm.nih.gov/32578025/">Meule: The Psychology of Food Cravings</a></li>
-    </ul>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Ruokahimojen seuranta • GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
   </footer>
 </body>
 </html>
