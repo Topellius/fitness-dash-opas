@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Käytännön malli ruokahimojen, harjoittelun ja urheilijan palautumisen seurantaan.">
+  <title>Ruokahimojen seuranta ja ruokavalion säätäminen</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #172126; background: #fff; line-height: 1.6; }
+    header, main, footer { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+    header { padding: 2.5rem 0 1.25rem; }
+    nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    nav a { color: inherit; }
+    h1 { max-width: 20ch; font-size: clamp(2.1rem, 5vw, 4.5rem); line-height: 1.05; margin: 0 0 1rem; }
+    h2 { line-height: 1.15; }
+    p, li { max-width: 74ch; }
+    .lead { font-size: 1.15rem; }
+    .visuals { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2.5rem 0 3.5rem; }
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: auto; }
+    figcaption { margin-top: .65rem; color: #536168; font-size: .9rem; }
+    .steps { counter-reset: step; display: grid; gap: 2rem; padding: 0; list-style: none; }
+    .steps > li { counter-increment: step; border-top: 1px solid #d7dedb; padding-top: 1.5rem; }
+    .steps h3::before { content: counter(step) ". "; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 3rem; }
+    th, td { text-align: left; vertical-align: top; padding: .85rem; border-bottom: 1px solid #d7dedb; }
+    th { font-weight: 650; }
+    .note { border-left: 3px solid #253f35; padding-left: 1rem; margin: 2rem 0; }
+    footer { border-top: 1px solid #d7dedb; padding: 2rem 0 3rem; font-size: .9rem; color: #536168; }
+    footer ul { padding-left: 1.2rem; }
+    @media (max-width: 760px) { .visuals { grid-template-columns: 1fr; } table, tbody, tr, th, td { display: block; } thead { position: absolute; left: -9999px; } td { padding-inline: 0; } td::before { display: block; font-weight: 650; } td:nth-child(1)::before { content: "Havainto"; } td:nth-child(2)::before { content: "Tarkista"; } td:nth-child(3)::before { content: "Hallittu muutos"; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Sivuston osiot">
+      <a href="fitness-ruokavalio.html">Fitness ruokavalio</a>
+      <a href="ruokahimot-urheilijalla.html">Ruokahimot urheilijalla</a>
+      <a href="ruokahimojen-seuranta.html" aria-current="page">Seuranta ja muutokset</a>
+    </nav>
+    <h1>Havainnosta hallittuun muutokseen</h1>
+    <p class="lead">Ruokahimoa kannattaa käsitellä palautteena arjesta, ei suorana ravintoaineanalyysinä. Toistuva havainto voidaan yhdistää harjoituspäiväkirjaan, testata yhdellä muutoksella ja arvioida uudelleen.</p>
+  </header>
+
+  <main>
+    <section class="visuals" aria-label="Ruokahimojen yhteydet">
+      <figure>
+        <img src="images/ruokahimot/RuokaHimo5.png" alt="Ruokien ja ravintotekijöiden mahdollisia yhteyksiä tutkiva kuvitus" width="1055" height="1491" loading="eager">
+        <figcaption>Sama mieliteko voi syntyä monesta tilanteesta. Yhteys löytyy vertaamalla havaintoa päivän kuormitukseen ja syömiseen.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/ruokahimot/85517afe-03d1-4006-8ce7-03c706451b01.png" alt="Ruokahimoja, ravintoaineita ja ruokia yhdistävä muistitaulukko" width="1024" height="1536" loading="eager">
+        <figcaption>Yksittäinen ketju toimii korkeintaan kysymyksenä. Urheilijan ratkaisu tehdään kokonaiskuvan, seurannan ja tarvittaessa tutkimusten perusteella.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="prosessi">
+      <h2 id="prosessi">Seitsemän päivän kartoitus</h2>
+      <ol class="steps">
+        <li>
+          <h3>Kirjaa tilanne silloin, kun himo alkaa</h3>
+          <p>Merkitse kellonaika, haluttu ruoka, voimakkuus, edellinen ateria, päivän harjoitus ja sen kesto. Lisää lyhyesti uni, stressi, nälkä sekä mahdolliset vatsaoireet. Tarkoitus ei ole laskea jokaista suupalaa, vaan löytää toistuva rakenne.</p>
+        </li>
+        <li>
+          <h3>Vertaa himoa harjoituskuormaan</h3>
+          <p>Katso kasaantuuko ilmiö pitkien harjoitusten, kahden harjoituksen päivien, energiavajeen, kuumuuden tai kilpailumatkojen yhteyteen. Jos himo ilmestyy aina samoissa olosuhteissa, ruokavalion ajoitus voi olla tärkeämpi kuin yksittäinen ravintoaine.</p>
+        </li>
+        <li>
+          <h3>Tarkista päivän perusrakenne</h3>
+          <p>Arvioi pääaterioiden määrä, välipalat, hiilihydraattien sijoittuminen harjoituksen ympärille, proteiinin jakautuminen päivän aterioille, rasvan riittävyys ja juominen. Huippu-urheilijan tarve muuttuu kevyen, kovan ja palauttavan päivän välillä.</p>
+        </li>
+        <li>
+          <h3>Muuta yksi asia kerrallaan</h3>
+          <p>Valitse havaintoon sopiva muutos 7–14 päiväksi. Pidä muu ruokailu mahdollisimman vakaana. Näin nähdään, liittyikö muutos himoon, harjoitusvireeseen ja palautumiseen vai tarvitaanko uusi hypoteesi.</p>
+        </li>
+        <li>
+          <h3>Arvioi tulos suorituskyvyn kautta</h3>
+          <p>Seuraa mieliteon lisäksi harjoituksen laatua, koettua kuormitusta, unen laatua, palautumista, mielialaa, vatsan toimintaa ja mahdollisia vammoja. Hyvä muutos tukee kokonaisuutta eikä ainoastaan poista yhtä mielitekoa.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="taulukko">
+      <h2 id="taulukko">Havainto ja ensimmäinen kokeilu</h2>
+      <table>
+        <thead>
+          <tr><th>Havainto</th><th>Tarkista</th><th>Hallittu muutos</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Makeanhimo illalla</td>
+            <td>Aamiainen, lounas, harjoitusta edeltävä syöminen ja palautumisateria.</td>
+            <td>Lisää harjoituksen ympärille hiilihydraattia ja proteiinia sisältävä välipala. Pidä pääateriat säännöllisinä viikon ajan.</td>
+          </tr>
+          <tr>
+            <td>Pastan tai leivän voimakas halu</td>
+            <td>Päivän kokonaisenergia, hiilihydraattien määrä ja edeltävien päivien harjoituskuorma.</td>
+            <td>Kasvata hiilihydraattiosuutta kovina harjoituspäivinä ja sijoita osa ennen harjoitusta sekä palautumiseen.</td>
+          </tr>
+          <tr>
+            <td>Suolainen ruoka pitkän harjoituksen jälkeen</td>
+            <td>Harjoituksen kesto, kuumuus, hikoilu, juotu määrä ja painonmuutos.</td>
+            <td>Rakenna toistuvien mittausten perusteella henkilökohtainen nesteytyssuunnitelma. Vältä sekä liian vähäistä että liiallista juomista.</td>
+          </tr>
+          <tr>
+            <td>Jatkuva jään pureskelu</td>
+            <td>Väsymys, suorituskyky, hengästyminen, ruokavalio, kuukautiset ja aikaisemmat rauta-arvot.</td>
+            <td>Hakeudu terveydenhuollon arvioon. Älä aloita suurta rauta-annosta ennen tutkimuksia ja syyn selvittämistä.</td>
+          </tr>
+          <tr>
+            <td>Napostelun tarve levottomana tai väsyneenä</td>
+            <td>Uni, stressi, palautumispäivät, ruokarajoitukset ja aterioiden kylläisyys.</td>
+            <td>Vakioi unirytmi ja ateriat ennen kuin tulkitset tilanteen ravintoainepuutokseksi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="ammattilainen">
+      <h2 id="ammattilainen">Milloin oma kokeilu ei riitä?</h2>
+      <p>Urheilulääkärin tai urheiluravitsemukseen perehtyneen ravitsemusterapeutin arvio on perusteltu, kun suorituskyky laskee useita viikkoja, paino muuttuu tahattomasti, kuukautiskierto häiriintyy, sairastelu tai rasitusvammat lisääntyvät, syömiseen liittyy pakonomaisuutta tai jään pureskelu jatkuu.</p>
+      <div class="note">
+        <p>Lisäravinteet eivät ole ensimmäinen askel epäselvässä tilanteessa. Rauta, elektrolyytit ja muut valmisteet valitaan todetun tarpeen, kokonaisruokavalion ja urheilijan terveystietojen perusteella.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Keskeiset lähteet</h2>
+    <ul>
+      <li><a href="https://bjsm.bmj.com/content/57/17/1073">IOC:n REDs-konsensuslausuma 2023</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/26920240/">Nutrition and Athletic Performance - yhteinen kannanotto</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/29073412/">NATA: Fluid Replacement for the Physically Active</a></li>
+      <li><a href="https://www.ausport.gov.au/ais/nutrition/health-and-medical/iron-deficiency">Australian Institute of Sport: Iron Deficiency</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/32578025/">Meule: The Psychology of Food Cravings</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
