@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tutkimusperustainen opas solujen senesenssistä, ikääntymisestä, tulehdusviestinnästä, liikunnasta ja terveestä ikääntymisestä." />
+  <title>Solujen senesenssi ja terve ikääntyminen | Fitness-opas</title>
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .langbar {
+      background: #132033; color: #fff; padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .langbar .wrap {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .lang-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .lang-links a {
+      color: #fff; font-weight: 700; padding: 8px 14px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08);
+    }
+    .lang-links a.active { background: rgba(255,255,255,0.18); }
+    .site-nav {
+      background: #0f1a2b; color: #fff; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .site-nav .wrap { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .site-nav a {
+      color: #fff; font-weight: 700; padding: 9px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+    }
+    .site-nav a.active { background: rgba(255,255,255,0.18); }
+    header {
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92));
+      min-height: 72vh; display: flex; align-items: center;
+    }
+    header::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%);
+      pointer-events: none;
+    }
+    .hero {
+      position: relative; z-index: 1; display: grid;
+      grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center; padding: 64px 0;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px;
+      border-radius: 999px; background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2); font-weight: 800;
+      letter-spacing: 0.02em; margin-bottom: 18px; backdrop-filter: blur(10px);
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.6rem); line-height: 1.03; margin: 0 0 18px; max-width: 12ch; }
+    .hero p { font-size: clamp(1rem, 2vw, 1.14rem); color: rgba(255,255,255,0.93); margin: 0 0 22px; max-width: 64ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 22px; border-radius: 999px; font-weight: 800; box-shadow: var(--shadow);
+    }
+    .btn.primary { background: #fff; color: var(--brand); }
+    .btn.secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); }
+    .hero-card {
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 30px; padding: 24px; backdrop-filter: blur(14px); box-shadow: var(--shadow);
+    }
+    .hero-card h2 { margin-top: 0; font-size: 1.22rem; color: #fff; }
+    .hero-list { display: grid; gap: 14px; padding: 0; list-style: none; margin: 0; }
+    .hero-list li { padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.94); }
+    main { padding: 42px 0 84px; }
+    .intro-banner {
+      margin-top: -42px; position: relative; z-index: 3; background: var(--bg-soft);
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);
+    }
+    .intro-banner p { margin: 0; font-size: 1.05rem; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 26px; }
+    section.card {
+      background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow);
+    }
+    section.card.full { grid-column: 1 / -1; }
+    h2 { font-size: clamp(1.45rem, 2vw, 2rem); margin: 0 0 18px; line-height: 1.18; }
+    h3 { font-size: 1.08rem; margin: 22px 0 10px; }
+    p, li { color: var(--muted); }
+    ul.clean, ol.clean { margin: 0; padding-left: 1.2rem; }
+    .callout {
+      padding: 18px 20px; border-radius: 20px; background: #edf8f5;
+      border-left: 6px solid var(--brand-2); color: var(--ink); font-weight: 700; margin-top: 16px;
+    }
+    .danger-box { padding: 18px 20px; border-radius: 20px; background: #fff2f4; border-left: 6px solid var(--danger); margin-top: 14px; }
+    .good-box { padding: 18px 20px; border-radius: 20px; background: #eef8ef; border-left: 6px solid #4aa057; margin-top: 14px; }
+    .warn-box { padding: 18px 20px; border-radius: 20px; background: #fff8e8; border-left: 6px solid var(--warn); margin-top: 14px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .mini-card { padding: 18px; border-radius: 20px; background: #fcfffb; border: 1px solid var(--border); }
+    .mini-card h3 { margin-top: 0; }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 18px; }
+    .flow-step { padding: 18px; border-radius: 20px; border: 1px solid var(--border); background: linear-gradient(180deg, #ffffff, #f8fbff); }
+    .flow-step .num { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 900; margin-bottom: 10px; }
+    .evidence-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .evidence { padding: 16px; border-radius: 18px; border: 1px solid var(--border); background: #fff; }
+    .tag { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: .84rem; font-weight: 800; margin-bottom: 8px; }
+    .tag.strong { background: #e7f6ea; color: #226b32; }
+    .tag.moderate { background: #fff4d9; color: #845a00; }
+    .tag.early { background: #eef4ff; color: #2c5791; }
+    .tag.preclinical { background: #f3eefc; color: #664598; }
+    .tracker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+    .tracker div { padding: 16px; border: 1px solid var(--border); border-radius: 18px; background: #fff; }
+    .source-list { margin: 0; padding-left: 1.25rem; }
+    .source-list li { margin: 0 0 12px; }
+    .source-list a { font-weight: 800; }
+    .article-figure { margin: 26px 0 0; }
+    .article-figure img {
+      width: 100%; display: block; border-radius: 24px; object-fit: cover;
+      box-shadow: var(--shadow); border: 1px solid var(--border); background: #fff;
+    }
+    .article-figure figcaption { margin-top: 10px; color: var(--muted); font-size: .94rem; }
+    .footer-cta { background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98)); color: #fff; padding: 54px 0; margin-top: 40px; }
+    .footer-cta h2, .footer-cta p, footer p, footer a { color: rgba(255,255,255,0.95); }
+    .msj-box { margin-top: 18px; padding: 18px 20px; border-radius: 20px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); }
+    .msj-box strong { display: block; margin-bottom: 8px; color: #fff; }
+    footer { background: #132033; color: #fff; padding: 20px 0 34px; }
+    .footer-meta { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+    @media (max-width: 980px) {
+      .hero, .grid, .mini-grid, .flow, .evidence-grid, .tracker { grid-template-columns: 1fr; }
+      header { min-height: auto; }
+      .hero { padding: 40px 0 54px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links"><a class="active" href="solujen-senesenssi-ja-terve-ikaantyminen.html">Suomi</a></div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="ruokahimot-urheilijalla.html">Sivu 10 • Ruokahimot urheilijalla</a>
+      <a href="ruokahimojen-seuranta.html">Sivu 11 • Ruokahimojen seuranta</a>
+      <a class="active" aria-current="page" href="solujen-senesenssi-ja-terve-ikaantyminen.html">Sivu 12 • Solujen senesenssi</a>
+      <a href="ravinto-liikunta-ja-soluterveys.html">Sivu 13 • Ravinto ja soluterveys</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Solubiologia • palautuminen • terve ikääntyminen</div>
+        <h1>Solujen senesenssi ja toimintakyky</h1>
+        <p>
+          Senesentti solu on stressiin tai vaurioon reagoinut solu, joka on siirtynyt pysyvään tai hyvin pitkäkestoiseen jakautumispysähdykseen. Ilmiö on osa normaalia biologiaa, mutta pitkittyessään ja kertyessään se voi muuttaa kudoksen ympäristöä tulehdusviestinnän kautta.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#mekanismi">Katso mekanismi</a>
+          <a class="btn secondary" href="#kaytanto">Siirry käytäntöön</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Kolme tärkeää lähtökohtaa</h2>
+        <ul class="hero-list">
+          <li>Senesenssi ei tarkoita kuollutta solua, vaan muuttunutta solutilaa.</li>
+          <li>Lyhytaikainen senesenssi voi tukea kehitystä, haavan paranemista ja kasvun rajoittamista.</li>
+          <li>Ongelmallisinta on pitkäaikainen kertyminen ja kudosta kuormittava SASP-viestintä.</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Tutkimuksessa käytetään termejä <strong>cellular senescence</strong> ja <strong>senescent cells</strong>. Yksittäisen ihmisen solukuormaa ei voi päätellä ulkonäöstä, iästä tai tavallisista arjen tuntemuksista, eikä kotikonsti osoita senesenttien solujen määrää.
+      </p>
+    </div>
+
+    <figure class="article-figure">
+      <img src="images/soluterveys/ZombisolutjaVanheneminen1.png" alt="Värikäs kuvitus terveestä ikääntymisestä, liikkumisesta, ravinnosta, unesta ja palautumisesta" loading="lazy" />
+      <figcaption>Terve ikääntyminen rakentuu useista samansuuntaisista arjen valinnoista eikä yhdestä yksittäisestä keinosta.</figcaption>
+    </figure>
+
+    <div class="grid">
+      <section class="card full" id="mekanismi">
+        <h2>Miten solujen senesenssi muodostuu?</h2>
+        <div class="flow">
+          <div class="flow-step"><span class="num">1</span><h3>Solustressi</h3><p>DNA-vaurio, oksidatiivinen stressi, telomeerien kuluminen, onkogeeninen signaali tai muu kuormitus voi käynnistää vasteen.</p></div>
+          <div class="flow-step"><span class="num">2</span><h3>Jakautuminen pysähtyy</h3><p>Solu aktivoi kasvua jarruttavia reittejä. Tämä voi estää vaurioitunutta solua lisääntymästä hallitsemattomasti.</p></div>
+          <div class="flow-step"><span class="num">3</span><h3>Solun toiminta muuttuu</h3><p>Aineenvaihdunta, geenien säätely, organellit ja solun viestintä voivat muuttua merkittävästi.</p></div>
+          <div class="flow-step"><span class="num">4</span><h3>SASP-viestintä</h3><p>Osa soluista erittää sytokiineja, kemokiineja, kasvutekijöitä ja kudosympäristöön vaikuttavia entsyymejä.</p></div>
+          <div class="flow-step"><span class="num">5</span><h3>Kertyminen</h3><p>Jos immuunijärjestelmän poisto ei riitä, pitkäikäisiä senesenttejä soluja voi kertyä enemmän iän ja kudosvaurion myötä.</p></div>
+        </div>
+        <div class="callout">Senesenssi on kaksijakoinen ilmiö: se voi suojata elimistöä esimerkiksi kasvainkehitykseltä, mutta kroonisesti jatkuva solukuorma voi heikentää kudosympäristöä.</div>
+      </section>
+
+      <section class="card">
+        <h2>Miten tämä liittyy ikääntymiseen?</h2>
+        <p>Senesenttien solujen määrä ja niihin liittyvät merkit lisääntyvät monissa kudoksissa iän myötä. Eläinmalleissa niiden vähentäminen tai SASP-viestinnän vaimentaminen voi parantaa useita terveysmittareita. Ihmisillä tutkimus on edennyt kliinisiin kokeisiin, mutta tavalliseen terveydenhoitoon soveltuvaa yleistä solujen poistomenetelmää ei vielä ole.</p>
+        <div class="evidence-grid">
+          <div class="evidence"><span class="tag strong">Vakiintunut biologia</span><p>Senesenssi ja SASP voidaan tunnistaa useiden biomarkkereiden yhdistelmällä tutkimusympäristössä.</p></div>
+          <div class="evidence"><span class="tag strong">Vahva esikliininen näyttö</span><p>Pitkittynyt senesenssi voi aiheuttaa kudoshaittaa eläinmalleissa.</p></div>
+          <div class="evidence"><span class="tag early">Varhainen ihmisnäyttö</span><p>Senolyyttisiä hoitoja tutkitaan pienissä ja sairauskohtaisissa kliinisissä kokeissa.</p></div>
+          <div class="evidence"><span class="tag preclinical">Ei vielä osoitettu</span><p>Tavallisen ruoan ei ole osoitettu poistavan ihmisestä senesenttejä soluja kliinisesti merkittävällä tavalla.</p></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Tulehdus: tavoite ei ole nolla</h2>
+        <p>Akuutti tulehdus on osa puolustusta, lihasharjoitteluun sopeutumista ja kudoskorjausta. Haitallinen kokonaisuus on pikemminkin pitkäkestoinen, matala-asteinen tulehdus, joka voi liittyä ikääntymiseen, aineenvaihdunnan häiriöihin ja moniin kroonisiin sairauksiin.</p>
+        <div class="good-box"><strong>Fitness-näkökulma:</strong> säännöllinen harjoittelu voi pitkällä aikavälillä laskea tulehduskuormaa ja parantaa aineenvaihdunnallista terveyttä, vaikka yksittäinen kova harjoitus nostaa hetkellisesti tulehdus- ja korjaussignaaleja.</div>
+      </section>
+
+      <section class="card full" id="kaytanto">
+        <h2>Miksi tämä kiinnostaa liikkujaa?</h2>
+        <figure class="article-figure">
+          <img src="images/soluterveys/ZombisolutjaVanheneminen2.png" alt="Animoitu kuvitus liikunnasta, nesteytyksestä, venyttelystä, rauhoittumisesta ja unesta" loading="lazy" />
+          <figcaption>Harjoittelu ja palautuminen muodostavat yhdessä kokonaisuuden: kuormitus tarvitsee rinnalleen ravintoa, lepoa ja unta.</figcaption>
+        </figure>
+        <div class="mini-grid">
+          <div class="mini-card"><h3>Lihastoiminta</h3><p>Ikääntymiseen liittyvät tulehdus- ja solustressireitit voivat vaikuttaa lihaksen uusiutumiseen, voimantuottoon ja anaboliseen vasteeseen. Harjoittelu on yksi parhaiten tutkituista toimintakykyä säilyttävistä keinoista.</p></div>
+          <div class="mini-card"><h3>Palautuminen</h3><p>Riittävä uni, energiansaanti ja harjoituskuorman rytmitys tukevat korjaavia prosesseja. Tavoite on rakentaa ympäristö, jossa kudos pystyy palautumaan toistuvasta kuormituksesta.</p></div>
+          <div class="mini-card"><h3>Metabolinen terveys</h3><p>Liikunta, painonhallinta ja ruokavalion laatu tukevat insuliiniherkkyyttä, verenkiertoa ja kehonkoostumusta — tekijöitä, jotka liittyvät terveempään ikääntymiseen.</p></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Arjen perusta</h2>
+        <ul class="clean">
+          <li>Yhdistä kestävyysliikuntaa ja lihaskuntoharjoittelua viikoittain.</li>
+          <li>Vältä pitkäkestoista paikallaanoloa ja lisää kevyttä liikkumista päivän sisään.</li>
+          <li>Pidä uni säännöllisenä ja riittävänä.</li>
+          <li>Suosi monipuolista ruokavaliota ja riittävää proteiinia harjoittelun sekä lihasmassan tueksi.</li>
+          <li>Vältä tupakointia ja suojaa iho toistuvalta UV-vauriolta.</li>
+          <li>Pidä paino ja vyötärönympärys yksilöllisesti terveellä alueella ilman äärimmäisiä dieettejä.</li>
+        </ul>
+        <div class="callout">Nämä keinot eivät ole solutesti tai senolyyttinen hoito. Niiden arvo perustuu laajaan näyttöön terveydestä, toimintakyvystä ja riskitekijöiden hallinnasta.</div>
+      </section>
+
+      <section class="card">
+        <h2>Mitä voi seurata itse?</h2>
+        <p>Elämäntapamuutosta voi arvioida käytännön toimintakyvyn kautta. Neljän viikon seuranta antaa usein paremman kuvan kuin yksittäinen päivä.</p>
+        <div class="tracker">
+          <div><strong>Uni</strong><br><span>kesto, heräämiset, aamuvirkeys</span></div>
+          <div><strong>Harjoittelu</strong><br><span>voima, toistot, vauhti, rasitustaso</span></div>
+          <div><strong>Palautuminen</strong><br><span>lihaskipu, vire, leposyke</span></div>
+          <div><strong>Arki</strong><br><span>askelmäärä, keskittyminen, energiataso</span></div>
+        </div>
+        <div class="warn-box">Hyvä olo tai suorituskyvyn paraneminen kertoo käytännön hyödystä, mutta se ei todista muutosta senesenttien solujen määrässä.</div>
+      </section>
+
+      <section class="card full">
+        <h2>Senolyyttiset hoidot ovat vielä tutkimusaluetta</h2>
+        <p>Senolyytit ovat yhdisteitä, joiden tavoitteena on poistaa valikoivasti senesenttejä soluja. Dasatinibin ja kversetiinin yhdistelmällä on saatu pienessä ihmisillä tehdyssä pilottitutkimuksessa biologisia muutoksia senesenssimarkkereissa. Tulosta ei kuitenkaan voi siirtää sellaisenaan ravintolisään tai ruokamäärään, eikä reseptilääkettä pidä käyttää tähän tarkoitukseen ilman kliinistä tutkimusasetelmaa.</p>
+        <div class="danger-box"><strong>Raja:</strong> fisetiiniä, kversetiiniä, EGCG:tä, kurkumiinia, apigeniinia, sulforafaania ja spermidiiniä tutkitaan kiinnostavina bioaktiivisina yhdisteinä, mutta mikään niistä ei ole osoitettu tavallisesta ruoasta saatuna keinoksi puhdistaa ihmisen kudoksia senesenteistä soluista.</div>
+      </section>
+
+      <section class="card full" id="lahteet">
+        <h2>Tutkimuslähteet</h2>
+        <ol class="source-list">
+          <li><a href="https://www.nia.nih.gov/news/does-cellular-senescence-hold-secrets-healthier-aging" target="_blank" rel="noopener noreferrer">National Institute on Aging: Does cellular senescence hold secrets for healthier aging?</a> — perusmekanismi, hyödylliset ja haitalliset roolit.</li>
+          <li><a href="https://www.nature.com/articles/s41580-024-00727-x" target="_blank" rel="noopener noreferrer">Wang B. ym. Nature Reviews Molecular Cell Biology (2024): The senescence-associated secretory phenotype and its physiological and pathological implications.</a></li>
+          <li><a href="https://www.nature.com/articles/s41580-024-00738-8" target="_blank" rel="noopener noreferrer">SenNet Biomarkers Working Group, Nature Reviews Molecular Cell Biology (2024): suositukset senesenttien solujen tunnistamiseen eri kudoksissa.</a></li>
+          <li><a href="https://www.nature.com/articles/s41573-024-01074-4" target="_blank" rel="noopener noreferrer">McHugh D. ym. Nature Reviews Drug Discovery (2025): Senescence as a therapeutic target in cancer and age-related diseases.</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/37329949/" target="_blank" rel="noopener noreferrer">Chronic inflammation and the hallmarks of aging (2023).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/37085128/" target="_blank" rel="noopener noreferrer">Age-associated inflammation and implications for skeletal muscle responses to exercise (2023).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/41349896/" target="_blank" rel="noopener noreferrer">Exercise-induced inflammatory and metabolic adaptations in ageing: meta-analytic compendium (2026).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/31542391/" target="_blank" rel="noopener noreferrer">Hickson L.G. ym. EBioMedicine (2019): alustava kliininen D+Q-senolyyttitutkimus.</a></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Terve ikääntyminen rakentuu toimintakyvystä</h2>
+      <p>Solubiologia auttaa ymmärtämään mekanismeja, mutta käytännön perusta pysyy selkeänä: liiku säännöllisesti, syö monipuolisesti, nuku hyvin ja vähennä pitkäaikaisia kuormitustekijöitä.</p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Solujen senesenssi • Fitness GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>

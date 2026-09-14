@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fi" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tutkimusperustainen opas ravinnon, liikunnan, kroonisen tulehduskuorman ja terveeseen ikääntymiseen liittyvien bioaktiivisten yhdisteiden näytöstä." />
+  <title>Ravinto, liikunta ja soluterveys | Fitness-opas</title>
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --bg-soft: #ffffff;
+      --ink: #142133;
+      --muted: #556476;
+      --brand: #1d6a5b;
+      --brand-2: #4f9e8f;
+      --accent: #e9f7f4;
+      --accent-2: #eef4ff;
+      --danger: #a1263f;
+      --warn: #d69c33;
+      --gold: #f1d894;
+      --border: #dce7ef;
+      --shadow: 0 18px 42px rgba(20, 33, 51, 0.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(79,158,143,0.10), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,106,91,0.08), transparent 20%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f8 100%);
+      line-height: 1.65;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .langbar { background: #132033; color: #fff; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .langbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .lang-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .lang-links a { color: #fff; font-weight: 700; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); }
+    .lang-links a.active { background: rgba(255,255,255,0.18); }
+    .site-nav { background: #0f1a2b; color: #fff; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .site-nav .wrap { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .site-nav a { color: #fff; font-weight: 700; padding: 9px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); }
+    .site-nav a.active { background: rgba(255,255,255,0.18); }
+    header { position: relative; overflow: hidden; color: #fff; background: linear-gradient(135deg, rgba(20,33,51,0.96), rgba(29,106,91,0.92)); min-height: 72vh; display: flex; align-items: center; }
+    header::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(241,216,148,0.22), transparent 28%), radial-gradient(circle at bottom left, rgba(79,158,143,0.25), transparent 24%); pointer-events: none; }
+    .hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center; padding: 64px 0; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); font-weight: 800; letter-spacing: 0.02em; margin-bottom: 18px; backdrop-filter: blur(10px); }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.6rem); line-height: 1.03; margin: 0 0 18px; max-width: 12ch; }
+    .hero p { font-size: clamp(1rem, 2vw, 1.14rem); color: rgba(255,255,255,0.93); margin: 0 0 22px; max-width: 64ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-weight: 800; box-shadow: var(--shadow); }
+    .btn.primary { background: #fff; color: var(--brand); }
+    .btn.secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); }
+    .hero-card { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); border-radius: 30px; padding: 24px; backdrop-filter: blur(14px); box-shadow: var(--shadow); }
+    .hero-card h2 { margin-top: 0; font-size: 1.22rem; color: #fff; }
+    .hero-list { display: grid; gap: 14px; padding: 0; list-style: none; margin: 0; }
+    .hero-list li { padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.94); }
+    main { padding: 42px 0 84px; }
+    .intro-banner { margin-top: -42px; position: relative; z-index: 3; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    .intro-banner p { margin: 0; font-size: 1.05rem; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 26px; }
+    section.card { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    section.card.full { grid-column: 1 / -1; }
+    h2 { font-size: clamp(1.45rem, 2vw, 2rem); margin: 0 0 18px; line-height: 1.18; }
+    h3 { font-size: 1.08rem; margin: 22px 0 10px; }
+    p, li, td, th { color: var(--muted); }
+    ul.clean, ol.clean { margin: 0; padding-left: 1.2rem; }
+    .callout { padding: 18px 20px; border-radius: 20px; background: #edf8f5; border-left: 6px solid var(--brand-2); color: var(--ink); font-weight: 700; margin-top: 16px; }
+    .danger-box { padding: 18px 20px; border-radius: 20px; background: #fff2f4; border-left: 6px solid var(--danger); margin-top: 14px; }
+    .good-box { padding: 18px 20px; border-radius: 20px; background: #eef8ef; border-left: 6px solid #4aa057; margin-top: 14px; }
+    .warn-box { padding: 18px 20px; border-radius: 20px; background: #fff8e8; border-left: 6px solid var(--warn); margin-top: 14px; }
+    .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .mini-card { padding: 18px; border-radius: 20px; background: #fcfffb; border: 1px solid var(--border); }
+    .mini-card h3 { margin-top: 0; }
+    .plate { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .plate > div { min-height: 150px; padding: 20px; border-radius: 24px; border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: flex-end; }
+    .plate .plants { background: linear-gradient(145deg, #e7f7ec, #f9fff9); }
+    .plate .protein { background: linear-gradient(145deg, #eef4ff, #fbfdff); }
+    .plate .carbs { background: linear-gradient(145deg, #fff6db, #fffdfa); }
+    .plate strong { color: var(--ink); font-size: 1.05rem; }
+    .table-wrap { overflow-x: auto; border-radius: 20px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; background: #fff; }
+    th, td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    th { background: #f3f8fb; color: var(--ink); }
+    tr:last-child td { border-bottom: 0; }
+    .tag { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: .82rem; font-weight: 800; white-space: nowrap; }
+    .tag.food { background: #e7f6ea; color: #226b32; }
+    .tag.early { background: #eef4ff; color: #2c5791; }
+    .tag.preclinical { background: #f3eefc; color: #664598; }
+    .source-list { margin: 0; padding-left: 1.25rem; }
+    .source-list li { margin: 0 0 12px; }
+    .source-list a { font-weight: 800; }
+    .article-figure { margin: 26px 0 0; }
+    .article-figure img {
+      width: 100%; display: block; border-radius: 24px; object-fit: cover;
+      box-shadow: var(--shadow); border: 1px solid var(--border); background: #fff;
+    }
+    .article-figure figcaption { margin-top: 10px; color: var(--muted); font-size: .94rem; }
+    .footer-cta { background: linear-gradient(135deg, rgba(29,106,91,0.98), rgba(20,33,51,0.98)); color: #fff; padding: 54px 0; margin-top: 40px; }
+    .footer-cta h2, .footer-cta p, footer p, footer a { color: rgba(255,255,255,0.95); }
+    .msj-box { margin-top: 18px; padding: 18px 20px; border-radius: 20px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); }
+    .msj-box strong { display: block; margin-bottom: 8px; color: #fff; }
+    footer { background: #132033; color: #fff; padding: 20px 0 34px; }
+    .footer-meta { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+    @media (max-width: 980px) {
+      .hero, .grid, .mini-grid, .plate { grid-template-columns: 1fr; }
+      header { min-height: auto; }
+      .hero { padding: 40px 0 54px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="langbar">
+    <div class="wrap">
+      <div class="lang-links"><a class="active" href="ravinto-liikunta-ja-soluterveys.html">Suomi</a></div>
+      <small>Tekijä: Topi Järvinen</small>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a href="index.html">Sivu 1 • DASH opas</a>
+      <a href="fitness-ruokavalio.html">Sivu 2 • Fitness ruokavalio</a>
+      <a href="ruoan-vaikutus-hyvinvointiin.html">Sivu 3 • Ruoan vaikutus hyvinvointiin</a>
+      <a href="Ruokavalio-on-suorituskyvyn-perusta.html">Sivu 4 • Suorituskyvyn perusta</a>
+      <a href="rasvasolut_leptiini_fitness.html">Sivu 5 • Rasvasolut ja leptiini</a>
+      <a href="Proteiini-aminohapot-kreatiini.html">Sivu 6 • Proteiini ja kreatiini</a>
+      <a href="kreatiini.html">Sivu 7 • Kreatiini ja treeni vinkit</a>
+      <a href="low-carb-laihdutusdietti.html">Sivu 8 • Vähähiilihydraattinen ruokavalio</a>
+      <a href="Laihdutus-ja-salitreeni.html">Sivu 9 • Laihdutus ja salitreeni</a>
+      <a href="ruokahimot-urheilijalla.html">Sivu 10 • Ruokahimot urheilijalla</a>
+      <a href="ruokahimojen-seuranta.html">Sivu 11 • Ruokahimojen seuranta</a>
+      <a href="solujen-senesenssi-ja-terve-ikaantyminen.html">Sivu 12 • Solujen senesenssi</a>
+      <a class="active" aria-current="page" href="ravinto-liikunta-ja-soluterveys.html">Sivu 13 • Ravinto ja soluterveys</a>
+      <a href="site-shell-opas.html">Lehtiö • Site shell opas</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Ravinto • liikunta • tulehdustasapaino • pitkäjänteinen suorituskyky</div>
+        <h1>Ravinto ja soluterveys käytännössä</h1>
+        <p>
+          Terveeseen ikääntymiseen liittyvä ravitsemustutkimus painottaa kokonaisuutta: monipuolista ruokaa, riittävää proteiinia, kasvikunnan tuotteita, kohtuullista energiansaantia ja säännöllistä liikuntaa. Yksittäiset bioaktiiviset yhdisteet ovat kiinnostavia tutkimuskohteita, mutta niiden vaikutus ei korvaa ruokavaliota tai harjoittelua.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#kiina">Kiinan ravitsemusnäyttö</a>
+          <a class="btn secondary" href="#yhdisteet">Bioaktiiviset yhdisteet</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Kokonaisuuden tavoite</h2>
+        <ul class="hero-list">
+          <li>säilyttää lihasmassaa, voimaa ja aerobista kapasiteettia</li>
+          <li>tukea aineenvaihduntaa ja painonhallintaa</li>
+          <li>pitää pitkäaikainen tulehduskuorma mahdollisimman pienenä</li>
+          <li>rakentaa ruokavalio ensisijaisesti tavallisista elintarvikkeista</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro-banner">
+      <p>
+        Ruokavalion ja liikunnan hyötyä kannattaa arvioida toimintakyvyn, laboratoriomittausten ja pitkäaikaisten terveysriskien kautta. Senesenttien solujen määrää ei voi päätellä ruokavalion, ihon ulkonäön tai koetun vireyden perusteella.
+      </p>
+    </div>
+
+    <figure class="article-figure">
+      <img src="images/soluterveys/ZombisolutjaVanheneminen4.png" alt="Animoitu kokonaiskuva liikunnasta, ravinnosta, unesta, palautumisesta ja nesteytyksestä" loading="lazy" />
+      <figcaption>Liikunta, monipuolinen ravinto, palautuminen ja uni tukevat samaa pitkän aikavälin tavoitetta: toimintakyvyn säilymistä.</figcaption>
+    </figure>
+
+    <div class="grid">
+      <section class="card full" id="kiina">
+        <h2>Kiinan ravitsemustieteen käytännöllinen ydin</h2>
+        <p>Tässä näkökulmassa kiinalainen ravitsemustiede tarkoittaa Kiinan virallisia ravitsemussuosituksia ja kiinalaisilla väestöillä tehtyä ravitsemusepidemiologiaa. Chinese Dietary Guidelines 2022 korostaa monipuolista ja tasapainoista ruokavaliota, aktiivisuutta, terveellistä painoa, runsaasti vihanneksia ja hedelmiä, täysjyvää ja soijaa sekä kohtuullisesti kalaa, siipikarjaa, kananmunia ja vähärasvaista lihaa.</p>
+        <figure class="article-figure">
+          <img src="images/soluterveys/ZombisolutjaVanheneminen3.png" alt="Värikäs kuvitus kasviksista, marjoista, hedelmistä, täysjyvästä, palkokasveista ja vihreästä teestä" loading="lazy" />
+          <figcaption>Monipuolinen ruokavalio tuo samalle lautaselle kuitua, proteiinia, vitamiineja, kivennäisaineita ja erilaisia kasviperäisiä yhdisteitä.</figcaption>
+        </figure>
+        <div class="mini-grid">
+          <div class="mini-card"><h3>Monipuolisuus</h3><p>Laaja ruokavalikoima vähentää riskiä, että ravinto rakentuu vain muutaman ruoan ja ravintoaineen varaan.</p></div>
+          <div class="mini-card"><h3>Kasvit + proteiini</h3><p>Kasvikset, hedelmät, täysjyvä ja soija yhdistyvät laadukkaisiin proteiinilähteisiin. Tämä sopii myös harjoittelevan ihmisen perusmalliksi.</p></div>
+          <div class="mini-card"><h3>Aktiivinen arki</h3><p>Suositukset yhdistävät ruokavalion ja liikkumisen samaan kokonaisuuteen terveellisen painon ja kroonisten sairauksien ehkäisyn tueksi.</p></div>
+        </div>
+        <div class="good-box">Kiinalaisissa ikääntyvien kohorteissa suurempi ruokavalion monipuolisuus on yhdistynyt pienempään haurastumisriskiin. Havainto tukee monipuolisuuden periaatetta, mutta se ei yksin todista syy-seuraussuhdetta.</div>
+      </section>
+
+      <section class="card">
+        <h2>Fitness-lautanen</h2>
+        <p>Harjoittelevan ihmisen ateria voidaan rakentaa yksinkertaisesti kolmen osan ympärille.</p>
+        <div class="plate">
+          <div class="plants"><strong>Kasvikset ja hedelmät</strong><span>värit, kuitu, kalium, polyfenolit</span></div>
+          <div class="protein"><strong>Proteiini</strong><span>kala, kananmunat, kana, tofu, pavut, maitotuotteet</span></div>
+          <div class="carbs"><strong>Hiilihydraatit</strong><span>täysjyvä, riisi, peruna, kaura, hedelmät harjoitusmäärän mukaan</span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Miksi pitkäaikainen tulehduskuorma kiinnostaa?</h2>
+        <p>Krooninen matala-asteinen tulehdus liittyy ikääntymisen biologisiin muutoksiin ja useisiin sairauksiin. Liikuntaharjoittelu parantaa monia tulehdus- ja aineenvaihduntamittareita etenkin pitkällä aikavälillä. Harjoituksen aiheuttamaa normaalia, lyhytaikaista korjausreaktiota ei kuitenkaan pidä yrittää kokonaan estää.</p>
+        <div class="callout">Käytännössä tärkein tavoite on hyvä peruskunto, riittävä lihasmassa, järkevä kehonkoostumus, hyvä uni ja laadukas ruokavalio — ei yksittäisen tulehdusmerkkiaineen jahtaaminen.</div>
+      </section>
+
+      <section class="card full" id="yhdisteet">
+        <h2>Ruoan bioaktiiviset yhdisteet: mitä näyttö oikeasti kertoo?</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Yhdiste</th><th>Ruokalähteitä</th><th>Tutkimussuunta</th><th>Näytön tulkinta</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Fisetiini</strong></td><td>mansikka, omena, persimon</td><td>senoterapeuttinen tutkimus, tulehdus- ja stressireitit</td><td><span class="tag preclinical">Esikliininen painotus</span><br>Eläin- ja solututkimus on kiinnostavaa; ihmisillä ei ole vahvistettua näyttöä siitä, että tavallinen ruokamäärä poistaisi senesenttejä soluja.</td></tr>
+              <tr><td><strong>Kversetiini</strong></td><td>sipuli, omena, marjat, kapris</td><td>senolyyttiset yhdistelmät, flavonoidivaikutukset</td><td><span class="tag early">Varhainen ihmisnäyttö</span><br>Pieni D+Q-tutkimus osoitti biomarkkerimuutoksia sairausryhmässä. Tämä ei vastaa kversetiinin käyttöä yksin tai ruokamääränä.</td></tr>
+              <tr><td><strong>EGCG</strong></td><td>vihreä tee</td><td>oksidatiivinen stressi, solusignalointi, senesenssimallit</td><td><span class="tag preclinical">Pääosin solu/eläin</span><br>Ihmisillä vihreän teen terveysvaikutuksia tutkitaan laajasti, mutta kliinistä senesenssin poistovaikutusta ei ole osoitettu.</td></tr>
+              <tr><td><strong>Kurkumiini</strong></td><td>kurkuma</td><td>tulehdus- ja oksidatiiviset merkkiaineet</td><td><span class="tag food">Ihmisnäyttöä muista päätepisteistä</span><br>RCT-meta-analyysissä havaittiin vaikutuksia mm. CRP:hen ja glukoosimittareihin. Tämä ei ole sama asia kuin osoitettu senolyyttinen vaikutus.</td></tr>
+              <tr><td><strong>Apigeniini</strong></td><td>persilja, selleri, kamomilla</td><td>SASP, SIRT1/NAD+-reitit, tulehdussignalointi</td><td><span class="tag preclinical">Esikliininen</span><br>Solu- ja hiiritutkimus on lupaavaa, mutta kliininen ihmisnäyttö senesenssin hoidosta puuttuu.</td></tr>
+              <tr><td><strong>Sulforafaani</strong></td><td>parsakaalin idut, parsakaali, muut kaalikasvit</td><td>NRF2-redox-signalointi</td><td><span class="tag early">Mekanistinen ihmisnäyttö</span><br>Vanhemmilla aikuisilla on tutkittu NRF2-vastetta, mutta sitä ei pidä tulkita todisteeksi senesenttien solujen poistosta.</td></tr>
+              <tr><td><strong>Spermidiini</strong></td><td>vehnänalkio, palkokasvit, sienet, täysjyvä</td><td>autofagia, immuunisolujen ikääntyminen, terve ikääntyminen</td><td><span class="tag early">Varhainen kliininen tutkimus</span><br>Pieniä ihmisillä tehtyjä kokeita on, mutta annos, pitkäaikaishyöty ja kliininen merkitys vaativat lisätutkimusta.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="warn-box"><strong>Ruoka ensin:</strong> elintarvikkeen sisältämä yhdiste, puhdas laboratoriokemikaali ja vahva ravintolisä ovat eri altistuksia. Tuloksia ei pidä siirtää suoraan toisesta toiseen.</div>
+      </section>
+
+      <section class="card">
+        <h2>Vihreä tee ja terve ikääntyminen</h2>
+        <p>Kiinan Multi-Ethnic Cohortin ja UK Biobankin aineistoissa teen käyttö yhdistyi hitaampaan biologisen iän kiihtymiseen biomarkkeripohjaisessa mallissa. Tutkimus on kiinnostava, mutta havainnoiva asetelma ei osoita, että tee itsessään hidastaa ikääntymistä.</p>
+        <div class="good-box">Vihreä tee voi olla osa ruokavaliota, jos se sopii käyttäjälle. Sitä kannattaa ajatella tavallisena juomana, ei soluterapiana.</div>
+      </section>
+
+      <section class="card">
+        <h2>Harjoittelu on vahvin käytännön työkalu</h2>
+        <ul class="clean">
+          <li>Lihaskuntoharjoittelu auttaa säilyttämään lihasmassaa, voimaa ja toimintakykyä.</li>
+          <li>Kestävyysliikunta tukee verenkiertoelimistöä, glukoosiaineenvaihduntaa ja aerobista kapasiteettia.</li>
+          <li>Päivittäinen kevyt liike vähentää yhtäjaksoista istumista ja kasvattaa kokonaisaktiivisuutta.</li>
+          <li>Riittävä energian ja proteiinin saanti tukee sopeutumista harjoitteluun.</li>
+        </ul>
+        <div class="callout">Hyvä ohjelma ei pyri estämään kaikkea biologista stressiä. Harjoitus on hallittu stressi, josta elimistö rakentaa sopeutumisen palautumisen aikana.</div>
+      </section>
+
+      <section class="card full">
+        <h2>Kokeile käytännössä neljä viikkoa</h2>
+        <div class="mini-grid">
+          <div class="mini-card"><h3>1. Lisää vaihtelua</h3><p>Valitse viikkoon useita kasviksia, hedelmiä, palkokasveja, täysjyviä ja proteiinilähteitä. Vaihtelu on helpompi tavoite kuin yhden superruoan etsiminen.</p></div>
+          <div class="mini-card"><h3>2. Pidä harjoittelu vakaana</h3><p>Pidä voimaharjoittelu ja aerobinen harjoittelu samankaltaisina koko seurantajakson ajan, jotta olojen muutosta on helpompi tulkita.</p></div>
+          <div class="mini-card"><h3>3. Seuraa toimintakykyä</h3><p>Kirjaa uni, vire, treeniteho, palautuminen, nälkä ja ruoansulatus. Muutokset kertovat arjen toimivuudesta, eivät solujen lukumäärästä.</p></div>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>Turvaraja</h2>
+        <p>Väkevöidyt uutteet ja ravintolisät voivat poiketa olennaisesti ruoasta saatavista määristä. Ne voivat vaikuttaa lääkeaineiden metaboliaan, veren hyytymiseen, maksaan tai ruoansulatuskanavaan. Pitkäaikainen suuri annos ei ole automaattisesti tehokkaampi tai turvallisempi.</p>
+        <div class="danger-box">Jos tavoitteena on sairauksien hoito, lääkityksen muuttaminen tai suurten annosten ravintolisäkokeilu, ratkaisu kuuluu terveydenhuollon arvioon. Terveen arjen perusta voidaan rakentaa ilman senolyyttisiä tuotteita.</div>
+      </section>
+
+      <section class="card full" id="lahteet">
+        <h2>Tutkimuslähteet</h2>
+        <ol class="source-list">
+          <li><a href="https://en.cnsoc.org/dGuideline/122510200.html" target="_blank" rel="noopener noreferrer">Chinese Nutrition Society: Chinese Dietary Guidelines (2022).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/36811562/" target="_blank" rel="noopener noreferrer">Wang X-M. ym. American Journal of Clinical Nutrition (2023): dietary diversity and frailty among older Chinese adults.</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/38075587/" target="_blank" rel="noopener noreferrer">Tea consumption and attenuation of biological aging: longitudinal analysis from Chinese and UK cohorts.</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/39384074/" target="_blank" rel="noopener noreferrer">Fisetin as a senotherapeutic agent: evidence and perspectives for age-related diseases (2024).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/31542391/" target="_blank" rel="noopener noreferrer">Hickson L.G. ym. EBioMedicine (2019): dasatinib + quercetin pilot study in humans.</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/39478418/" target="_blank" rel="noopener noreferrer">Curcumin on Human Health: systematic review and meta-analysis of 103 randomized trials (2024).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/40265973/" target="_blank" rel="noopener noreferrer">Apigenin and senescence: mouse and cellular evidence (2025).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/41099966/" target="_blank" rel="noopener noreferrer">Sulforaphane and exercise-induced NRF2 signaling in older adults (2026).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/37118547/" target="_blank" rel="noopener noreferrer">Mechanisms of spermidine-induced autophagy and geroprotection, Nature Aging (2022).</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/41349896/" target="_blank" rel="noopener noreferrer">Exercise-induced inflammatory and metabolic adaptations in ageing: meta-analytic compendium (2026).</a></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <section class="footer-cta">
+    <div class="wrap">
+      <h2>Ruokavalion voima on kokonaisuudessa</h2>
+      <p>Monipuolinen ruoka, riittävä proteiini, säännöllinen liikunta ja hyvä palautuminen muodostavat vahvemman perustan kuin yksittäiseen yhdisteeseen nojaava strategia.</p>
+      <div class="msj-box">
+        <strong>Muita tulossa olevia sivustoja:</strong>
+        <p> MultiSalesJourney - MSJ palvelu - Yritysten myyntialusta </p>
+        <strong>Seuraa minua myös:</strong>
+        <p>instagram #, twitter #, facebook #</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-meta">
+      <p>© Topi Järvinen • Ravinto ja soluterveys • Fitness GitHub Pages</p>
+      <p><a href="#top">Takaisin ylös</a></p>
+    </div>
+  </footer>
+</body>
+</html>
